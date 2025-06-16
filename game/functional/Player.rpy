@@ -18,6 +18,7 @@ init python:
             self.male_name = "????"
             self.stamina = max_stamina
             self.max_stamina = max_stamina
+            self.arousal = 0
             self.hand_skill = hs
             self.hand_level = hl
             self.mouth_skill = ms
@@ -33,6 +34,7 @@ init python:
             self.anal_state = "dry"
             self.tip_state = "dry"
             self.cock_state = "dry"
+            self.player_type = "default"
 
         def resetMoistState():
             self.finger_state = "dry"
@@ -40,6 +42,17 @@ init python:
             self.anal_state = "dry"
             self.tip_state = "dry"
             self.cock_state = "dry"
+        
+        def increaseArousal(amount):
+            self.arousal += amount
+            if self.arousal > 100: # check for orgasm
+                self.arousal = 100
+                return True
+            else:
+                return False
+        
+        def orgasm():
+            self.arousal = 0
         ###
         # skill level requirements
         # 100 (100 total) level 1

@@ -4,7 +4,7 @@ init:
 
 screen his_chest():
     imagebutton:
-        at breast_custom_zoom
+        at chest_custom_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.965
@@ -13,16 +13,16 @@ screen his_chest():
         if intro_3_completed == False:
             if intro_2_completed == False:
                 idle "images/buttons/his chest button locked.png"
-                hovered Show("his_tooltip", input_text="You need to select your chest not his",x_pos = 0.55, y_pos = 0.55)
+                hovered Show("his_tooltip", input_text="You need to select your chest not his",x_pos = 0.70, y_pos = 0.23)
                 action NullAction()
             else:
                 idle "images/buttons/his chest button.png"
                 hover "images/buttons/his chest button hover.png"
                 action [Hide("his_tooltip"), Show("chest_actions_select_screen")]
-                hovered Show("his_tooltip", input_text="Perform an action involving his chest",x_pos = 0.55, y_pos = 0.55)
+                hovered Show("his_tooltip", input_text="Perform an action involving his chest",x_pos = 0.70, y_pos = 0.23)
         else:
             idle "images/buttons/his chest button locked.png"
-            hovered Show("his_tooltip", input_text="You need to select his chest not yours",x_pos = 0.55, y_pos = 0.55)
+            hovered Show("his_tooltip", input_text="You need to select his chest not yours",x_pos = 0.70, y_pos = 0.23)
             action NullAction()
         unhovered Hide("his_tooltip")
 
@@ -45,7 +45,7 @@ screen rub_his_chest_button():
     # some calculation for amount of experience and arousal gained
     #
     imagebutton:
-        at breast_custom_zoom
+        at chest_custom_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.905
@@ -53,7 +53,7 @@ screen rub_his_chest_button():
         focus_mask True
         idle "images/buttons/rub his chest button.png"
         hover "images/buttons/rub his chest button hover.png"
-        hovered Show("his_tooltip", input_text="Run your fingers through his chest hair",x_pos = 0.25, y_pos = 0.25)
+        hovered Show("his_tooltip", input_text="Run your fingers through his chest hair",x_pos = 0.65, y_pos = 0.13)
         unhovered Hide("his_tooltip")
         if activate_buttons == True:
             action NullAction()

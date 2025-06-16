@@ -19,6 +19,7 @@ init python:
 
             self.wakefulness = 0
             self.wakefulness_cap = wakefulness_cap
+            self.arousal = 0
 
             self.face_resistance = face_resistance
             self.hand_resistance = hand_resistance
@@ -49,6 +50,17 @@ init python:
             self.tip_state = "dry"
             self.cock_state = "dry"
             self.ass_state = "dry"
+        
+        def increaseArousal(amount):
+            self.arousal += amount
+            if self.arousal > 100: # check for orgasm
+                self.arousal = 100
+                return True
+            else:
+                return False
+        
+        def orgasm():
+            self.arousal = 0
         
         def increaseWakefulness(amount):
             self.wakefulness += amount

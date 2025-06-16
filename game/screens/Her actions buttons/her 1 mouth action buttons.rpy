@@ -87,7 +87,7 @@ screen suck_your_fingers_button():
         xpos 0.14
         ypos 0.4
         focus_mask True
-        if pc.finger_state != "dry": # add stamina check for action here
+        if pc.finger_state != "dry": # add stamina check for action here with an and check
             idle "images/buttons/suck her fingers button.png"
             hover "images/buttons/suck her fingers button hover.png"
             hovered Show("her_tooltip", input_text="Suck your fingers to get them moist",x_pos = 0.15, y_pos = 0.33)

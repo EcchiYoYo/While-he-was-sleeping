@@ -1,10 +1,10 @@
 init:
-    transform breast_custom_zoom:
+    transform her_breast_custom_zoom:
         zoom 0.90
 
 screen your_breast():
     imagebutton:
-        at breast_custom_zoom
+        at her_breast_custom_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.08
@@ -41,7 +41,7 @@ screen rub_left_breast_button():
     # some calculation for amount of experience and arousal gained
     #
     imagebutton:
-        at breast_custom_zoom
+        at her_breast_custom_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.14
@@ -61,7 +61,7 @@ screen rub_right_breast_button():
     # some calculation for amount of experience and arousal gained
     #
     imagebutton:
-        at breast_custom_zoom
+        at her_breast_custom_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.14
@@ -84,7 +84,7 @@ screen rub_both_breasts_button():
     # some calculation for amount of experience and arousal gained
     #
     imagebutton:
-        at breast_custom_zoom
+        at her_breast_custom_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.14
@@ -107,7 +107,7 @@ screen pinch_left_nipple_button():
     # some calculation for amount of experience and arousal gained
     #
     imagebutton:
-        at breast_custom_zoom
+        at her_breast_custom_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.14
@@ -129,7 +129,7 @@ screen pinch_right_nipple_button():
     # some calculation for amount of experience and arousal gained
     #
     imagebutton:
-        at breast_custom_zoom
+        at her_breast_custom_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.14
@@ -151,7 +151,7 @@ screen pinch_both_nipples_button():
     # some calculation for amount of experience and arousal gained
     #
     imagebutton:
-        at breast_custom_zoom
+        at her_breast_custom_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.14
