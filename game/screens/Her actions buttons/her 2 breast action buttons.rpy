@@ -8,16 +8,16 @@ screen your_breast():
         xanchor 1.0
         yanchor 1.0
         xpos 0.08
-        ypos 0.5
+        ypos 0.3
         focus_mask True
         if intro_2_completed == False:
             idle "images/buttons/her breast button.png"
             hover "images/buttons/her breast button hover.png"
             action [Hide("her_tooltip"), Show("breast_actions_select_screen")]
-            hovered Show("her_tooltip", input_text="Perform an action involving your breasts",x_pos = 0.55, y_pos = 0.55)
+            hovered Show("her_tooltip", input_text="Perform an action involving your breasts",x_pos = 0.10, y_pos = 0.23)
         else:
             idle "images/buttons/her breast button locked.png"
-            hovered Show("her_tooltip", input_text="You need to select his chest not yours",x_pos = 0.55, y_pos = 0.55)
+            hovered Show("her_tooltip", input_text="You need to select his chest not yours",x_pos = 0.10, y_pos = 0.23)
             action NullAction()
         unhovered Hide("her_tooltip")
 
@@ -49,7 +49,7 @@ screen rub_left_breast_button():
         focus_mask True
         idle "images/buttons/left breast button.png"
         hover "images/buttons/left breast button hover.png"
-        hovered Show("her_tooltip", input_text="Rub your left breast",x_pos = 0.25, y_pos = 0.25)
+        hovered Show("her_tooltip", input_text="Rub your left breast",x_pos = 0.15, y_pos = 0.13)
         unhovered Hide("her_tooltip")
         if activate_buttons == True:
             action NullAction()
@@ -70,11 +70,11 @@ screen rub_right_breast_button():
         if activate_buttons == True:
             idle "images/buttons/right breast button.png"
             hover "images/buttons/right breast button hover.png"
-            hovered Show("her_tooltip", input_text="Rub your right breast",x_pos = 0.25, y_pos = 0.35)
+            hovered Show("her_tooltip", input_text="Rub your right breast",x_pos = 0.15, y_pos = 0.23)
             action NullAction()
         else:
             idle "images/buttons/right breast button locked.png"
-            hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.25, y_pos = 0.35)
+            hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.23)
             action NullAction()
         unhovered Hide("her_tooltip")
         
@@ -93,11 +93,11 @@ screen rub_both_breasts_button():
         if activate_buttons == True:
             idle "images/buttons/both breasts button.png"
             hover "images/buttons/both breasts button hover.png"
-            hovered Show("her_tooltip", input_text="Rub both of your breasts",x_pos = 0.25, y_pos = 0.45)
+            hovered Show("her_tooltip", input_text="Rub both of your breasts",x_pos = 0.15, y_pos = 0.33)
             action NullAction()
         else:
             idle "images/buttons/both breasts button locked.png"
-            hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.25, y_pos = 0.45)
+            hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.33)
             action NullAction()
         
         unhovered Hide("her_tooltip")
@@ -116,11 +116,11 @@ screen pinch_left_nipple_button():
         if activate_buttons == True:
             idle "images/buttons/left nipple button.png"
             hover "images/buttons/left nipple button hover.png"
-            hovered Show("her_tooltip", input_text="Pinch your left nipple",x_pos = 0.25, y_pos = 0.55)
+            hovered Show("her_tooltip", input_text="Pinch your left nipple",x_pos = 0.15, y_pos = 0.43)
             action NullAction()
         else:
             idle "images/buttons/left nipple button locked.png"
-            hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.25, y_pos = 0.55)
+            hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.43)
             action NullAction()
         unhovered Hide("her_tooltip")
 
@@ -138,11 +138,11 @@ screen pinch_right_nipple_button():
         if activate_buttons == True:
             idle "images/buttons/right nipple button.png"
             hover "images/buttons/right nipple button hover.png"
-            hovered Show("her_tooltip", input_text="Pinch your right nipple",x_pos = 0.25, y_pos = 0.65)
+            hovered Show("her_tooltip", input_text="Pinch your right nipple",x_pos = 0.15, y_pos = 0.53)
             action NullAction()
         else:
             idle "images/buttons/right nipple button locked.png"
-            hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.25, y_pos = 0.65)
+            hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.53)
             action NullAction()
         unhovered Hide("her_tooltip")
 
@@ -160,10 +160,10 @@ screen pinch_both_nipples_button():
         if activate_buttons == True:
             idle "images/buttons/both nipples button.png"
             hover "images/buttons/both nipples button hover.png"
-            hovered Show("her_tooltip", input_text="Pinch both of your nipples",x_pos = 0.25, y_pos = 0.70)
+            hovered Show("her_tooltip", input_text="Pinch both of your nipples",x_pos = 0.15, y_pos = 0.63)
             action NullAction()
         else:
             idle "images/buttons/both nipples button locked.png"
-            hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.25, y_pos = 0.70)
+            hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.63)
             action NullAction()
         unhovered Hide("her_tooltip")
