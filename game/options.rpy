@@ -24,6 +24,7 @@ define gui.show_name = True
 ## The version of the game.
 
 define config.version = "1.0"
+define build.itch_project = "ecchiyoyo/while-he-was-sleeping"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -49,6 +50,10 @@ define build.name = "WhileHeWasSleeping"
 define config.has_sound = True
 define config.has_music = True
 define config.has_voice = True
+
+define config.default_music_volume = 0.1
+define config.default_sfx_volume = 0.4
+define config.default_voice_volume = 0.4
 
 
 ## To allow the user to play a test sound on the sound or voice channel,
@@ -143,7 +148,7 @@ default preferences.afm_time = 15
 ## This generally should not be changed, and if it is, should always be a
 ## literal string, not an expression.
 
-define config.save_directory = "WhileHeWasSleeping-1712899504"
+define config.save_directory = "WhileHeWasSleeping"
 
 
 ## Icon ########################################################################
