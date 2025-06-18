@@ -27,6 +27,7 @@ screen his_tooltip(input_text, x_pos, y_pos):
         xpos x_pos
         ypos y_pos
         xmaximum 350
+        xanchor 1.0
         hbox:
             spacing 10
             box_wrap True

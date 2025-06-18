@@ -13,19 +13,18 @@ screen his_chest():
         if intro_3_completed == False:
             if intro_2_completed == False:
                 idle "images/buttons/his chest button locked.png"
-                hovered Show("his_tooltip", input_text="You need to select your chest not his",x_pos = 0.70, y_pos = 0.23)
+                hovered Show("his_tooltip", input_text="You need to select your chest not his",x_pos = 0.88, y_pos = 0.23)
                 action NullAction()
             else:
                 idle "images/buttons/his chest button.png"
                 hover "images/buttons/his chest button hover.png"
                 action [Hide("his_tooltip"), Show("chest_actions_select_screen")]
-                hovered Show("his_tooltip", input_text="Perform an action involving his chest",x_pos = 0.70, y_pos = 0.23)
+                hovered Show("his_tooltip", input_text="Perform an action involving his chest",x_pos = 0.88, y_pos = 0.23)
         else:
             idle "images/buttons/his chest button locked.png"
-            hovered Show("his_tooltip", input_text="You need to select his chest not yours",x_pos = 0.70, y_pos = 0.23)
+            hovered Show("his_tooltip", input_text="You need to select his chest not yours",x_pos = 0.88, y_pos = 0.23)
             action NullAction()
         unhovered Hide("his_tooltip")
-
 
 screen chest_actions_select_screen():
     imagebutton:
@@ -53,7 +52,7 @@ screen rub_his_chest_button():
         focus_mask True
         idle "images/buttons/rub his chest button.png"
         hover "images/buttons/rub his chest button hover.png"
-        hovered Show("his_tooltip", input_text="Run your fingers through his chest hair",x_pos = 0.65, y_pos = 0.13)
+        hovered Show("his_tooltip", input_text="Run your fingers through his chest hair",x_pos = 0.83, y_pos = 0.13)
         unhovered Hide("his_tooltip")
         if activate_buttons == True:
             action NullAction()
@@ -68,4 +67,3 @@ screen rub_his_nipples_with_your_foot_button():
 
 screen rub_your_pussy_along_his_chest_button():
     text "stuff and things"
-    

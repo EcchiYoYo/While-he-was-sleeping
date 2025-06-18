@@ -11,7 +11,6 @@ init python:
 # Primary stats and functions for Player                        #
 #                                                               #
 #################################################################
-
     class Player:
         def __init__(self, max_stamina, hs, hl, ms, ml, fs, fl, vs, vl, anal_skill, al):
             self.name = "????"

@@ -8,19 +8,18 @@ screen your_feet():
         xanchor 1.0
         yanchor 1.0
         xpos 0.08
-        ypos 0.6
+        ypos 0.8
         focus_mask True
         if activate_buttons == True:
             idle "images/buttons/her feet button.png"
             hover "images/buttons/her feet button hover.png"
             action [Hide("her_tooltip"), Show("your_feet_actions_select_screen")]
-            hovered Show("her_tooltip", input_text="Perform an action involving your bum",x_pos = 0.10, y_pos = 0.53)
+            hovered Show("her_tooltip", input_text="Perform an action involving your bum",x_pos = 0.10, y_pos = 0.73)
         else:
             idle "images/buttons/her feet button locked.png"
-            hovered Show("her_tooltip", input_text="Locked during introduction",x_pos = 0.10, y_pos = 0.53)
+            hovered Show("her_tooltip", input_text="Locked during introduction",x_pos = 0.10, y_pos = 0.73)
             action NullAction()
         unhovered Hide("her_tooltip")
-
 
 screen your_feet_actions_select_screen():
     imagebutton:
