@@ -2,33 +2,34 @@ init python:
     class GameTime:
         def __init__(self):
             self.block = 1
-            self.days_past = 0
+            self.days_passed = 0
             self.game_end = False
         
-        def advanceTime(amount):
-            self.block += amount
+        def advanceTime(self, amount):
+            self.block += 1
             if self.block > 4:
                 self.block = 1
                 advanceDay(1)
         
-        def advanceDay(amount):
-            self.day += 1
-            if self.day > 7:
+        def advanceDay(self, amount):
+            self.days_passed += 1
+            if self.days_passed > 7:
                 self.game_end = True
-
+            return self.game_end
 
     def noneFunction():
         1 + 1
         # I do nothing, used for blank python blocks yet to be populated
 
     def globalAdvanceTime(amount):
-        # advance time by 1 block
-        game_time.advanceTime(1)
-        man.resetMoistState()
+        # advance time by amount specified in function call block
+        game_time.advanceTime(amount)
         pc.resetMoistState()
+        man.resetMoistState()
 
         # Check if the cycle has reached its end
-        if game_time.day > 7:
+        cycle_ended = game_time.advanceDay(1)
+        if cycle_ended == True:
             return True
         else:
             return False
@@ -71,6 +72,13 @@ init python:
     #
     def persistentIncreaseUpgradeCoins(amount):
         persistent.coins_earned += amount
+
+    ##################################################
+    #                                                #
+    # Functions for increasing persistent exp and    #
+    # levels for skill                               #
+    ##################################################
+
 
     ##################################################
     #                                                #

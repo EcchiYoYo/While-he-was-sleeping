@@ -41,7 +41,7 @@ init python:
             self.cock_state = "dry"
             self.ass_state = "dry"
         
-        def resetMoistState():
+        def resetMoistState(self):
             self.chest_state = "dry"
             self.stomach_state = "dry"
             self.finger_state = "dry"

@@ -22,6 +22,7 @@ default grace = Character("????", image="grace", who_color="#64d6df")
 
 default game_time = GameTime()
 default upgrades = Upgrades(floor(persistent.coins_earned/2))
+default day_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 #############################################################
 #                                                           #
 # persistent variables                                      #

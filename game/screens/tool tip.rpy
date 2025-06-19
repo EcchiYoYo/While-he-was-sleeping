@@ -38,3 +38,24 @@ style hisTooltips_text:
     # font
     size 18
     color "#5b7dbe"
+
+screen global_tooltip(input_text, x_pos, y_pos):
+    style_prefix "globalTooltips"
+    frame:
+        background Frame("images/tooltip background.png", left = Borders(15,10,15,10))
+        xpadding 15
+        ypadding 10
+        xpos x_pos
+        ypos y_pos
+        xmaximum 350
+        yanchor 1.0
+        hbox:
+            spacing 10
+            box_wrap True
+            vbox:
+                text input_text
+
+style globalTooltips_text:
+    # font
+    size 18
+    color  "#d0d0d1"

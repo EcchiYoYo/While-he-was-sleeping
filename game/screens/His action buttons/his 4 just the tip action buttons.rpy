@@ -22,6 +22,7 @@ screen his_just_the_tip_screen():
             idle "images/buttons/his just the tip button locked.png"
             hovered Show("his_tooltip", input_text = "Locked during introduction", x_pos = 0.88, y_pos = 0.43)
             action NullAction()
+        unhovered Hide("his_tooltip")
     
 screen his_just_the_tip_actions_select_screen():
     imagebutton:

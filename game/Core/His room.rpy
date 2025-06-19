@@ -3,7 +3,8 @@ label his_room:
 
 
 screen his_room_screen():
-    text "stuff and things"
+    use your_actions()
+    use his_actions()
     #
     #
     #
