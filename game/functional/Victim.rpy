@@ -33,10 +33,15 @@ init python:
             self.ejaculation_times = ejaculation_times # how many times can he cum a night
 
             self.chest_state = "dry"
+            self.who_cum_on_chest = "none"
             self.stomach_state = "dry"
+            self.who_cum_on_stomach = "none"
             self.finger_state = "dry"
+            self.who_cum_on_finger = "none"
             self.thigh_state = "dry"
+            self.who_cum_on_thigh = "none"
             self.face_state = "dry"
+            self.who_cum_on_face = "none"
             self.tip_state = "dry"
             self.cock_state = "dry"
             self.ass_state = "dry"
@@ -51,7 +56,7 @@ init python:
             self.cock_state = "dry"
             self.ass_state = "dry"
         
-        def increaseArousal(amount):
+        def increaseArousal(self, amount):
             self.arousal += amount
             if self.arousal > 100: # check for orgasm
                 self.arousal = 100
@@ -62,6 +67,10 @@ init python:
         def orgasm():
             self.arousal = 0
         
+        def rubChestArousalGain(self):
+            default_increase = 7
+            return default_increase
+
         def increaseWakefulness(amount):
             self.wakefulness += amount
         

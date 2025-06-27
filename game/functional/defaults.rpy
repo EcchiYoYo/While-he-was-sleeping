@@ -10,7 +10,7 @@ init python:
 # must
 #
 ###################################################################
-default pc = Player(persistent.stamina, persistent.hand_skill, persistent.hand_level, persistent.mouth_skill, persistent.mouth_level, persistent.foot_skill, persistent.foot_level, persistent.vagina_skill, persistent.vagina_level, persistent.anal_skill, persistent.anal_level)
+default pc = Player(persistent.max_stamina, persistent.current_hand_exp, persistent.hand_level, persistent.current_mouth_exp, persistent.mouth_level, persistent.current_foot_exp, persistent.foot_level, persistent.current_vaginal_exp, persistent.vaginal_level, persistent.current_anal_exp, persistent.anal_level, persistent.current_just_the_tip_exp, persistent.just_the_tip_level, persistent.current_cock_exp, persistent.cock_level, persistent.total_orgasms, persistent.total_sperm_in_uterus)
 default pc_talk = Character("????", image="player", who_color="#dc51e9")
 default pc_male_talk = Character("????", image="player", who_color="#dc51e9")
 
@@ -37,23 +37,44 @@ default persistent.total_points_earned = 0
 #
 # Player stats
 #
-default persistent.stamina = 100
-default persistent.hand_skill = 0
+default persistent.max_stamina = 100
+
+default persistent.current_hand_exp = 0
+default persistent.hand_exp_for_level = 100
 default persistent.hand_level = 0
 
-default persistent.mouth_skill = 0
+default persistent.current_mouth_exp = 0
+default persistent.mouth_exp_for_level = 100
 default persistent.mouth_level = 0
 
-default persistent.foot_skill = 0
+default persistent.current_foot_exp = 0
+default persistent.foot_exp_for_level = 100
 default persistent.foot_level = 0
 
-default persistent.vagina_skill = 0
-default persistent.vagina_level = 0
+default persistent.current_vaginal_exp = 0
+default persistent.vaginal_exp_for_level = 100
+default persistent.vaginal_level = 0
 
-default persistent.anal_skill = 0
+default persistent.current_anal_exp = 0
+default persistent.anal_exp_for_level = 100
 default persistent.anal_level = 0
 
+default persistent.total_orgasms = 0
+default persistent.total_sperm_in_uterus = 0
+#######################################################
+# The following are only used for trans/futa/gay packs#
+#######################################################
+default persistent.current_just_the_tip_exp = 0
+default persistent.just_the_tip_exp_for_level = 100
+default persistent.just_the_tip_level = 0
+
+default persistent.current_cock_exp = 0
+default persistent.cock_exp_for_level = 100
+default persistent.cock_level = 0
+
+default persistent.additional_exp = 85 # exp required for all levels above 999
 default persistent.coins_earned = 0.1
+default persistent.first_upgrade_visit = False
 #
 # victim stats
 #
@@ -114,9 +135,9 @@ default intro_2_completed = False
 default intro_3_completed = False
 default activate_buttons = False
 
-
 init python:
     # used to reset all stats to their defaults, used when a player wants to start a clean cycle
+    # persistent values are used to create the player and victim objects
     def fullReset():
         persistent.cycle_number = 0
         persistent.current_points = 0
@@ -124,17 +145,28 @@ init python:
         #
         # Player stats
         #
-        persistent.stamina = 100
-        persistent.hand_skill = 0 # skill = number total number of experience for body part
-        persistent.hand_level = 0 # level = current level for body part
-        persistent.mouth_skill = 0
+        # reset hand level and exp
+        persistent.current_hand_exp = 0
+        persistent.hand_exp_for_level = 100
+        persistent.hand_level = 0
+        # reset mouth level and exp
+        persistent.current_mouth_exp = 0
+        persistent.mouth_exp_for_level = 100
         persistent.mouth_level = 0
-        persistent.foot_skill = 0
+        # reset foot level and exp
+        persistent.current_foot_exp = 0
+        persistent.foot_exp_for_level = 100
         persistent.foot_level = 0
-        persistent.vagina_skill = 0
-        persistent.vagina_level = 0
-        persistent.anal_skill = 0
+        # reset vaginal level and exp
+        persistent.current_vaginal_exp = 0
+        persistent.vaginal_exp_for_level = 100
+        persistent.vaginal_level = 0
+        # reset anal level and exp
+        persistent.current_anal_exp = 0
+        persistent.anal_exp_for_level = 100
         persistent.anal_level = 0
+        # reset max stamina
+        persistent.max_stamina = 100
         persistent.coins_earned = 0.1
         #
         # victim stats
@@ -184,4 +216,3 @@ init python:
         persistent.him_ass_fingered = 0
         persistent.him_anal_just_the_tip = 0
         persistent.him_anal = 0
-

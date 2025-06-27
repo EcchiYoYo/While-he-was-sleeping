@@ -37,6 +37,8 @@ screen breast_actions_select_screen():
     use pinch_both_nipples_button()
 
 screen rub_left_breast_button():
+    python:
+        increase_arousal = rubBreastArousalGainGlobal()
     #
     # some calculation for amount of experience and arousal gained
     #
@@ -52,6 +54,10 @@ screen rub_left_breast_button():
         hovered Show("her_tooltip", input_text="Rub your left breast",x_pos = 0.15, y_pos = 0.13)
         unhovered Hide("her_tooltip")
         if activate_buttons == True:
+            if pc.stamina >= 5:
+                idle "images/buttons/left breast button.png"
+                hover "images/buttons/left breast button hover.png"
+                hovered Show("her_tooltip", input_text = "Rub your left breast increasing arousal by {increase_arousal} arousal")
             action NullAction()
         else:
             action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_breast_introduction_scene")]

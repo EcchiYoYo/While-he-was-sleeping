@@ -12,22 +12,12 @@ init python:
 #                                                               #
 #################################################################
     class Player:
-        def __init__(self, max_stamina, hs, hl, ms, ml, fs, fl, vs, vl, anal_skill, al):
+        def __init__(self, max_stamina, hand_exp, hand_level, mouth_exp, mouth_level, foot_exp, foot_level, vaginal_exp, vaginal_level, anal_exp, anal_level, just_the_tip_exp, just_the_tip_level, cock_exp, cock_level, total_number_of_orgasms, total_sperm_in_uterus):
             self.name = "????"
             self.male_name = "????"
             self.stamina = max_stamina
             self.max_stamina = max_stamina
             self.arousal = 0
-            self.hand_skill = hs
-            self.hand_level = hl
-            self.mouth_skill = ms
-            self.mouth_level = ml
-            self.foot_skill = fs
-            self.foot_level = fl
-            self.vagina_skill = vs
-            self.vagina_level = vl
-            self.anal_skill = anal_skill
-            self.anal_level = al
             self.finger_state = "dry"
             self.vaginal_state = "dry"
             self.anal_state = "dry"
@@ -35,6 +25,53 @@ init python:
             self.cock_state = "dry"
             self.player_type = "default"
             self.money = 0
+            self.number_of_orgasms = 0
+            self.total_number_of_orgasms = total_number_of_orgasms
+            self.sperm_in_uterus_Monday = 0
+            self.sperm_in_uterus_tuesday = 0
+            self.sperm_in_uterus_wednesday = 0
+            self.sperm_in_uterus_thursday = 0
+            self.sperm_in_uterus_friday = 0
+            self.sperm_in_uterus_saturday = 0
+            self.sperm_in_uterus_sunday = 0
+            self.total_sperm_in_uterus_this_cycle = 0
+            self.total_sperm_in_uterus = total_sperm_in_uterus
+            # set hand exp and level
+            self.current_hand_exp = hand_exp
+            self.hand_level = hand_level
+            self.hand_exp_for_level = currentHandExpGet()
+            # set mouth exp and level
+            self.current_mouth_exp = mouth_exp
+            self.mouth_level = mouth_level
+            self.hand_exp_for_level = currentMouthExpGet()
+            # set foot exp and level
+            self.current_foot_exp = foot_exp
+            self.foot_level = foot_level
+            self.foot_exp_for_level = currentFootExpGet()
+            # set vaginal exp and level
+            self.current_vaginal_exp = vaginal_exp
+            self.vaginal_level = vaginal_level
+            self.vaginal_exp_for_level = currentVaginalExpGet()
+            # set anal exp and level
+            self.current_anal_exp = anal_exp
+            self.anal_level = anal_level
+            self.anal_exp_for_level = currentAnalExpGet()
+            #######################################################
+            # The following are only used for trans/futa/gay packs#
+            #######################################################
+            # set just the tip level and exp
+            self.current_just_the_tip_exp = just_the_tip_exp
+            self.just_the_tip_level = just_the_tip_level
+            self.just_the_tip_exp_for_level = currentJustTheTipExpGet()
+            # set cock level and exp
+            self.current_cock_exp = cock_exp
+            self.cock_level = cock_level
+            self.cock_exp_for_level = currentCockExpGet()
+
+        def rubBreastArousalGain(self):
+            default_increase = 7
+            hand_skill_multiplier = self.hand_level / 1000
+            return default_increase, hand_skill_multiplier
 
         def resetMoistState(self):
             self.finger_state = "dry"
@@ -53,22 +90,7 @@ init python:
         
         def orgasm(self):
             self.arousal = 0
-        ###
-        # skill level requirements
-        # 100 (100 total) level 1
-        # 150 (250 total) level 2
-        # 225 (475 total) level 3
-        # 375 (850 total) level 4
-        # 500 (1350 total) level 5
-        # 650 (2000 total) level 6
-        # 800 (2800 total) level 7
-        # 1000 (3800 total) level 8
-        # 2000 (5800 total) level 9
-        # 4200 (10000 total) level 10 cap
-
-        #
-        # add in functions for increasing skill exp and levels
-        #
+        
     
         def increaseStamina(self, amount):
             self.stamina += amount
@@ -96,6 +118,19 @@ init python:
             self.light_level = 0 # used to set light level for scenes, lower numbers means darker
             self.experience_multiplier = 0.0
             self.points_multiplier = 0.0
+            # multipliers for skill level from upgrade shop (added with body part level to determine total multiplier)
+            self.mouth_arousal_multiplier = 0
+            self.hand_arousal_multiplier = 0
+            self.vaginal_arousal_multiplier = 0
+            self.anal_arousal_multiplier = 0
+            self.just_the_tip_multiplier = 0
+            self.cock_arousal_multiplier = 0
+            self.foot_arousal_multiplier = 0
+            # unlocks for viewing victim stats during night attack
+            self.view_victim_arousal_gains = False
+            self.view_victim_arousal = False
+            self.view_victim_wakefulness_gain = False
+            self.view_victim_wakefulness_bar = 0 # 0 means no view, 1 is thirds, 2 is fifths, 3 is tenths, 4 is twenty-fifths, 5 is hundredths and 6 is thousandths
             self.upgrade_coins = starting_coins
         
         def increaseUpgradeCoins(self, amount):
