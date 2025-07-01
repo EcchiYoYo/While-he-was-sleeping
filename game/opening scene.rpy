@@ -1,7 +1,5 @@
 label opening_scene:
-    #
     # This block checks for installed packs and if present activates them
-    #
     python:
         try:
             if l_pack_installed == True:
@@ -23,6 +21,7 @@ label opening_scene:
                 f_pack = True
         except:
             f_pack = False
+        increaseCycleCount()
     if l_pack == True or t_pack == True or g_pack == True or f_pack == True:
         "Would you like to select from an installed pack or play using the default girl?"
         menu:
@@ -194,9 +193,13 @@ label victim_naming:
                     "Yes":
                         jump introduction_1
                     "No":
-                        jump main_screen
+                        #
+                        # add in points that would be gained from breast rub
+                        # add in points that would be gained from chest caress
+                        #
+                        jump players_room
             else:
                 jump introduction_1
-            jump main_screen
+            jump players_room
         "No":
             jump victim_naming

@@ -162,6 +162,8 @@ define config.window_icon = "gui/window_icon.png"
 ##
 ## This section controls how Ren'Py turns your project into distribution files.
 
+define config.console = True
+
 init python:
 
     ## The following functions take file patterns. File patterns are case-
@@ -180,7 +182,14 @@ init python:
     ## For example, "*.txt" matches txt files in the base directory, "game/
     ## **.ogg" matches ogg files in the game directory or any of its
     ## subdirectories, and "**.psd" matches psd files anywhere in the project.
+    build.archive("images", "all")
+    build.archive("sound", "all")
 
+
+    build.classify("game/**.png", "images")
+    build.classify("game/**.jpg", "images")
+    build.classify("game/**.mp3", "sound")
+    build.classify("game/**.wav", "sound")
     ## Classify files as None to exclude them from the built distributions.
 
     build.classify('**~', None)

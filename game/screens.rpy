@@ -373,7 +373,19 @@ screen main_menu():
 
             text "[config.version]":
                 style "main_menu_version"
-
+    if persistent.cycle_number > 0:
+        image "images/buttons/reset space.png" xpos 0.0 ypos 0.9
+        imagebutton:
+            xanchor 0.0
+            yanchor 0.0
+            xpos 0.18
+            ypos 0.9
+            # focus_mask True
+            idle "images/buttons/reset 1.png"
+            hover Animation("animated_recycle_1", 0.1, "animated_recycle_2", 0.1, "animated_recycle_3", 0.1, "animated_recycle_4", 0.1, "animated_recycle_5", 0.1, "animated_recycle_6", 0.1, "animated_recycle_7", 0.1, "animated_recycle_8", 0.1, "animated_recycle_9", 0.1)
+            hovered Show("global_tooltip", input_text = "Reset all progress from previous cycles", x_pos = 0.24, y_pos = 0.98)
+            action [Hide("global_tooltip"), Hide("main_menu"), Jump("confirm_reset_label")]
+            unhovered Hide("global_tooltip")
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox
@@ -402,6 +414,8 @@ style main_menu_title:
 
 style main_menu_version:
     properties gui.text_properties("version")
+
+    
 
 
 ## Game Menu screen ############################################################
@@ -800,6 +814,21 @@ screen preferences():
                         textbutton _("Mute All"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
+
+    if game_started == True:
+        image "images/buttons/reset space.png" xpos 0.0 ypos 0.9
+        imagebutton:
+            xanchor 0.0
+            yanchor 0.0
+            xpos 0.18
+            ypos 0.9
+            # focus_mask True
+            idle "images/buttons/reset 1.png"
+            hover Animation("animated_recycle_1", 0.1, "animated_recycle_2", 0.1, "animated_recycle_3", 0.1, "animated_recycle_4", 0.1, "animated_recycle_5", 0.1, "animated_recycle_6", 0.1, "animated_recycle_7", 0.1, "animated_recycle_8", 0.1, "animated_recycle_9", 0.1)
+            hovered Show("global_tooltip", input_text = "Reset all progress from previous cycles", x_pos = 0.24, y_pos = 0.9)
+            action [Hide("global_tooltip"), Jump("confirm_reset_label_preferences")]
+            unhovered Hide("global_tooltip")
+
 
 
 style pref_label is gui_label

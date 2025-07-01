@@ -19,7 +19,6 @@
 label after_load:
     #
     #
-    #
     return
 
 # The game starts here.

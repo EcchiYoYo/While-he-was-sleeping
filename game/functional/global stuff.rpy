@@ -17,6 +17,8 @@ init python:
             self.days_passed += 1
             if self.days_passed > 7:
                 self.game_end = True
+            else:
+                self.game_end = False
             return self.game_end
 
     def noneFunction():
@@ -24,10 +26,19 @@ init python:
         # I do nothing, used for blank python blocks yet to be populated
 
     def globalAdvanceTime(amount):
+        if game_time.block == 4:
+            # this will be higher than 0 if player did not hide the evidence the previous night
+            # only checked during advance time when moving to next day
+            suspicion_gained = suspicionGainFromPreviousNight()
+            man.suspicion = suspicion_gained
+            # used to update victim cum number of times once threshold reached
+            if ((persistent.total_ejaculation_all_cycles / 1000) + 1) != man.self.ejaculation_times:
+                man.self.ejaculation_times = ((persistent.total_ejaculation_all_cycles / 1000) + 1)
         # advance time by amount specified in function call block
         game_time.advanceTime(amount)
         pc.resetMoistState()
         man.resetMoistState()
+        
 
         # Check if the cycle has reached its end
         cycle_ended = game_time.advanceDay(1)
@@ -35,6 +46,36 @@ init python:
             return True
         else:
             return False
+    
+    # used to calculate money earned from working (will be used to buy buffs in upgrade shop)
+    def globalPoundsEarnedWorking():
+        base_amount = 25
+        amount_with_multipliers = base_amount + (base_amount * upgrades.pounds_multiplier)
+        actual = floor(amount_with_multipliers)
+        return actual
+    
+    # used to increase current cycle count
+    def increaseCycleCount():
+        pc.cycle_number += 1
+        persistent.cycle_number += 1
+    
+    # this adds a wakefulness gain multiplier if the player did not properly clean the victims body at the end of the night phase
+    def suspicionGainFromPreviousNight():
+        count = 0
+        if man.chest_state == "cum" or man.chest_state == "girl cum":
+            count += 1
+        if man.stomach_state == "cum" or man.stomach_state == "girl cum":
+            count += 1
+        if man.finger_state == "cum" or man.finger_state == "girl cum":
+            count += 1
+        if man.thigh_state == "cum" or man.thigh_state == "girl cum":
+            count += 1
+        if man.face_state == "cum" or man.face_state == "girl cum":
+            count += 1
+        if man.ass_state == "cum":
+            count += 1
+        return count
+
     #
     # resistance increases
     #
@@ -62,11 +103,8 @@ init python:
     def persistentIncreaseAssResistance(amount):
         persistent.ass_resistance += amount
     #
-    # victim ejaculation counts
-    #
-    def persistentIncreaseEjaculationCount(amount):
-        persistent.ejaculation_times += 1
-    
+    # victim ejaculation amount
+    #    
     def persistentIncreaseEjaculationAmount(amount):
         persistent.ejaculation_amount += amount
     #
@@ -271,7 +309,6 @@ init python:
     def rubBreastArousalIncrease():
         arousal_gain = rubBreastArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
-        upgrades.increaseUpgradeCoins(arousal_gain)
         pc.reduceStamina(5)
         return did_orgasm, arousal_gain
 
@@ -358,6 +395,5 @@ init python:
     def rubChestArousalIncrease():
         arousal_gain = rubChestArousalGainGlobal()
         did_orgasm = man.increaseArousal(arousal_gain)
-        upgrades.increaseUpgradeCoins(arousal_gain)
         pc.reduceStamina(5)
         return did_orgasm, arousal_gain

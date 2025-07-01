@@ -48,15 +48,19 @@ label her_mouth_clean_girl_cum_from_face_label():
     jump his_room
 
 label her_mouth_clean_cum_from_face_label():
-    if man.who_cum_on_face == "player":
-        "You slurp your cum from his face, hiding the evidence that you jizzed there."
-    elif man.who_cum_on_face == "victim":
+    if man.player_face_cum_amount > 0:
+        if man.victim_face_cum_amount > 0:
+            "You slurp the mixture of your cum mixed with his cum from his face, hiding the evidence it was ever there."
+        else:
+            "You slurp your cum from his face."
+    elif man.victim_face_cum_amount > 0:
         "You slurp his cum from his face, hiding the evidence you wiped it there."
     else:
         "Something went wrong and the game does not know who`s cum is on his face please report this."
     python:
         man.face_state = "saliva"
-        man.who_cum_on_face = "none"
+        man.player_face_cum_amount = 0
+        man.victim_face_cum_amount = 0
         #
         # add function for stat changes
     jump his_room
@@ -70,15 +74,19 @@ label her_mouth_clean_girl_cum_from_chest_label():
     jump his_room
 
 label her_mouth_clean_cum_from_chest_label():
-    if man.who_cum_on_chest == "player":
-        "You suck your slimy load from his chest, hiding the evidence that you ever came here."
-    elif man.who_cum_on_chest == "victim":
+    if man.player_chest_cum_amount > 0:
+        if man.victim_chest_cum_amount > 0:
+            "You suck the slimy mix of his and your cum from his chest, hiding it was ever there."
+        else:
+            "You suck your slimy load from his chest, hiding the evidence that you ever came here."
+    elif man.victim_chest_cum_amount > 0:
         "You suck his slimy load from his chest, hiding the evidence his jizz was ever there."
     else:
         "Something went wrong and the game does not know who`s cum is on his chest please report this."
     python:
         man.chest_state = "saliva"
-        man.who_cum_on_chest = "none"
+        man.player_chest_cum_amount = 0
+        man.victim_chest_cum_amount = 0
         #
         # add stat change function here
     jump his_room
@@ -92,15 +100,19 @@ label her_mouth_clean_girl_cum_stomach_label():
     jump his_room
 
 label her_mouth_clean_cum_stomach_label():
-    if man.who_cum_on_stomach == "player":
-        "You suck your cum from his chest, hiding the evidence your load was ever there."
-    elif who_cum_on_stomach == "victim":
+    if man.player_stomach_cum_amount > 0:
+        if man.victim_stomach_cum_amount > 0:
+            "You suck the combined load splattered across his stomach from both of you, savouring the flavour if the slimy mess, hiding the evidence it was ever there."
+        else:
+            "You suck the load you splattered across his stomach, savouring flavour as it slides down your throat, hiding the evidence it was ever there."
+    elif man.victim_stomach_cum_amount > 0:
         "You suck his cum from his chest, hiding the evidence his load was ever there."
     else:
         "Something went wrong and the game does not know who`s cum is on his stomach please report this."
     python:
         man.stomach_state = "saliva"
-        man.who_cum_on_stomach = "none"
+        man.victim_stomach_cum_amount = 0
+        man.player_stomach_cum_amount = 0
         #
         # add stat changes here
         #
@@ -115,15 +127,19 @@ label her_mouth_clean_girl_cum_fingers_label():
     jump his_room
 
 label her_mouth_clean_cum_fingers_label():
-    if man.who_cum_on_finger == "player":
-        "You suck his fingers clean hiding that your cum was ever there."
-    elif man.who_cum_on_finger == "victim":
+    if man.player_finger_cum_amount > 0:
+        if man.victim_finger_cum_amount > 0:
+            "You suck his fingers clean, hiding the mix of cum coating his fingers like you were never there."
+        else:
+            "You suck his fingers clean hiding the evidence your load was ever there."
+    elif man.victim_finger_cum_amount > 0:
         "You suck his fingers clean hiding that his cum was ver there."
     else:
         "Something went wrong and the game does not know who`s cum is on his fingers please report this."
     python:
         man.finger_state = "saliva"
-        man.who_cum_on_finger = "none"
+        man.victim_finger_cum_amount = 0
+        man.player.finger_cum_amount = 0
         #
         #
         # add stat change functions
@@ -138,15 +154,19 @@ label her_mouth_clean_girl_cum_thighs_label():
     jump his_room
 
 label her_mouth_clean_cum_thighs_label():
-    if man.who_cum_on_thigh == "player":
-        "You lap up your slimy load from his thighs, hiding the evidence it was ever there."
-    elif man.who_wum_on_thigh == "victim":
+    if man.player_thigh_cum_amount > 0:
+        if man.victim_thigh_cum_amount > 0:
+            "You lap up the mixture of his cum and yours that coats his thighs, hiding the evidence it was ever there."
+        else:
+            "You lap up your slimy load from his thighs, hiding the evidence it was ever there."
+    elif man.victim_thigh_cum_amount > 0:
         "You lap up his slimy load from his thighs, hiding the evidence it was ver there."
     else:
         "Something went wrong and the game does not know who`s cum is on his thighs please report this."
     python:
         man.thigh_state = "saliva"
-        man.who_wum_on_thigh = "none"
+        man.player_thigh_cum_amount = 0
+        man.victim_thigh_cum_amount = 0
         #
         #
         # add stat change functions

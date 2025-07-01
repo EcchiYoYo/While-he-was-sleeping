@@ -12,13 +12,15 @@ init python:
 #                                                               #
 #################################################################
     class Player:
-        def __init__(self, max_stamina, hand_exp, hand_level, mouth_exp, mouth_level, foot_exp, foot_level, vaginal_exp, vaginal_level, anal_exp, anal_level, just_the_tip_exp, just_the_tip_level, cock_exp, cock_level, total_number_of_orgasms, total_sperm_in_uterus):
+        def __init__(self, max_stamina, hand_exp, hand_level, mouth_exp, mouth_level, foot_exp, foot_level, vaginal_exp, vaginal_level, anal_exp, anal_level, just_the_tip_exp, just_the_tip_level, cock_exp, cock_level, total_number_of_orgasms, total_sperm_in_uterus, cycle_number):
             self.name = "????"
             self.male_name = "????"
             self.stamina = max_stamina
             self.max_stamina = max_stamina
             self.arousal = 0
             self.finger_state = "dry"
+            self.player_finger_cum_amount = 0
+            self.victim_finger_cum_amount = 0
             self.vaginal_state = "dry"
             self.anal_state = "dry"
             self.tip_state = "dry"
@@ -26,14 +28,22 @@ init python:
             self.player_type = "default"
             self.money = 0
             self.number_of_orgasms = 0
+            self.cock_orgasm_max = 2
             self.total_number_of_orgasms = total_number_of_orgasms
-            self.sperm_in_uterus_Monday = 0
-            self.sperm_in_uterus_tuesday = 0
-            self.sperm_in_uterus_wednesday = 0
-            self.sperm_in_uterus_thursday = 0
-            self.sperm_in_uterus_friday = 0
-            self.sperm_in_uterus_saturday = 0
-            self.sperm_in_uterus_sunday = 0
+            self.player_sperm_in_uterus_Monday = 0
+            self.player_sperm_in_uterus_tuesday = 0
+            self.player_sperm_in_uterus_wednesday = 0
+            self.player_sperm_in_uterus_thursday = 0
+            self.player_sperm_in_uterus_friday = 0
+            self.player_sperm_in_uterus_saturday = 0
+            self.player_sperm_in_uterus_sunday = 0
+            self.victim_sperm_in_uterus_Monday = 0
+            self.victim_sperm_in_uterus_tuesday = 0
+            self.victim_sperm_in_uterus_wednesday = 0
+            self.victim_sperm_in_uterus_thursday = 0
+            self.victim_sperm_in_uterus_friday = 0
+            self.victim_sperm_in_uterus_saturday = 0
+            self.victim_sperm_in_uterus_sunday = 0
             self.total_sperm_in_uterus_this_cycle = 0
             self.total_sperm_in_uterus = total_sperm_in_uterus
             # set hand exp and level
@@ -67,6 +77,8 @@ init python:
             self.current_cock_exp = cock_exp
             self.cock_level = cock_level
             self.cock_exp_for_level = currentCockExpGet()
+            # used to check for mismatch after resetting cycle
+            self.cycle_number = cycle_number
 
         def rubBreastArousalGain(self):
             default_increase = 7
@@ -79,6 +91,8 @@ init python:
             self.anal_state = "dry"
             self.tip_state = "dry"
             self.cock_state = "dry"
+            self.player_finger_cum_amount = 0
+            self.victim_finger_cum_amount = 0
         
         def increaseArousal(self, amount):
             self.arousal += amount
@@ -104,6 +118,7 @@ init python:
 
     class Upgrades:
         def __init__(self, starting_coins):
+            # upgrades that Grace believes she is applying to player bu is instead applying them to the victim
             self.face_resistance = 0
             self.hand_resistance = 0
             self.chest_resistance = 0
@@ -112,12 +127,15 @@ init python:
             self.tip_resistance = 0
             self.ass_resistance = 0
             self.wakefulness_cap = 0
+            # buffs, yet to be fleshed out
             self.sleep_buff = 0 # used to set level of buffs from items that increase sleep level, bath salts for example
             self.resistance_buff = 0 # used to set level of buffs from items that increase resistance to actions, oil for example
             self.touch_buff = 0 # used to set level of buffs from items that increase skill gain for MC, porn mags for example
             self.light_level = 0 # used to set light level for scenes, lower numbers means darker
+            # multipliers
             self.experience_multiplier = 0.0
-            self.points_multiplier = 0.0
+            self.coin_multiplier = 0.0
+            self.pounds_multiplier = 0.0
             # multipliers for skill level from upgrade shop (added with body part level to determine total multiplier)
             self.mouth_arousal_multiplier = 0
             self.hand_arousal_multiplier = 0
@@ -131,11 +149,18 @@ init python:
             self.view_victim_arousal = False
             self.view_victim_wakefulness_gain = False
             self.view_victim_wakefulness_bar = 0 # 0 means no view, 1 is thirds, 2 is fifths, 3 is tenths, 4 is twenty-fifths, 5 is hundredths and 6 is thousandths
+            # ejaculation related stats
+            self.victim_ejaculation_amount_increased = 0 # cost one coin per 10 increase
+            # starting coins is 50 % of spent coins in previous cycles (cumulative, counts coins spent in all cycles)
             self.upgrade_coins = starting_coins
         
         def increaseUpgradeCoins(self, amount):
-            self.upgrade_coins += amount
-            persistentIncreaseUpgradeCoins(amount)
+            base_coins = amount
+            multiplier = self.coin_multiplier
+            coin_gain = floor(amount + (points_multiplier * amount))
+            self.upgrade_coins += coin_gain
+            persistentIncreaseUpgradeCoins(coin_gain)
+            return coin_gain
         
         def reduceUpgradeCoins(self, amount):
             self.upgrade_coins -= amount
