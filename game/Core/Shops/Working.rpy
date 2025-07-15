@@ -1,6 +1,7 @@
 label you_work_a_little:
     if persistent.first_upgrade_visit == False: # used to check if the scene tricking Grace has been seen before
         python:
+            renpy.block_rollback()
             persistent.first_upgrade_visit = True
             if man.relationship == "Friend":
                 first_use = "your friend"

@@ -21,7 +21,6 @@ label opening_scene:
                 f_pack = True
         except:
             f_pack = False
-        increaseCycleCount()
     if l_pack == True or t_pack == True or g_pack == True or f_pack == True:
         "Would you like to select from an installed pack or play using the default girl?"
         menu:
@@ -31,7 +30,6 @@ label opening_scene:
                 jump select_from_installed_packs
     else:
         jump default_opening
-
 
 label select_from_installed_packs:
     python:
@@ -164,7 +162,6 @@ label victim_relation_setting:
             pass
         "No":
             jump victim_relation_setting 
-
     "Although he doesn`t know about your perverse fantasies involving him, you can`t help but wonder what you could do to get a taste of that forbidden fruit for yourself."
     jump victim_naming
 
@@ -197,6 +194,8 @@ label victim_naming:
                         # add in points that would be gained from breast rub
                         # add in points that would be gained from chest caress
                         #
+                        python:
+                            increaseCycleCount()
                         jump players_room
             else:
                 jump introduction_1

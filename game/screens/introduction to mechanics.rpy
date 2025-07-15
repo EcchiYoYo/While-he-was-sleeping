@@ -1,4 +1,5 @@
 label introduction_1:
+    scene his room
     python:
         if man.relationship == "Friend":
             first_use = "your friends"
@@ -142,4 +143,6 @@ label talk_to_player_scene:
     grace "Ah whatever I just did what I had too to afford my cakes, it`s not my fault you corrupted them all into lust filled degenerates."
     gabrielle "Anyway come see us after the perv finishes work or training in the morning, and you can see what we offer in our shops" 
     gabrielle "Make sure you come see us before you head out for your night time activities."
+    python:
+        increaseCycleCount()
     jump players_room

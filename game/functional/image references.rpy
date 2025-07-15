@@ -11,3 +11,6 @@ image animated_recycle_9 = "images/buttons/reset 9.png"
 image animated_recycle_1_hover = "images/buttons/reset 1 hover.png"
 
 image reset_button_reset_image = "images/buttons/reset space.png"
+
+image his room = "images/backgrounds/his room.jpg"
+image her room = "images/backgrounds/her room.jpg"

@@ -156,7 +156,7 @@ init python:
         
         def increaseUpgradeCoins(self, amount):
             base_coins = amount
-            multiplier = self.coin_multiplier
+            points_multiplier = self.coin_multiplier
             coin_gain = floor(amount + (points_multiplier * amount))
             self.upgrade_coins += coin_gain
             persistentIncreaseUpgradeCoins(coin_gain)

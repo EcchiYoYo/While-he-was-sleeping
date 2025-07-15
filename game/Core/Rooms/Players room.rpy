@@ -1,4 +1,5 @@
 label players_room:
+    scene her room
     call screen players_room_screen()
 
 screen players_room_screen():
@@ -54,7 +55,7 @@ screen item_shop_button():
         #
         # add in function to calculate cheapest available upgrade
         #
-        #
+        # minimum+money_needed = someFunction()
         minimum_money_needed = 1
     imagebutton:
         xanchor 1.0

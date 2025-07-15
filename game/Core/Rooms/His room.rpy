@@ -1,4 +1,5 @@
 label his_room:
+    scene his room
     call screen his_room_screen()
 
 
