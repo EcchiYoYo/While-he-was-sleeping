@@ -104,7 +104,7 @@ screen he_fingers_her_ass_button():
             hovered Show("his_tooltip", input_text = "Finger your arse hole with his fingers", x_pos = 0.83, y_pos = 0.43)
         else:
             idle "images/buttons/he fingers her ass button locked.png"
-            if man.finger != "dry":
+            if man.finger_state != "dry":
                 hovered Show("his_tooltip", input_text = "No enough stamina to perform this action", x_pos = 0.83, y_pos = 0.43)
             else:
                 hovered Show("his_tooltip", input_text = "His fingers must be moist to perform this action, coat his fingers in some fluid", x_pos = 0.83, y_pos = 0.43)

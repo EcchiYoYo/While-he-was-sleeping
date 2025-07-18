@@ -30,7 +30,7 @@ screen victim_arousal_increase_screen(amount_gained):
         text f"" + single_use + " gained ?? arousal" xpos 0.6 ypos 0.6
     else:
         text f"" + single_use + " gained " + amount_gained + " arousal" xpos 0.6 ypos 0.6
-    timer 1.5 action Hide(victim_arousal_increase_screen)
+    timer 1.5 action Hide("victim_arousal_increase_screen")
 
 screen money_earned_popup_screen(how_much):
     python:

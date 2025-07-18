@@ -171,6 +171,12 @@
                 "settings": {
                     "foreground": "#c52828"
                 }
+            },
+            {
+                "scope": "renpy.meta.color.#8f00ff",
+                "settings": {
+                    "foreground": "#8f00ff"
+                }
             }
         ]
     }

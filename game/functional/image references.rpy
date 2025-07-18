@@ -14,3 +14,21 @@ image reset_button_reset_image = "images/buttons/reset space.png"
 
 image his room = "images/backgrounds/his room.jpg"
 image her room = "images/backgrounds/her room.jpg"
+
+image gabrielle_shop:
+    xpos -0.15
+    ypos -0.1
+    "screens/Gabrielle shop/gabrielle standard.png"
+    #
+    # add blinking component here
+    #
+    #
+
+image grace_shop:
+    xpos -0.15
+    ypos -0.2
+    "screens/Grace shop/grace standard.png"
+    #
+    # add blinking component here
+    #
+    #

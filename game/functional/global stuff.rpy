@@ -225,7 +225,7 @@ init python:
             total_exp_needed = exp_needed + (additional * persistent.additional_exp)
             return total_exp_needed
     ##########################################################
-    # the following are only needed for futa/gay/trans packs #
+    # the following are only needed for futa/gay/trans packs # (need to decide if male presenting female or female presenting male)
     ##########################################################
     def currentJustTheTipExpGet():
         exp_needed = 0
@@ -296,16 +296,14 @@ init python:
     # 
     # Player chest
     #
-    # rub right breast, increase player arousal medium, reduce stamina small, reduce wakefulness small
-
-    # rub left breast, increase player arousal medium, reduce stamina small, reduce wakefulness small
+    # rub breast, increase player arousal medium, reduce stamina small, reduce wakefulness small
     def rubBreastArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.rubBreastArousalGain()
         upgrades_arousal_multiplier = upgrades.hand_arousal_multiplier
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + ((multiplier_total / 1000) * default_arousal_increase))
         return actual_arousal_gain
-    
+
     def rubBreastArousalIncrease():
         arousal_gain = rubBreastArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)

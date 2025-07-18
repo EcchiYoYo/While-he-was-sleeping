@@ -5,7 +5,7 @@ label rub_chest_introduction_scene:
     #
     #
     python:
-        intro_3_completed
+        intro_3_completed = True
         did_orgasm, arousal_gain = rubChestArousalIncrease()
         base_coin_gain = man.rubChestArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)

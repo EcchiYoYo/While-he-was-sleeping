@@ -153,6 +153,14 @@ init python:
             self.victim_ejaculation_amount_increased = 0 # cost one coin per 10 increase
             # starting coins is 50 % of spent coins in previous cycles (cumulative, counts coins spent in all cycles)
             self.upgrade_coins = starting_coins
+            # passive unlocks
+            self.train_mouth_unlocked = False
+            self.train_hands_unlocked = False
+            self.train_feet_unlocked = False
+            self.train_vaginal_unlocked = False
+            self.train_anal_unlocked = False
+            self.train_just_the_tip_unlocked = False
+            self.train_cock_unlocked = False
         
         def increaseUpgradeCoins(self, amount):
             base_coins = amount
