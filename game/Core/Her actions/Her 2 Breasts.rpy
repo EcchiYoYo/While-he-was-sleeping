@@ -15,3 +15,34 @@ label rub_breast_introduction_scene:
     show screen player_arousal_increase_screen(amount_gained = rubBreastArousalGainGlobal())
     jump introduction_3
 
+label rub_left_breast_label:
+    if intro_2_completed == False:
+        jump rub_breast_introduction_scene
+    "Caress your left breast."
+    #
+    #
+    #
+    #
+    python:
+        noneFunction()
+    jump his_room
+
+label rub_right_breast_label:
+    "Caress your right breast."
+    #
+    #
+    #
+    #
+    python:
+        noneFunction()
+    jump his_room
+
+label rub_both_breasts_label:
+    "Caress both your breasts."
+    #
+    #
+    #
+    #
+    python:
+        noneFunction()
+    jump his_room

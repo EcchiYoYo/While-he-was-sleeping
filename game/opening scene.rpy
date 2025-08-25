@@ -32,15 +32,6 @@ label opening_scene:
         jump default_opening
 
 label select_from_installed_packs:
-    python:
-        if pc.name == "????":
-            pc_name = "Nicole"
-        else:
-            pc_name = pc.name
-        if pc.male_name == "????":
-            pc_male_name = "Nick"
-        else:
-            pc_male_name = pc.male_name
     "Please select the pack you wish to play."
     menu:
         "Play the young {pc_name} pack?":
@@ -95,9 +86,17 @@ label mc_naming:
     # Show player naked
     #
     python:
-        pc.name = renpy.input("Enter your name or leave it blank for the default of Nicole.").capitalize()
+        random_pc_name = random.choice(random_girl_names_list)
+        if pc.name == "????" or pc.name in random_girl_names_list:
+            pc_name = random_pc_name
+        else:
+            pc_name = pc.name
+        pc.name = renpy.input("Enter your name or leave it blank for the default of [pc_name].").capitalize()
         if not pc.name:
-            pc.name = "Nicole"
+            pc.name = pc_name
+            persistent.player_name = "????"
+        else:
+            persistent.player_name = pc.name
         pc.name = pc.name.strip()
         pc.name = pc.name.split(" ")
         pc.name = pc.name[0]
@@ -171,9 +170,17 @@ label victim_naming:
     #
     #            
     python:
-        man.name = renpy.input("And the name for the target of your lust filled fantasies is? Default is Romeo.").capitalize()
+        random_victim_name = random.choice(random_guy_names_list)
+        if pc.male_name == "????" or pc.male_name in random_guy_names_list:
+            pc_male_name = random_victim_name
+        else:
+            pc_male_name = pc.male_name
+        man.name = renpy.input("And the name for the target of your lust filled fantasies is? Leave blank for the default of [pc_male_name].").capitalize()
         if not man.name:
-            man.name = "Romeo"
+            man.name = pc_male_name
+            persistent.victim_name = "????"
+        else:
+            persistent.victim_name = man.name
         man.name = man.name.strip()
         man.name = man.name.split(" ")
         man.name = man.name[0]

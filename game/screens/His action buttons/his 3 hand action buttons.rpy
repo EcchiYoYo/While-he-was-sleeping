@@ -22,6 +22,7 @@ screen his_hand():
             idle "images/buttons/his hands action button locked.png"
             hovered Show("his_tooltip", input_text = "Locked during introduction", x_pos = 0.88, y_pos = 0.33)
             action NullAction()
+        unhovered Hide("his_tooltip")
 
 screen his_hand_actions_select_screen():
     imagebutton:

@@ -57,7 +57,7 @@ screen rub_his_chest_button():
         if activate_buttons == True:
             action NullAction()
         else:
-            action [Hide("his_tooltip"), Hide("chest_actions_select_screen"), Jump("rub_chest_introduction_scene")]
+            action [Hide("his_tooltip"), Hide("chest_actions_select_screen"), Jump("rub_his_chest")]
 
 screen rub_his_nipples_button():
     #

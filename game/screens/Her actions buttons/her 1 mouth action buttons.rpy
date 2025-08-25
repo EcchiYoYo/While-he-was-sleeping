@@ -43,7 +43,7 @@ screen kiss_button():
         xpos 0.14
         ypos 0.2
         focus_mask True
-        if stamina >= 3:
+        if pc.stamina >= 3:
             idle "images/buttons/kiss button.png"
             hover "images/buttons/kiss button hover.png"
             hovered Show("her_tooltip", input_text="Lightly kiss him",x_pos = 0.15, y_pos = 0.13)
@@ -81,21 +81,18 @@ screen suck_your_fingers_button():
         xpos 0.14
         ypos 0.4
         focus_mask True
-        if pc.finger_state == "dry" and pc.stamina >= 5: # add stamina check for action here with an and check
+        if pc.finger_state == "dry":
             idle "images/buttons/suck her fingers button.png"
             hover "images/buttons/suck her fingers button hover.png"
             hovered Show("her_tooltip", input_text="Suck your fingers to get them moist",x_pos = 0.15, y_pos = 0.33)
             action [Hide("her_tooltip"), Jump("her_mouth_suck_your_fingers_label")]
         else:
-            if pc.finger_state == "dry:":
-                hovered Show("her_tooltip", input_text="Not enough stamina to do that, consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)",x_pos = 0.15, y_pos = 0.33)
+            if pc.finger_state == "saliva":
+                hovered Show("her_tooltip", input_text="Your fingers are already coated in saliva",x_pos = 0.15, y_pos = 0.33)
+            elif pc.finger_state == "girl cum":
+                hovered Show("her_tooltip", input_text="Your fingers are slick with girl cum",x_pos = 0.15, y_pos = 0.33)
             else:
-                if pc.finger_state == "saliva":
-                    hovered Show("her_tooltip", input_text="Your fingers are already coated in saliva",x_pos = 0.15, y_pos = 0.33)
-                elif pc.finger_state == "girl cum":
-                    hovered Show("her_tooltip", input_text="Your fingers are slick with girl cum",x_pos = 0.15, y_pos = 0.33)
-                else:
-                    hovered Show("her_tooltip", input_text="Your fingers are slimy with cum",x_pos = 0.15, y_pos = 0.33)
+                hovered Show("her_tooltip", input_text="Your fingers are slimy with cum",x_pos = 0.15, y_pos = 0.33)
             idle "images/buttons/suck her fingers button locked.png"
             action NullAction() # These have no action required here this button is to moisten dry fingers only
         unhovered Hide("her_tooltip")
@@ -108,15 +105,13 @@ screen suck_juices_button():
         xpos 0.14
         ypos 0.5
         focus_mask True
-        if pc.finger_state == "dry" or pc.finger_state == "saliva" or pc.stamina < 5: # add check for stamina along with elif statement about lack of stamina
+        if pc.finger_state == "dry" or pc.finger_state == "saliva":
             action NullAction()
             idle "images/buttons/suck her juices button locked.png"
             if pc.finger_state == "dry":
                 hovered Show("her_tooltip", input_text="Your fingers are dry as a bone, play with some fluids to moisten them up",x_pos = 0.15, y_pos = 0.43)
-            elif pc.finger_state == "saliva":
-                hovered Show("her_tooltip", input_text="Your fingers are coated with saliva, no need to make them moist",x_pos = 0.15, y_pos = 0.43)
             else:
-                hovered Show("her_tooltip", input_text="You do not have enough stamina for this action, consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body).",x_pos = 0.15, y_pos = 0.43)
+                hovered Show("her_tooltip", input_text="Your fingers are coated with saliva, no need to make them moist",x_pos = 0.15, y_pos = 0.43)
         else:
             idle "images/buttons/suck her juices button.png"
             hover "images/buttons/suck her juices hover.png"

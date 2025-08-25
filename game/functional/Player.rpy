@@ -5,16 +5,16 @@ init python:
     import random
     import heapq
     from math import floor
-
 #################################################################
 #                                                               #
 # Primary stats and functions for Player                        #
 #                                                               #
 #################################################################
     class Player:
-        def __init__(self, max_stamina, hand_exp, hand_level, mouth_exp, mouth_level, foot_exp, foot_level, vaginal_exp, vaginal_level, anal_exp, anal_level, just_the_tip_exp, just_the_tip_level, cock_exp, cock_level, total_number_of_orgasms, total_sperm_in_uterus, cycle_number):
-            self.name = "????"
-            self.male_name = "????"
+        def __init__(self, max_stamina, hand_exp, hand_level, mouth_exp, mouth_level, foot_exp, foot_level, vaginal_exp, vaginal_level, anal_exp,
+            anal_level, just_the_tip_exp, just_the_tip_level, cock_exp, cock_level, total_number_of_orgasms, total_sperm_in_uterus, cycle_number,player_name, victim_name):
+            self.name = player_name
+            self.male_name = victim_name
             self.stamina = max_stamina
             self.max_stamina = max_stamina
             self.arousal = 0
@@ -79,6 +79,8 @@ init python:
             self.cock_exp_for_level = currentCockExpGet()
             # used to check for mismatch after resetting cycle
             self.cycle_number = cycle_number
+            # used to show correct failure scene
+            self.cycle_end_reason = "none"
 
         def rubBreastArousalGain(self):
             default_increase = 7
@@ -118,12 +120,12 @@ init python:
 
     class Upgrades:
         def __init__(self, starting_coins):
-            # upgrades that Grace believes she is applying to player bu is instead applying them to the victim
+            # upgrades that Grace believes she is applying to player but is instead applying them to the victim
             self.face_resistance = 0
             self.hand_resistance = 0
             self.chest_resistance = 0
             self.thighs_resistance = 0
-            self.cock_resistance = 0
+            self.cock_resistance = 0 # maybe combine these into genitals or make comment in event about clit and vagina being tip and cock
             self.tip_resistance = 0
             self.ass_resistance = 0
             self.wakefulness_cap = 0
@@ -161,7 +163,7 @@ init python:
             self.train_anal_unlocked = False
             self.train_just_the_tip_unlocked = False
             self.train_cock_unlocked = False
-        
+
         def increaseUpgradeCoins(self, amount):
             base_coins = amount
             points_multiplier = self.coin_multiplier

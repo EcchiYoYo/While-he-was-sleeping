@@ -22,7 +22,7 @@ screen gabrielle_shop_screen():
     # allows for inserting fingers or items into vagina for training)                                                 #
     #                                                                                                                 #
     ###################################################################################################################
-
+    text "{size=+5}Unlock [gabrielle.name]`s \ntechniques" xalign 0.088 ypos 0.13
     # train mouth
 
     # train feet
@@ -31,16 +31,16 @@ screen gabrielle_shop_screen():
 
     # train anal
 
-    # just the tip
+    # train just the tip
 
-    # cock
+    # train cock
 
     #####################################################################################################################
     #                                                                                                                   #
     # passives (first visit forces player to buy wakefulness bar tier 1)                                                #
     #                                                                                                                   #
     #####################################################################################################################
-
+    text "{size=+5}Unlock passive skills" xalign 0.088 ypos 0.53
     # wakefulness (0 means no view, 1 is thirds, 2 is fifths, 3 is tenths, 4 is twenty-fifths, 5 is hundredths and 6 is thousandths)
 
     # view victim arousal
@@ -49,11 +49,16 @@ screen gabrielle_shop_screen():
 
     # victim cum amount
 
+    # increase max stamina
+
+    # increase max wakefulness
+
     #####################################################################################################################
     #                                                                                                                   #
     # multipliers                                                                                                       #
     #                                                                                                                   #
     #####################################################################################################################
+    text "{size=+5}Unlock multipliers" xalign 0.846 ypos 0.13
     # points
 
     # money
@@ -68,12 +73,11 @@ screen gabrielle_shop_screen():
 
     # anal
 
+    # foot
+
     # just the tip
 
     # cock
-
-    # foot
-
 
     textbutton"Close":
         xalign 0.5

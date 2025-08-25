@@ -10,7 +10,7 @@ screen your_breast():
         xpos 0.08
         ypos 0.3
         focus_mask True
-        if intro_2_completed == False:
+        if intro_2_completed == False or activate_buttons == True:
             idle "images/buttons/her breast button.png"
             hover "images/buttons/her breast button hover.png"
             action [Hide("her_tooltip"), Show("breast_actions_select_screen")]
@@ -18,7 +18,6 @@ screen your_breast():
         else:
             idle "images/buttons/her breast button locked.png"
             hovered Show("her_tooltip", input_text="You need to select his chest not yours",x_pos = 0.10, y_pos = 0.23)
-            action NullAction()
         unhovered Hide("her_tooltip")
 
 screen breast_actions_select_screen():
@@ -49,18 +48,22 @@ screen rub_left_breast_button():
         xpos 0.14
         ypos 0.2
         focus_mask True
-        idle "images/buttons/left breast button.png"
-        hover "images/buttons/left breast button hover.png"
-        hovered Show("her_tooltip", input_text="Rub your left breast",x_pos = 0.15, y_pos = 0.13)
-        unhovered Hide("her_tooltip")
         if activate_buttons == True:
             if pc.stamina >= 5:
                 idle "images/buttons/left breast button.png"
                 hover "images/buttons/left breast button hover.png"
                 hovered Show("her_tooltip", input_text = "Rub your left breast increasing arousal by {increase_arousal} arousal")
-            action NullAction()
+                action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_left_breast_label")]
+            else:
+                idle "images/buttons/left breast button locked.png"
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina]")
+                action NullAction()
         else:
-            action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_breast_introduction_scene")]
+            idle "images/buttons/left breast button.png"
+            hover "images/buttons/left breast button hover.png"
+            hovered Show("her_tooltip", input_text="Rub your left breast",x_pos = 0.15, y_pos = 0.13)
+            action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_left_breast_label")]
+        unhovered Hide("her_tooltip")
 
 screen rub_right_breast_button():
     #

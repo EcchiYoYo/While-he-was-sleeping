@@ -12,6 +12,8 @@ default persistent.total_points_earned = 0
 #
 # Player stats
 #
+default persistent.player_name = "????"
+default persistent.victim_name = "????"
 default persistent.max_stamina = 100
 
 default persistent.current_hand_exp = 0
@@ -120,6 +122,8 @@ init python:
         #
         # Player stats
         #
+        persistent.player_name = "????"
+        persistent.victim_name = "????"
         persistent.max_stamina = 100
 
         persistent.current_hand_exp = 0

@@ -289,9 +289,9 @@ init python:
 
     # player sucks her fingers, raises player arousal tiny, reduces wakefulness small, moistness players hands, neutral stamina
 
-    # player sucks girl cum/victim cum from fingers, raises player arousal girl = tiny victim = small, reduces wakefulness small, removes girl cum from player hands, adds saliva to player hands, neutral stamina
+    # player sucks girl cum/victim cum from fingers, raises player arousal tiny, reduces wakefulness small, removes girl cum from player hands, adds saliva to player hands, neutral stamina
 
-    # player cleans cum from victim, raises arousal small, neutral wakefulness, removes cum from body part adds saliva to body part, raises suspicion if all cum not cleaned at end of night, neutral stamina
+    # player cleans cum from victim, raises player arousal small, neutral wakefulness, removes cum from body part adds saliva to body part, raises suspicion if all cum not cleaned at end of night, neutral stamina
 
     # 
     # Player chest
