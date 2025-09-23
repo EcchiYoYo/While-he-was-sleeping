@@ -51,7 +51,7 @@ label default_opening:
     pc_talk "Gah, so damn horny, I`ve already cum three times but I still need more."
     pc_talk "I think I should get a drink before going again."
     "At least once a month you have a period where you are super horny, no matter how much you masturbate it never seems to be enough."
-    "This happens to be one of those periods, you`ve already cum three times, you`ve been masturbating for hours but still can`t seem to scratch that itch."
+    "This happens to be one of those periods, you`ve already cum six times, you`ve been masturbating for hours but still can`t seem to scratch that itch."
     #
     # opening scene, Nicole masturbates while watching victim sleep
     #
@@ -79,11 +79,11 @@ label default_opening:
     #
     pc_talk "...I might even be able to touch him."
     "I guess we should introduce this lust filled pervert, this is you the player."
-    jump mc_naming
+    jump pre_naming_label
 
-label mc_naming:
+label pre_naming_label:
     #
-    # Show player naked
+    # Needed to set variables without them being set a second time if player wants to change there name
     #
     python:
         random_pc_name = random.choice(random_girl_names_list)
@@ -91,6 +91,15 @@ label mc_naming:
             pc_name = random_pc_name
         else:
             pc_name = pc.name
+        default_pc_name = pc_name
+    jump mc_naming
+
+label mc_naming:
+    #
+    # Show player naked
+    #
+    python:
+        
         pc.name = renpy.input("Enter your name or leave it blank for the default of [pc_name].").capitalize()
         if not pc.name:
             pc.name = pc_name
@@ -108,6 +117,8 @@ label mc_naming:
                 pc_talk.name = pc.name
             jump victim_relation_setting
         "No":
+            python:
+                pc_name = default_pc_name
             jump mc_naming
 
 label victim_relation_setting:
@@ -162,6 +173,19 @@ label victim_relation_setting:
         "No":
             jump victim_relation_setting 
     "Although he doesn`t know about your perverse fantasies involving him, you can`t help but wonder what you could do to get a taste of that forbidden fruit for yourself."
+    jump pre_victim_naming_label
+
+label pre_victim_naming_label:
+    #
+    # Same as pre player naming label allows the player to change there mind and not have it cause problems with victim naming
+    #
+    python:
+        random_victim_name = random.choice(random_guy_names_list)
+        if pc.male_name == "????" or pc.male_name in random_guy_names_list:
+            pc_male_name = random_victim_name
+        else:
+            pc_male_name = pc.male_name
+        default_victim_name = pc_male_name
     jump victim_naming
 
 label victim_naming:    
@@ -170,11 +194,6 @@ label victim_naming:
     #
     #            
     python:
-        random_victim_name = random.choice(random_guy_names_list)
-        if pc.male_name == "????" or pc.male_name in random_guy_names_list:
-            pc_male_name = random_victim_name
-        else:
-            pc_male_name = pc.male_name
         man.name = renpy.input("And the name for the target of your lust filled fantasies is? Leave blank for the default of [pc_male_name].").capitalize()
         if not man.name:
             man.name = pc_male_name
@@ -208,4 +227,6 @@ label victim_naming:
                 jump introduction_1
             jump players_room
         "No":
-            jump victim_naming
+            python:
+                victim_name = default_victim_name
+            jump pre_victim_naming_label

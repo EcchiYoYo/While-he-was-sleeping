@@ -28,3 +28,4 @@ default day_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "
 default game_started = False# Used to decide if reset button is displayed in preferences screen
 default random_girl_names_list = ["Bonnie", "Gemma", "Genevieve", "Amelia", "Freya", "Annalise", "Aurora", "Calista", "Calliope", "Dakota", "Eliza", "Harper", "Ivy", "Jolie", "Josephine", "Julia", "Leah", "Lorelei", "Nicole"]
 default random_guy_names_list = ["David", "John", "Ethan", "Noah", "Samuel", "Jacob", "Nicholas", "Liam", "Oliver", "Henry", "Ryan", "Daniel", "Anthony", "Charles", "William", "Logan", "Romeo"]
+default is_patreon_version = True # used to set patreon status (may never be used) starts as true to prevent seeing content that is not safe for patreon gets set during script initialisation

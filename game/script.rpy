@@ -24,6 +24,15 @@ label after_load:
 # The game starts here.
 
 label start:
+    #
+    # Maybe never used but this checks if this is a patreon version (meaning no non-con and no incest)
+    #
+    python:
+        try:
+            if patreon_patch == True:
+                is_patreon_version = True
+        except:
+            is_patreon_version = False
     if persistent.cycle_number == 0:
         "This game runs in cycles, what does this mean?"
         "You play for up to one week, at the end of this week you get your ending."
@@ -40,5 +49,4 @@ label start:
                 jump opening_scene
             "No":
                 jump opening_scene
-
     return

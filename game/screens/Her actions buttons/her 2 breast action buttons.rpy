@@ -66,6 +66,8 @@ screen rub_left_breast_button():
         unhovered Hide("her_tooltip")
 
 screen rub_right_breast_button():
+    python:
+        increase_arousal = rubBreastArousalGainGlobal()
     #
     # some calculation for amount of experience and arousal gained
     #
@@ -77,10 +79,15 @@ screen rub_right_breast_button():
         ypos 0.3
         focus_mask True
         if activate_buttons == True:
-            idle "images/buttons/right breast button.png"
-            hover "images/buttons/right breast button hover.png"
-            hovered Show("her_tooltip", input_text="Rub your right breast",x_pos = 0.15, y_pos = 0.23)
-            action NullAction()
+            if pc.stamina >= 5:
+                idle "images/buttons/right breast button.png"
+                hover "images/buttons/right breast button hover.png"
+                hovered Show("her_tooltip", input_text="Rub your right breast increasing arousal by {increase_arousal} arousal",x_pos = 0.15, y_pos = 0.23)
+                action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_right_breast_label")]
+            else:
+                idle "images/buttons/left breast button locked.png"
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina]")
+                action NullAction()
         else:
             idle "images/buttons/right breast button locked.png"
             hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.23)
@@ -89,6 +96,8 @@ screen rub_right_breast_button():
         
 
 screen rub_both_breasts_button():
+    python:
+        increase_arousal = rubBothBreastArousalGainGlobal()
     #
     # some calculation for amount of experience and arousal gained
     #
@@ -100,18 +109,24 @@ screen rub_both_breasts_button():
         ypos 0.4
         focus_mask True
         if activate_buttons == True:
-            idle "images/buttons/both breasts button.png"
-            hover "images/buttons/both breasts button hover.png"
-            hovered Show("her_tooltip", input_text="Rub both of your breasts",x_pos = 0.15, y_pos = 0.33)
-            action NullAction()
+            if pc.stamina >= 7:
+                idle "images/buttons/both breasts button.png"
+                hover "images/buttons/both breasts button hover.png"
+                hovered Show("her_tooltip", input_text="Rub both of your breasts increasing arousal by {increase_arousal} arousal",x_pos = 0.15, y_pos = 0.33)
+                action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_both_breasts_label")]
+            else:
+                idle "images/buttons/both breasts button locked.png"
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 7 you have [pc.stamina]")
+                action NullAction()
         else:
             idle "images/buttons/both breasts button locked.png"
             hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.33)
-            action NullAction()
-        
+            action NullAction()        
         unhovered Hide("her_tooltip")
 
 screen pinch_left_nipple_button():
+    python:
+        increase_arousal = pinchNippleArousalGainGlobal()
     #
     # some calculation for amount of experience and arousal gained
     #
@@ -123,10 +138,15 @@ screen pinch_left_nipple_button():
         ypos 0.5
         focus_mask True
         if activate_buttons == True:
-            idle "images/buttons/left nipple button.png"
-            hover "images/buttons/left nipple button hover.png"
-            hovered Show("her_tooltip", input_text="Pinch your left nipple",x_pos = 0.15, y_pos = 0.43)
-            action NullAction()
+            if pc.stamina >= 5:
+                idle "images/buttons/left nipple button.png"
+                hover "images/buttons/left nipple button hover.png"
+                hovered Show("her_tooltip", input_text="Pinch your left nipple increasing arousal by {increase_arousal} arousal",x_pos = 0.15, y_pos = 0.43)
+                action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("pinch_left_nipple_label")]
+            else:
+                idle "images/buttons/left nipple button locked.png"
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina]")
+                action NullAction()
         else:
             idle "images/buttons/left nipple button locked.png"
             hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.43)
@@ -134,6 +154,8 @@ screen pinch_left_nipple_button():
         unhovered Hide("her_tooltip")
 
 screen pinch_right_nipple_button():
+    python:
+        arousal_increase = pinchNippleArousalGainGlobal()
     #
     # some calculation for amount of experience and arousal gained
     #
@@ -145,10 +167,15 @@ screen pinch_right_nipple_button():
         ypos 0.6
         focus_mask True
         if activate_buttons == True:
-            idle "images/buttons/right nipple button.png"
-            hover "images/buttons/right nipple button hover.png"
-            hovered Show("her_tooltip", input_text="Pinch your right nipple",x_pos = 0.15, y_pos = 0.53)
-            action NullAction()
+            if pc.stamina >= 5:
+                idle "images/buttons/right nipple button.png"
+                hover "images/buttons/right nipple button hover.png"
+                hovered Show("her_tooltip", input_text="Pinch your right nipple increasing arousal by {increase_arousal} arousal",x_pos = 0.15, y_pos = 0.53)
+                action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("pinch_right_nipple_label")]
+            else:
+                idle "images/buttons/right nipple button locked.png"
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina]")
+                action NullAction()
         else:
             idle "images/buttons/right nipple button locked.png"
             hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.53)
@@ -156,6 +183,8 @@ screen pinch_right_nipple_button():
         unhovered Hide("her_tooltip")
 
 screen pinch_both_nipples_button():
+    python:
+        arousal_increase = pinchBothNippleArousalGainGlobal()
     #
     # some calculation for amount of experience and arousal gained
     #
@@ -167,10 +196,14 @@ screen pinch_both_nipples_button():
         ypos 0.7
         focus_mask True
         if activate_buttons == True:
-            idle "images/buttons/both nipples button.png"
-            hover "images/buttons/both nipples button hover.png"
-            hovered Show("her_tooltip", input_text="Pinch both of your nipples",x_pos = 0.15, y_pos = 0.63)
-            action NullAction()
+            if pc.stamina >= 7:
+                idle "images/buttons/both nipples button.png"
+                hover "images/buttons/both nipples button hover.png"
+                hovered Show("her_tooltip", input_text="Pinch both of your nipples increasing arousal by {increase_arousal} arousal",x_pos = 0.15, y_pos = 0.63)
+                action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("pinch_both_nipple_label")]
+            else:
+                idle "images/buttons/both nipples button locked.png"
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 7 you have [pc.stamina]")
         else:
             idle "images/buttons/both nipples button locked.png"
             hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.63)

@@ -312,13 +312,44 @@ init python:
 
 
     # rub both breasts, increase player arousal large, reduce stamina medium, reduce wakefulness small
+    def rubBothBreastArousalGainGlobal():
+        default_arousal_increase, default_multiplier = pc.rubBothBreastArousalGain()
+        upgrades_arousal_multiplier = upgrades.hand_arousal_multiplier
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
+        actual_arousal_gain = floor(default_arousal_increase + ((multiplier_total / 1000) * default_arousal_increase))
+        return actual_arousal_gain
+    
+    def rubBothBreastArousalIncrease():
+        arousal_gain = rubBothBreastArousalGainGlobal()
+        did_orgasm = pc.increaseArousal(arousal_gain)
+        pc.reduceStamina(7)
+        return actual_arousal_gain
 
-    # pinch right nipple, increase player arousal large, reduce stamina medium, reduce wakefulness small
-
-    # pinch left nipple, increase player arousal large, reduce stamina medium, reduce wakefulness small
+    # pinch nipple, increase player arousal large, reduce stamina medium, reduce wakefulness small
+    def pinchNippleArousalGainGlobal():
+        default_arousal_increase, default_multiplier = pc.pinchNippleArousalGain()
+        upgrades_arousal_multiplier = upgrades.hand_arousal_multiplier
+        multiplier_total = default_multiplier + upgrade_arousal_multiplier
+        actual_arousal_gain = floor(default_arousal_increase + ((multiplier_total / 1000) * default_arousal_increase))
+        return actual_arousal_gain
+    
+    def pinchNippleArousalIncrease():
+        arousal_gain = pinchNippleArousalGainGlobal()
+        did_orgasm = pc.increaseArousal(arousal_gain)
+        pc.reduceStamina(5)
 
     # pinch both nipples, increase player arousal very large, reduce stamina large, reduce wakefulness small
-
+    def pinchBothNippleArousalGainGlobal():
+        default_arousal_increase, default_multiplier = pc.pinchBothNipplesArousalGain()
+        upgrades_arousal_multiplier = upgrades.hand_arousal_multiplier
+        multiplier_total = default_multiplier + upgrade_arousal_multiplier
+        actual_arousal_gain = floor(default_arousal_increase + ((multiplier_total) / 1000) * default_arousal_increase)
+        return actual_arousal_gain
+    
+    def pinchBothNippleArousalIncrease():
+        arousal_gain = pinchBothNippleArousalGainGlobal()
+        did_orgasm = pc.increaseArousal(arousal_gain)
+        pc.reduceStamina(7)
     #
     # player pussy
     #
@@ -392,6 +423,9 @@ init python:
 
     def rubChestArousalIncrease():
         arousal_gain = rubChestArousalGainGlobal()
+        #
+        # need to add her arousal gain from this action
+        #
         did_orgasm = man.increaseArousal(arousal_gain)
         pc.reduceStamina(5)
         return did_orgasm, arousal_gain

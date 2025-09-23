@@ -86,6 +86,21 @@ init python:
             default_increase = 7
             hand_skill_multiplier = self.hand_level / 1000
             return default_increase, hand_skill_multiplier
+        
+        def rubBothBreastArousalGain(self):
+            default_increase = 10
+            hand_skill_multiplier = self.hand_level / 1000
+            return default_increase, hand_skill_multiplier
+        
+        def pinchNippleArousalGain(self):
+            default_increase = 7
+            hand_skill_multiplier = self.hand_level / 1000
+            return default_increase, hand_skill_multiplier
+
+        def pinchBothNipplesArousalGain(self):
+            default_increase = 10
+            hand_skill_increase = self.hand_level / 1000
+            return default_increase, hand_skill_multiplier
 
         def resetMoistState(self):
             self.finger_state = "dry"
@@ -167,7 +182,7 @@ init python:
         def increaseUpgradeCoins(self, amount):
             base_coins = amount
             points_multiplier = self.coin_multiplier
-            coin_gain = floor(amount + (points_multiplier * amount))
+            coin_gain = floor(amount + (points_multiplier * amount)) # example if multiplier is 0.10 that would be 10 % additional coins
             self.upgrade_coins += coin_gain
             persistentIncreaseUpgradeCoins(coin_gain)
             return coin_gain
