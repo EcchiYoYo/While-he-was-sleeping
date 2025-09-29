@@ -74,8 +74,8 @@ init python:
         
         def increaseArousal(self, amount):
             self.arousal += amount
-            if self.arousal > 100: # check for orgasm
-                self.arousal = 100
+            if self.arousal > 150: # check for orgasm
+                self.arousal = 150
                 return True
             else:
                 return False

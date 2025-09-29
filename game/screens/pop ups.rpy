@@ -32,6 +32,18 @@ screen victim_arousal_increase_screen(amount_gained):
         text f"" + single_use + " gained " + amount_gained + " arousal" xpos 0.6 ypos 0.6
     timer 1.5 action Hide("victim_arousal_increase_screen")
 
+screen hand_level_up_screen(number_of_levels):
+    python:
+        amount_gained = str(number_of_levels)
+    text f"You gained " + amount_gained + " hand levels" xpos 0.2 ypos 0.15
+    timer 1.5 action Hide("hand_level_up_screen")
+
+screen persistent_hand_level_up_screen(number_of_levels):
+    python:
+        amount_gained = str(number_of_levels)
+    text f"You gained " + amount_gained + " global hand levels" xpos 0.4 ypos 0.15
+    timer 1.5 action Hide("persistent_hand_level_up_screen")
+
 screen money_earned_popup_screen(how_much):
     python:
         amount_gained = str(how_much)

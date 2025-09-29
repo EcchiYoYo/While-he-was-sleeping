@@ -17,23 +17,23 @@ default persistent.victim_name = "????"
 default persistent.max_stamina = 100
 
 default persistent.current_hand_exp = 0
-default persistent.hand_exp_for_level = 100
+default persistent.hand_exp_for_level = 6.25
 default persistent.hand_level = 0
 
 default persistent.current_mouth_exp = 0
-default persistent.mouth_exp_for_level = 100
+default persistent.mouth_exp_for_level = 6.25
 default persistent.mouth_level = 0
 
 default persistent.current_foot_exp = 0
-default persistent.foot_exp_for_level = 100
+default persistent.foot_exp_for_level = 6.25
 default persistent.foot_level = 0
 
 default persistent.current_vaginal_exp = 0
-default persistent.vaginal_exp_for_level = 100
+default persistent.vaginal_exp_for_level = 6.25
 default persistent.vaginal_level = 0
 
 default persistent.current_anal_exp = 0
-default persistent.anal_exp_for_level = 100
+default persistent.anal_exp_for_level = 6.25
 default persistent.anal_level = 0
 
 default persistent.total_orgasms = 0
@@ -42,11 +42,11 @@ default persistent.total_sperm_in_uterus = 0
 # The following are only used for trans/futa/gay packs#
 #######################################################
 default persistent.current_just_the_tip_exp = 0
-default persistent.just_the_tip_exp_for_level = 100
+default persistent.just_the_tip_exp_for_level = 6.25
 default persistent.just_the_tip_level = 0
 
 default persistent.current_cock_exp = 0
-default persistent.cock_exp_for_level = 100
+default persistent.cock_exp_for_level = 6.25
 default persistent.cock_level = 0
 
 default persistent.additional_exp = 85 # exp required for all levels above 999

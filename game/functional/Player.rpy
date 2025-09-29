@@ -82,6 +82,20 @@ init python:
             # used to show correct failure scene
             self.cycle_end_reason = "none"
 
+        # function to call when player uses their hand for any action to increaser experience
+        def increaseHandExp(self, amount):
+            level_up = 0
+            self.current_hand_exp += amount
+            increasePersistentHandExp(amount)
+            while self.current_hand_exp >= self.hand_exp_for_level: # keep cycling this to increase level
+                self.increasePlayerHandLevel(1)
+                level_up += 1
+            return level_up
+        # function to increase hand level, used when hand exp is greater than the amount required for the next level
+        def increasePlayerHandLevel(self, amount):
+            self.hand_level += 1
+            self.hand_exp_for_level = currentHandExpGet()
+
         def rubBreastArousalGain(self):
             default_increase = 7
             hand_skill_multiplier = self.hand_level / 1000
@@ -99,8 +113,35 @@ init python:
 
         def pinchBothNipplesArousalGain(self):
             default_increase = 10
-            hand_skill_increase = self.hand_level / 1000
+            hand_skill_multiplier = self.hand_level / 1000
             return default_increase, hand_skill_multiplier
+        
+        def rubPubisArousalGain(self):
+            default_increase = 3
+            hand_skill_multiplier = self.hand_level / 1000
+            return default_arousal, hand_skill_multiplier
+        
+        def rubInnerThighArousalGain(self):
+            default_increase = 5
+            hand_skill_multiplier = self.hand_level / 1000
+            return default_arousal, hand_skill_multiplier
+
+        def rubOuterPussyLipsArousalGain(self):
+            default_increase = 7
+            hand_skill_multiplier = self.hand_level / 1000
+            return default_arousal, hand_skill_multiplier       
+        
+        def massageClitArousalGain(self):
+            default_increase = 7
+            hand_skill_multiplier = self.hand_level / 1000
+            return default_arousal, hand_skill_multiplier
+        
+        def fingerPussyArousalGain(self):
+            default_increase = 10
+            hand_skill_multiplier = self.hand_level / 1000
+            vaginal_skill_multiplier = self.vaginal_level / 1000
+            skill_multiplier = hand_skill_multiplier + vaginal_skill_multiplier
+            return default_arousal, skill_multiplier
 
         def resetMoistState(self):
             self.finger_state = "dry"
@@ -113,8 +154,8 @@ init python:
         
         def increaseArousal(self, amount):
             self.arousal += amount
-            if self.arousal > 100: # check for orgasm
-                self.arousal = 100
+            if self.arousal > 150: # check for orgasm
+                self.arousal = 150
                 return True
             else:
                 return False
