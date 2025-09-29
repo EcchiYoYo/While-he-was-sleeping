@@ -17,9 +17,9 @@ init python:
             self.name = "????"
             self.relationship = "Friend"
 
-            self.wakefulness = 0
+            self.wakefulness = 0 # default cap of 100, can be increased
             self.wakefulness_cap = wakefulness_cap
-            self.arousal = 0
+            self.arousal = 0 # orgasm at 150
 
             self.face_resistance = face_resistance
             self.hand_resistance = hand_resistance
@@ -99,60 +99,68 @@ init python:
             default_increase = 7
             return default_increase
 
-        def increaseWakefulness(amount):
+        def increaseWakefulness(self, amount):
             self.wakefulness += amount
+            if wakefulness >= self.wakefulness_cap:
+                if self.wakefulness > self.wakefulness_cap:
+                    self.wakefulness = self.wakefulness_cap
+                return True
+            else:
+                return False
         
-        def reduceWakefulness(amount):
+        def reduceWakefulness(self, amount):
             self.wakefulness -= amount
+            if self.wakefulness < 0:
+                self.wakefulness = 0 
         
-        def increaseMaxWakefulness(amount):
+        def increaseMaxWakefulness(self, amount):
             # increase by 10 percent of wakefulness gained capped at something
             self.wakefulness_cap += amount
             # must also increase persistent value
             persistentIncreaseWakefulness(amount)
         
-        def increaseFaceResistance(amount):
+        def increaseFaceResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
             self.face_resistance += amount
             persistentIncreaseFaceResistance(amount)
         
-        def increaseHandResistance(amount):
+        def increaseHandResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
             self.hand_resistance += amount
             persistentIncreaseHandResistance(amount)
         
-        def increaseChestResistance(amount):
+        def increaseChestResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
             self.chest_resistance += amount
             persistentIncreaseChestResistance(amount)
         
-        def increaseThighResistance(amount):
+        def increaseThighResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
             self.thigh_resistance += amount
             persistentIncreaseThighsResistance(amount)
 
-        def increaseCockResistance(amount):
+        def increaseCockResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
             self.cock_resistance += amount
             persistentIncreaseCockResistance(amount)
 
-        def increaseTipResistance(amount):
+        def increaseTipResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
             self.tip_resistance += amount
             persistentIncreaseTipResistance(amount)
         
-        def increaseAssResistance(amount):
+        def increaseAssResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
             self.ass_resistance += amount
             persistentIncreaseAssResistance(amount)
         
         # no longer used, instead count is + 1 for every thousand in total amount
-        def increaseEjaculationCount(amount):
-            # outside of upgrades this is increased every 100 ejaculations through all cycles
-            self.ejaculation_times += amount
-            persistentIncreaseEjaculationCount(amount)
+        # def increaseEjaculationCount(amount):
+        #     # outside of upgrades this is increased every 100 ejaculations through all cycles
+        #     self.ejaculation_times += amount
+        #     persistentIncreaseEjaculationCount(amount)
         
-        def increaseEjaculationAmount(amount):
+        def increaseEjaculationAmount(self, amount):
             # increase + 10 for every 1000 ejaculated
             self.ejaculation_amount += amount
             persistentEjaculationAmount(amount)

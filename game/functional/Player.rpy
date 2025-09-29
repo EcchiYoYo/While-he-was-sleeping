@@ -82,17 +82,21 @@ init python:
             # used to show correct failure scene
             self.cycle_end_reason = "none"
 
-        # function to call when player uses their hand for any action to increaser experience
+        #####################################
+        #                                   #
+        # hand related functions            #
+        #####################################
+
+        # function to call when player uses their hand for any action to increase experience
         def increaseHandExp(self, amount):
             level_up = 0
             self.current_hand_exp += amount
-            increasePersistentHandExp(amount)
             while self.current_hand_exp >= self.hand_exp_for_level: # keep cycling this to increase level
-                self.increasePlayerHandLevel(1)
+                self.increaseHandLevel(1)
                 level_up += 1
             return level_up
         # function to increase hand level, used when hand exp is greater than the amount required for the next level
-        def increasePlayerHandLevel(self, amount):
+        def increaseHandLevel(self, amount):
             self.hand_level += 1
             self.hand_exp_for_level = currentHandExpGet()
 
@@ -116,6 +120,24 @@ init python:
             hand_skill_multiplier = self.hand_level / 1000
             return default_increase, hand_skill_multiplier
         
+        #####################################
+        #                                   #
+        # pussy related functions           #
+        #####################################
+        # function to call when player uses their pussy for any action (requires penetration) to increase experience
+        def increaseVaginalExp(self, amount):
+            level_up = 0
+            self.current_vaginal_exp += amount
+            while self.current_vaginal_exp >= self.vaginal_exp_for_level: # keep cycling to increase level
+                self.increaseVaginalLevel(1)
+                level_up += 1
+            return level_up
+        
+        # function to increase vaginal level, used when vaginal exp is greater than the amount required for the next level
+        def increaseVaginalLevel(self, amount):
+            self.vaginal_level += amount
+            self.vaginal_exp_for_level = currentVaginalExpGet()
+
         def rubPubisArousalGain(self):
             default_increase = 3
             hand_skill_multiplier = self.hand_level / 1000
