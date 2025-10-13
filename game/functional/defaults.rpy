@@ -15,8 +15,9 @@ default pc = Player(persistent.max_stamina, persistent.current_hand_exp, persist
 default pc_talk = Character("????", image="player", who_color="#dc51e9")
 default pc_male_talk = Character("????", image="player", who_color="#dc51e9")
 
-default man = Victim(persistent.face_resistance, persistent.hand_resistance, persistent.chest_resistance, persistent.thigh_resistance, persistent.tip_resistance, persistent.cock_resistance, persistent.ass_resistance, persistent.wakefulness_cap,
-    ((floor(persistent.total_ejaculation_all_cycles / 1000)) + 1), persistent.ejaculation_amount)
+default man = Victim(persistent.face_resistance_exp, persistent.hand_resistance_exp, persistent.chest_resistance_exp, persistent.thigh_resistance_exp, persistent.tip_resistance_exp, persistent.cock_resistance_exp, persistent.ass_resistance_exp, persistent.wakefulness_cap,
+    ((floor(persistent.total_ejaculation_all_cycles / 1000)) + 1), persistent.ejaculation_amount, persistent.face_resistance_level, persistent.hand_resistance_level, persistent.chest_resistance_level, persistent.thigh_resistance_level
+        persistent.tip_resistance_level, persistent.cock_resistance_level, persistent.ass_resistance_level)
 default victim_talk = Character("????", image="victim", who_color="#d41b1bac")
 
 default gabrielle = Character("????", image="gabrielle", who_color="#802626")

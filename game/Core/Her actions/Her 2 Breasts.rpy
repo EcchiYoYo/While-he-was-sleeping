@@ -25,6 +25,10 @@ label rub_breast_introduction_scene:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
         "You orgasmed from your breast massage"
+        #
+        # need to set arousal back to zero plus whatever is over 150
+        # need to increase player orgasm counters
+        #
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = did_level_up)
     if did_persistent_level_up == True:

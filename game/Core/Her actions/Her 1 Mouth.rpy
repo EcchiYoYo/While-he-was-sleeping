@@ -4,9 +4,29 @@ label her_mouth_kiss_label():
     #
     #
     python:
-        noneFunction()
-        #
-        # Add function for stat changes
+        did_level_up = pc.increaseMouthExp(kissArousalGainGlobal()) # increase in hand exp is arousal gain with multipliers
+        did_persistent_level_up = increasePersistentHandExp(kissArousalGainGlobal())
+        did_orgasm, coins_gained = kissArousalIncrease() # do not use coins gained here for popup, use base coin gain
+        base_coin_gain, used_for_his_arousal_gain_multiplier = pc.kissArousalGain() # this is needed to get base arousal gain so that coin gain is not multiplied twice
+        his_arousal_increase, his_default_arousal_increase = man.kissArousalGain((pc.self.mouth_level / 1000)) # need to send the divided value of her mouth skill to calculate his arousal gains
+        did_he_level_up = man.increaseFaceExp(his_arousal_increase) # need to send his actual arousal increase for face exp value
+        did_he_orgasm = man.kissArousalIncrease(his_arousal_increase) # increase victims arousal and check for orgasm
+        coin_gain = upgrades.increaseUpgradeCoins((base_coin_gain + his_default_arousal_increase)) # need to send base values for arousal gain for both parties
+    # popup for mouth exp
+
+    # popup for global mouth exp
+
+    # popup for face exp
+
+    # popup for global face exp
+
+    # popup for player arousal increase
+
+    # popup for victim arousal increase
+    if did_orgasm == True:
+        "You orgasmed while gently kissing him"
+    if did_he_orgasm == True:
+        "He orgasmed from your gently kiss"
     jump his_room
 
 label her_mouth_deep_kiss_label():
@@ -15,6 +35,7 @@ label her_mouth_deep_kiss_label():
     #
     #
     python:
+        # used standard kiss for her stats, she gains the same 5 arousal he gains 5 instead of 3
         noneFunction()
         #
         # add stat change functions
@@ -23,6 +44,7 @@ label her_mouth_deep_kiss_label():
 label her_mouth_suck_your_fingers_label():
     "You suck your fingers coating them with saliva."
     python:
+        # cannot raise arousal above 40 from sucking fingers
         pc.finger_state = "saliva"
         #
         # Add function for stat changes

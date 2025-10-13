@@ -82,6 +82,43 @@ init python:
             # used to show correct failure scene
             self.cycle_end_reason = "none"
 
+
+        #####################################
+        #                                   #
+        # mouth related functions           #
+        #####################################
+        def increaseMouthExp(self, amount):
+            level_up = 0
+            self.current_mouth_exp += amount
+            while self.current_mouth_exp >= self.mouth_exp_for_level:
+                self.increaseMouthLevel(1)
+                level_up += 1
+            return level_up
+        
+        def increaseMouthLevel(self, amount):
+            self.mouth_level += 1
+            self.mouth_exp_for_level = currentMouthExpGet()
+        
+        def kissArousalGain(self):
+            default_increase = 5
+            mouth_skill_multiplier = self.mouth_level / 1000
+            return default_increase, mouth_skill_multiplier
+        
+        def suckHerFingersArousalGain(self):
+            default_increase = 3
+            mouth_skill_multiplier = self.mouth_level / 1000
+            return default_increase, mouth_skill_multiplier
+        
+        def suckJuicesArousalGain(self):
+            default_increase = 3
+            mouth_skill_multiplier = self.mouth_level / 1000
+            return default_increase, mouth_skill_multiplier
+        
+        def cleanJuicesFromHimArousalGain(self):
+            default_increase = 5
+            mouth_skill_multiplier = self.mouth_level / 1000
+            return default_increase, mouth_skill_multiplier
+        
         #####################################
         #                                   #
         # hand related functions            #
