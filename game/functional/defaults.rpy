@@ -9,6 +9,9 @@ init python:
 # (persistent`s are defined in the persistent file)
 #
 ###################################################################
+#
+# persistent levels are the level the player starts at and does not need to be used in arousal increase calculations
+#
 default pc = Player(persistent.max_stamina, persistent.current_hand_exp, persistent.hand_level, persistent.current_mouth_exp, persistent.mouth_level, persistent.current_foot_exp, persistent.foot_level, persistent.current_vaginal_exp, persistent.vaginal_level,
     persistent.current_anal_exp, persistent.anal_level, persistent.current_just_the_tip_exp, persistent.just_the_tip_level, persistent.current_cock_exp, persistent.cock_level, persistent.total_orgasms, persistent.total_sperm_in_uterus, persistent.cycle_number,
     persistent.player_name, persistent.victim_name)

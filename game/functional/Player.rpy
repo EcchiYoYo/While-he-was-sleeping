@@ -214,6 +214,38 @@ init python:
             skill_multiplier = hand_skill_multiplier + vaginal_skill_multiplier
             return default_arousal, skill_multiplier
 
+        #####################################
+        #                                   #
+        # arse related functions            #
+        #####################################
+        # function to call when player uses their arse for any action (requires penetration) to increase experience
+        def increaseAnalExp(self, amount):
+            level_up = 0
+            self.current_anal_exp += amount
+            anal_exp_for_level = self.anal_exp_for_level
+            while self.current_anal_exp >= vaginal_exp_for_level and anal_exp_fro_level > 0: # keep cycling to increase level
+                self.increaseAnalLevel(1)
+                level_up += 1
+                anal_exp_for_level = currentAnalExpGet()
+            return level_up
+        
+        # function to increase anal level, used when anal exp is greater than anal exp required for the next level
+        def increaseAnalLevel(self, amount):
+            self.anal_level += amount
+            self.anal_exp_for_level = currentAnalExpGet()
+        
+        def rubBumArousalGain(self):
+            default_increase = 5
+            hand_skill_multiplier = self.hand_level / 1000
+            return default_arousal, hand_skill_multiplier
+        
+        def fingerArseArousalGain(self):
+            default_arousal_gain = 7
+            hand_skill_multiplier = self.hand_level / 1000
+            anal_skill_multiplier = self.anal_level / 1000
+            skill_multiplier = hand_skill_multiplier + anal_skill_multiplier
+            return default_arousal, skill_multiplier
+
         def resetMoistState(self):
             self.finger_state = "dry"
             self.vaginal_state = "dry"

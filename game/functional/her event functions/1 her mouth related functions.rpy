@@ -1,8 +1,5 @@
 init python:
-    import csv
-    import math
-    # check the current mouth exp required for current persistent level
-    
+    import math    
     # Kiss, raises player arousal small, raises victim arousal tiny, raises wakefulness small, reduce stamina tiny
     # used to calculate arousal gained from action
     def kissArousalGainGlobal():

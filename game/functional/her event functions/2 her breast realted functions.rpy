@@ -1,5 +1,4 @@
 init python:
-    import csv
     import math
     # rub breast, increase player arousal medium, reduce stamina small, reduce wakefulness small
     # used to calculate arousal gained from action

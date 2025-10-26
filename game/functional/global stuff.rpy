@@ -107,7 +107,7 @@ init python:
     # body part experience gain for persistent`s for player                         #
     #                                                                               #
     #################################################################################
-    # check the current total exp required for current persistent hand level
+    # check the current mouth exp required for current persistent level
     def persistentMouthExpForLevel():
         exp_value_to_set = currentMouthExpGet()
         return exp_value_to_set
@@ -125,6 +125,7 @@ init python:
     def increasePersistentMouthLevel(amount):
         persistent.mouth_level += amount
         persistent.mouth_exp_for_level = persistentMouthExpForLevel()
+    # check the current total exp required for current persistent hand level
     def persistentHandExpForLevel():
         exp_value_to_be_set = currentHandExpGet()
         return exp_value_to_be_set
@@ -280,89 +281,6 @@ init python:
     #
     # Stroke hair (used to reduce wakefulness medium) increases face resistance, raises player arousal small amount
 
-    
-
-    #
-    # player pussy
-    #
-    # rub pubis, increase player arousal tiny, reduce stamina tiny, reduce wakefulness small
-    # used to calculate arousal gained from action
-    def rubPubisArousalGainGlobal():
-        default_arousal_increase, default_multiplier = pc.rubPubisArousalGain()
-        upgrades_arousal_multiplier = (upgrades.hand_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_arousal_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total* default_arousal_increase))
-        return actual_arousal_gain
-    # increases players arousal and reduces stamina
-    def rubPubisArousalIncrease():
-        arousal_gain = rubPubisArousalGainGlobal()
-        did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(3)
-        return did_orgasm, arousal_gain
-    # rub inner thigh, increase player arousal small, reduce stamina small, reduce wakefulness small
-    # used to calculate arousal gained from action
-    def rubInnerThighArousalGainGlobal():
-        default_arousal_increase, default_multiplier = pc.rubInnerThighArousalGain()
-        upgrades_arousal_multiplier = (upgrades.hand_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_arousal_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
-        return actual_arousal_gain
-    # increases players arousal and reduces stamina
-    def rubInnerThighArousalIncrease():
-        arousal_gain = rubInnerThighArousalGainGlobal()
-        did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(5)
-        return did_orgasm, arousal_gain
-    # rub outer pussy lips, increase player arousal medium, reduce stamina medium, reduce wakefulness small
-    # used to calculate arousal gained from action
-    def rubOuterPussyLipsArousalGainGlobal():
-        default_arousal_increase, default_multiplier = pc.rubOuterPussyLipsArousalGain()
-        upgrades_arousal_multiplier = (upgrades.hand_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_arousal_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
-        return actual_arousal_gain
-    # increases players arousal and reduces stamina
-    def rubOuterPussyLipsArousalIncrease():
-        arousal_gain = rubOuterPussyLipsArousalGainGlobal()
-        did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(5)
-        return did_orgasm, arousal_gain
-    # rub clit (requires moist fingers), increase player arousal large, reduce stamina medium, reduce wakefulness small
-    # used to calculate arousal gained from action
-    def massageClitArousalGainGlobal():
-        default_arousal_increase, default_multiplier = pc.massageClitArousalGain()
-        upgrades_arousal_multiplier = (upgrades.hand_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_arousal_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
-        return actual_arousal_gain
-    # increase players arousal and reduces stamina
-    def massageClitArousalIncrease():
-        arousal_gain = massageClitArousalGainGlobal()
-        did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(7)
-        return did_orgasm, arousal_gain
-    # finger pussy (requires moist pussy), increase player arousal very large, reduce stamina large, reduce wakefulness small
-    # used to calculate arousal gained from action
-    def fingerPussyArousalGainGlobal():
-        default_arousal_increase, default_multiplier = pc.fingerPussyArousalGain()
-        upgrades_arousal_multiplier = ((upgrades.hand_arousal_multiplier + upgrades.vaginal_arousal_multiplier) / 1000)
-        multiplier_total = default_multiplier + upgrades_arousal_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
-        return actual_arousal_gain
-    # increase players arousal and reduces stamina
-    def fingerPussyArousalIncrease():
-        arousal_gain = fingerPussyArousalGainGlobal()
-        did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(10)
-        return did_orgasm, arousal_gain
-    #
-    # ass
-    #
-    # rub players ass, increase player arousal small, reduce stamina small, reduce wakefulness small
-    # used to calculate arousal gained from action
-    
-
-    # finger ass (requires moist ass/fingers), increase player arousal medium, reduce stamina medium, reduce wakefulness small
 
     #
     # cock (her(futa, trans, gay))
