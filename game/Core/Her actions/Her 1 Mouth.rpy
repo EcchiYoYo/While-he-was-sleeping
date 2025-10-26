@@ -1,53 +1,105 @@
 label her_mouth_kiss_label():
+    #
+    # Add check for waking him
+    #
     "You kiss him"
     #
     #
     #
     python:
-        did_level_up = pc.increaseMouthExp(kissArousalGainGlobal()) # increase in hand exp is arousal gain with multipliers
-        did_persistent_level_up = increasePersistentHandExp(kissArousalGainGlobal())
-        did_orgasm, coins_gained = kissArousalIncrease() # do not use coins gained here for popup, use base coin gain
-        base_coin_gain, used_for_his_arousal_gain_multiplier = pc.kissArousalGain() # this is needed to get base arousal gain so that coin gain is not multiplied twice
-        his_arousal_increase, his_default_arousal_increase = man.kissArousalGain((pc.self.mouth_level / 1000)) # need to send the divided value of her mouth skill to calculate his arousal gains
-        did_he_level_up = man.increaseFaceExp(his_arousal_increase) # need to send his actual arousal increase for face exp value
-        did_he_orgasm = man.kissArousalIncrease(his_arousal_increase) # increase victims arousal and check for orgasm
-        coin_gain = upgrades.increaseUpgradeCoins((base_coin_gain + his_default_arousal_increase)) # need to send base values for arousal gain for both parties
-    # popup for mouth exp
-
-    # popup for global mouth exp
-
-    # popup for face exp
-
-    # popup for global face exp
-
-    # popup for player arousal increase
-
-    # popup for victim arousal increase
-    if did_orgasm == True:
-        "You orgasmed while gently kissing him"
-    if did_he_orgasm == True:
+        did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_arousal_gain, his_arousal_gain = kissCombinedVariableGenerator()
+    if did_level_up == True:
+        "Stuff for her mouth level up"
+    if did_persistent_level_up == True:
+        "Stuff for her persistent mouth level up"
+    if did_he_level_up == True:
+        "Stuff for his face level up"
+    if did_he_persistent_level_up == True:
+        "Stuff for his face persistent level up"
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen victim_arousal_increase_screen(amount_gained = [his_arousal_gain])
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    
+    if did_orgasm == True and did_he_orgasm == True:
+        #
+        # reset arousal here while checking for multiple orgasms (not likely but could happen)
+        #
+        "You both orgasmed while gently kissing him"
+    elif did_he_orgasm == True:
+        #
+        # reset his arousal, and check for multiple orgasms
+        #
         "He orgasmed from your gently kiss"
+    elif did_orgasm == True:
+        #
+        # reset her arousal and check for multiple orgasms
+        #
+        "You orgasmed while gently kissing him"
+    else:
+        pass
     jump his_room
 
 label her_mouth_deep_kiss_label():
+    #
+    # add check for him waking
+    #
     "You passionately kiss him in his sleep."
     #
     #
     #
     python:
-        # used standard kiss for her stats, she gains the same 5 arousal he gains 5 instead of 3
-        noneFunction()
+        
+        did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_arousal_gain, his_arousal_gain = deepKissCombinedVariableGenerator()
         #
         # add stat change functions
+    if did_level_up == True:
+        "Stuff for her level up"
+    
+    if did_persistent_level_up == True:
+        "Stuff for her persistent level up"
+    
+    if did_he_level_up == True:
+        "Stuff for his level up"
+    
+    if did_he_persistent_level_up == True:
+        "Stuff for his persistent level up"
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen victim_arousal_increase_screen(amount_gained = [his_arousal_gain])
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    if did_orgasm == True and did_he_orgasm == True:
+        "You both orgasmed from your passionate kiss"
+        #
+        # reset arousal for both
+        #
+    elif did_orgasm == True:
+        "You orgasmed while deeply kissing him"
+        #
+        # reset his arousal        #
+    
+    elif did_he_orgasm == True:
+        "He orgasmed while you deeply kissed him"
+        #
+        # reset her arousal
+        #
+    else:
+        pass
+    
     jump his_room
 
 label her_mouth_suck_your_fingers_label():
     "You suck your fingers coating them with saliva."
     python:
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckDryFingersCombinedVariableGenerator()
         # cannot raise arousal above 40 from sucking fingers
         pc.finger_state = "saliva"
         #
         # Add function for stat changes
+    if did_level_up == True:
+        "Stuff for her level up"
+    if did_persistent_level_up == True:
+        "Stuff for her persistent level up"
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     jump his_room
 
 label her_mouth_suck_juices_from_fingers_label():
@@ -56,17 +108,34 @@ label her_mouth_suck_juices_from_fingers_label():
     else:
         "You slurp his cum from your fingers, they are now coated with your saliva."
     python:
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckCumFingersCombinedVariableGenerator()
+        # cannot raise arousal above 40 from sucking fingers
         pc.finger_state = "saliva"
         #
         # Add function for stat changes
+    if did_level_up == True:
+        "Stuff for her level up"
+    if did_persistent_level_up == True:
+        "Stuff for her persistent level up"
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     jump his_room
 
 label her_mouth_clean_girl_cum_from_face_label():
     "You slurp the girl cum from his face hiding the evidence that you leaked all over his face."
     python:
         man.face_state = "saliva"
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
-        # Add function for stat changes
+        #
+    # did level up
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    # did persistent level up
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room
 
 label her_mouth_clean_cum_from_face_label():
@@ -83,16 +152,30 @@ label her_mouth_clean_cum_from_face_label():
         man.face_state = "saliva"
         man.player_face_cum_amount = 0
         man.victim_face_cum_amount = 0
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
         # add function for stat changes
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room
 
 label her_mouth_clean_girl_cum_from_chest_label():
     "You lap up the girl cum coating his chest, hiding the evidence you ever ground your pussy along his chest."
     python:
         man.chest_state = "saliva"
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
         # add function for stat changes
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room
 
 label her_mouth_clean_cum_from_chest_label():
@@ -109,16 +192,30 @@ label her_mouth_clean_cum_from_chest_label():
         man.chest_state = "saliva"
         man.player_chest_cum_amount = 0
         man.victim_chest_cum_amount = 0
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
         # add stat change function here
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room
 
 label her_mouth_clean_girl_cum_stomach_label():
     "You lick the girl cum from his stomach, hiding the evidence your juices were ever there."
     python:
         man.stomach_state = "saliva"
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
         # add stat change function
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room
 
 label her_mouth_clean_cum_stomach_label():
@@ -135,17 +232,31 @@ label her_mouth_clean_cum_stomach_label():
         man.stomach_state = "saliva"
         man.victim_stomach_cum_amount = 0
         man.player_stomach_cum_amount = 0
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
         # add stat changes here
         #
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room
 
 label her_mouth_clean_girl_cum_fingers_label():
     "You suck his fingers cleaning away your girl cum, like you were never here."
     python:
         man.finger_state = "saliva"
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
         # add stat change functions
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room
 
 label her_mouth_clean_cum_fingers_label():
@@ -162,17 +273,31 @@ label her_mouth_clean_cum_fingers_label():
         man.finger_state = "saliva"
         man.victim_finger_cum_amount = 0
         man.player.finger_cum_amount = 0
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
         #
         # add stat change functions
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room
 
 label her_mouth_clean_girl_cum_thighs_label():
     "You lap the girl cum coating his thighs, hiding the evidence it was ever there."
     python:
         man.thigh_state = "saliva"
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
-        # add stat change functions
+        # 
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room
 
 label her_mouth_clean_cum_thighs_label():
@@ -189,15 +314,29 @@ label her_mouth_clean_cum_thighs_label():
         man.thigh_state = "saliva"
         man.player_thigh_cum_amount = 0
         man.victim_thigh_cum_amount = 0
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
         #
         # add stat change functions
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room
 
 label her_mouth_clean_cum_ass_label():
     "You give him a rimjob ensuring the suck every last drop of your cum from his arse, hiding the evidence you ever came here."
     python:
         man.ass_state = "saliva"
+        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = suckFluidsFromHim()
         #
         # add stat change functions
+    if did_level_up == True:
+        "You levelled your mouth skill"
+    if did_persistent_level_up == True:
+        "You levelled your persistent mouth skill"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     jump his_room

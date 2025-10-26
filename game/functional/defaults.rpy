@@ -16,7 +16,7 @@ default pc_talk = Character("????", image="player", who_color="#dc51e9")
 default pc_male_talk = Character("????", image="player", who_color="#dc51e9")
 
 default man = Victim(persistent.face_resistance_exp, persistent.hand_resistance_exp, persistent.chest_resistance_exp, persistent.thigh_resistance_exp, persistent.tip_resistance_exp, persistent.cock_resistance_exp, persistent.ass_resistance_exp, persistent.wakefulness_cap,
-    ((floor(persistent.total_ejaculation_all_cycles / 1000)) + 1), persistent.ejaculation_amount, persistent.face_resistance_level, persistent.hand_resistance_level, persistent.chest_resistance_level, persistent.thigh_resistance_level
+    ((floor(persistent.total_ejaculation_all_cycles / 1000)) + 1), persistent.ejaculation_amount, persistent.face_resistance_level, persistent.hand_resistance_level, persistent.chest_resistance_level, persistent.thigh_resistance_level,
         persistent.tip_resistance_level, persistent.cock_resistance_level, persistent.ass_resistance_level)
 default victim_talk = Character("????", image="victim", who_color="#d41b1bac")
 
@@ -26,7 +26,6 @@ default grace = Character("????", image="grace", who_color="#64d6df")
 default game_time = GameTime()
 default upgrades = Upgrades(int(floor(persistent.coins_earned/2)))
 default day_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-default game_started = False# Used to decide if reset button is displayed in preferences screen
 default random_girl_names_list = ["Bonnie", "Gemma", "Genevieve", "Amelia", "Freya", "Annalise", "Aurora", "Calista", "Calliope", "Dakota", "Eliza", "Harper", "Ivy", "Jolie", "Josephine", "Julia", "Leah", "Lorelei", "Nicole"]
 default random_guy_names_list = ["David", "John", "Ethan", "Noah", "Samuel", "Jacob", "Nicholas", "Liam", "Oliver", "Henry", "Ryan", "Daniel", "Anthony", "Charles", "William", "Logan", "Romeo"]
-default is_patreon_version = True # used to set patreon status (may never be used) starts as true to prevent seeing content that is not safe for patreon gets set during script initialisation
+default is_patreon_version = False # used to set patreon status (may never be used) starts as false only switches to true if patreon patch is applied

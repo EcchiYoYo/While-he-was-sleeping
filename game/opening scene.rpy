@@ -34,13 +34,13 @@ label opening_scene:
 label select_from_installed_packs:
     "Please select the pack you wish to play."
     menu:
-        "Play the young {pc_name} pack?":
+        "Play the young pack?" if l_pack == True:
             jump l_pack_opening
-        "Play the trans {pc_name} pack?":
+        "Play the trans pack?" if t_pack == True:
             jump t_pack_opening
-        "Play the {pc_male_name} pack?":
+        "Play the gay pack?" if g_pack == True:
             jump g_pack_opening
-        "Play the hermaphrodite {pc_name} pack?":
+        "Play the hermaphrodite pack?" if h_pack == True:
             jump f_pack_opening    
     
 label default_opening:

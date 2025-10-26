@@ -13,8 +13,8 @@ init python:
 #################################################################
 
     class Victim:
-        def __init__(self, face_resistance, hand_resistance, chest_resistance, thigh_resistance, tip_resistance, cock_resistance, ass_resistance, wakefulness_cap, ejaculation_times, ejaculation_amount
-            face_resistance_level, hand_resistance_level, chest_resistance_level, thigh_resistance_level, tip_resistance_level, ):
+        def __init__(self, face_resistance, hand_resistance, chest_resistance, thigh_resistance, tip_resistance, cock_resistance, ass_resistance, wakefulness_cap, ejaculation_times, ejaculation_amount,
+            face_resistance_level, hand_resistance_level, chest_resistance_level, thigh_resistance_level, tip_resistance_level, cock_resistance_level, ass_resistance_level):
             self.name = "????"
             self.relationship = "Friend"
 
@@ -89,8 +89,7 @@ init python:
         
         def increaseArousal(self, amount):
             self.arousal += amount
-            if self.arousal > 150: # check for orgasm
-                self.arousal = 150
+            if self.arousal >= 150: # check for orgasm
                 return True
             else:
                 return False
@@ -226,16 +225,14 @@ init python:
             multiplier_from_upgrades = (upgrades.mouth_arousal_multiplier / 1000)
             his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier_from_her_mouth_skill + multiplier_from_upgrades)))
             return his_actual_arousal_gain, default_arousal
-        # function to store his default values that can later be easily changed
-        def intimateKissArousalGain():
+        # calculate his arousal values for deep kiss
+        def deepKissArousalGain(amount):
             default_arousal = 5
-            return default_arousal
-        # function to increase victim arousal levels
-        def kissArousalIncrease(amount):
-            did_orgasm = man.increaseArousal(amount)
-            return did_orgasm
-            
-            
+            multiplier_from_her_mouth_skill = amount
+            multiplier_from_upgrades = (upgrades.mouth_arousal_multiplier / 1000)
+            his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier+from_her_mouth_skill + multiplier_from_upgrades)))
+            return his_actual_arousal_gain, default_arousal
+           
 
 
 

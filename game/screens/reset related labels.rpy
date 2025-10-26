@@ -12,7 +12,7 @@ screen reset_persistent_button():
         unhovered Hide("global_tooltip")
 
 label confirm_reset_label():
-    hide main_menu
+    # hide main_menu
     menu:
         "Are you sure you want to reset all data from previous cycles? This cannot be undone, and will also {color=#c52828}delete all saves{/color} to prevent mismatches between save data and persistent data."
         "Yes":
@@ -23,25 +23,7 @@ label confirm_reset_label():
         "No":
             call screen main_menu
 
-label confirm_reset_label_preferences():
-    hide preferences
-    menu:
-        "Are you sure you want to reset all data from previous cycles? This cannot be undone, and will also delete all saves to prevent mismatches between save data and persistent data."
-        "Yes":
-            menu:
-                "This will return you to the main menu and reset all player data and delete saves, are you certain you wish to reset?"
-                "Yes":
-                    python:
-                        fullReset()
-                        delete_all_saves()
-                                              
-                "No":
-                    return
-        "No":
-            return
-
 init python:
     def delete_all_saves():
         for slot in renpy.list_saved_games(fast=True):
             renpy.unlink_save(slot)
-      

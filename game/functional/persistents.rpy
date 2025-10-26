@@ -134,6 +134,197 @@ default intro_3_completed = False # 80
 default activate_buttons = False # 81
 
 init python:
+    ##################################################
+    #                                                #
+    # Functions for increasing persistent exp and    #
+    # levels for skill                               #
+    ##################################################
+    def currentHandExpGet():
+        exp_needed = 0
+        if persistent.hand_level <= 999:
+            amount = persistent.hand_level + 1
+            with open(renpy.loader.transfn("CSVs/hand table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+        
+    
+    def currentMouthExpGet():
+        exp_needed = 0
+        if persistent.mouth_level <= 999:
+            amount = persistent.mouth_level + 1
+            with open(renpy.loader.transfn("CSVs/mouth table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+
+    def currentFootExpGet():
+        exp_needed = 0
+        if persistent.foot_level <= 999:
+            amount = persistent.foot_level + 1
+            with open(renpy.loader.transfn("CSVs/foot table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    
+    def currentVaginalExpGet():
+        exp_needed = 0
+        if persistent.vaginal_level <= 999:
+            amount = persistent.vaginal_level + 1
+            with open(renpy.loader.transfn("CSVs/vaginal table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    
+    def currentAnalExpGet():
+        exp_needed = 0
+        if persistent.anal_level < 999:
+            amount = persistent.anal_level + 1
+            with open(renpy.loader.transfn("CSVs/anal table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    ##########################################################
+    # the following are only needed for futa/gay/trans packs # (need to decide if male presenting female or female presenting male)
+    ##########################################################
+    def currentJustTheTipExpGet():
+        exp_needed = 0
+        if persistent.just_the_tip_level <= 999:
+            amount = persistent.just_the_tip_level + 1
+            with open(renpy.loader.transfn("CSVs/just the tip table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    
+    def currentCockExpGet():
+        exp_needed = 0
+        if persistent.cock_level < 999:
+            amount = persistent.cock_level + 1
+            with open(renpy.loader.transfn("CSVs/cock table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    ##########################################################
+    # his persistent exp levels                              #
+    ##########################################################
+    def hisCurrentFaceExpGet():
+        exp_needed = 0
+        if persistent.face_resistance_level < 999:
+            amount = persistent.face_resistance_level + 1
+            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    
+    def hisCurrentHandExpGet():
+        exp_needed = 0
+        if persistent.hand_resistance_level < 999:
+            amount = persistent.hand_resistance_level + 1
+            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    
+    def hisCurrentChestExpGet():
+        exp_needed = 0
+        if persistent.chest_resistance_level < 999:
+            amount = persistent.chest_resistance_level + 1
+            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    
+    def hisCurrentThighExpGet():
+        exp_needed = 0
+        if persistent.thigh_resistance_level < 999:
+            amount = persistent.thigh_resistance_level + 1
+            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    
+    def hisCurrentTipExpGet():
+        exp_needed = 0
+        if persistent.tip_resistance_level < 999:
+            amount = persistent.tip_resistance_level + 1
+            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    
+    def hisCurrentCockExpGet():
+        exp_needed = 0
+        if persistent.cock_resistance_level < 999:
+            amount = persistent.cock_resistance_level + 1
+            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
+    
+    def hisCurrentAssExpGet():
+        exp_needed = 0
+        if persistent.ass_resistance_level < 999:
+            amount = persistent.ass_resistance_level + 1
+            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for index, row in enumerate(reader):
+                    if (index + 1 == amount):
+                        exp_needed = int(row["exp needed"])
+                        return exp_needed
+        else:
+            return 0
     # used to reset all stats to their defaults, used when a player wants to start a clean cycle
     # persistent values are used to create the player and victim objects
     def fullReset():

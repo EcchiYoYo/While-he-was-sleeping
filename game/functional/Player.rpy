@@ -49,34 +49,34 @@ init python:
             # set hand exp and level
             self.current_hand_exp = hand_exp
             self.hand_level = hand_level
-            self.hand_exp_for_level = currentHandExpGet()
+            self.hand_exp_for_level = self.currentHandExpGet()
             # set mouth exp and level
             self.current_mouth_exp = mouth_exp
             self.mouth_level = mouth_level
-            self.hand_exp_for_level = currentMouthExpGet()
+            self.hand_exp_for_level = self.currentMouthExpGet()
             # set foot exp and level
             self.current_foot_exp = foot_exp
             self.foot_level = foot_level
-            self.foot_exp_for_level = currentFootExpGet()
+            self.foot_exp_for_level = self.currentFootExpGet()
             # set vaginal exp and level
             self.current_vaginal_exp = vaginal_exp
             self.vaginal_level = vaginal_level
-            self.vaginal_exp_for_level = currentVaginalExpGet()
+            self.vaginal_exp_for_level = self.currentVaginalExpGet()
             # set anal exp and level
             self.current_anal_exp = anal_exp
             self.anal_level = anal_level
-            self.anal_exp_for_level = currentAnalExpGet()
+            self.anal_exp_for_level = self.currentAnalExpGet()
             #######################################################
             # The following are only used for trans/futa/gay packs#
             #######################################################
             # set just the tip level and exp
             self.current_just_the_tip_exp = just_the_tip_exp
             self.just_the_tip_level = just_the_tip_level
-            self.just_the_tip_exp_for_level = currentJustTheTipExpGet()
+            self.just_the_tip_exp_for_level = self.currentJustTheTipExpGet()
             # set cock level and exp
             self.current_cock_exp = cock_exp
             self.cock_level = cock_level
-            self.cock_exp_for_level = currentCockExpGet()
+            self.cock_exp_for_level = self.currentCockExpGet()
             # used to check for mismatch after resetting cycle
             self.cycle_number = cycle_number
             # used to show correct failure scene
@@ -90,9 +90,11 @@ init python:
         def increaseMouthExp(self, amount):
             level_up = 0
             self.current_mouth_exp += amount
-            while self.current_mouth_exp >= self.mouth_exp_for_level:
+            mouth_exp_for_level = self.mouth_exp_for_level
+            while self.current_mouth_exp >= mouth_exp_for_level and mouth_exp_for_level > 0:
                 self.increaseMouthLevel(1)
                 level_up += 1
+                mouth_exp_for_level = currentMouthExpGet()
             return level_up
         
         def increaseMouthLevel(self, amount):
@@ -104,18 +106,23 @@ init python:
             mouth_skill_multiplier = self.mouth_level / 1000
             return default_increase, mouth_skill_multiplier
         
-        def suckHerFingersArousalGain(self):
-            default_increase = 3
-            mouth_skill_multiplier = self.mouth_level / 1000
-            return default_increase, mouth_skill_multiplier
-        
-        def suckJuicesArousalGain(self):
-            default_increase = 3
-            mouth_skill_multiplier = self.mouth_level / 1000
-            return default_increase, mouth_skill_multiplier
-        
-        def cleanJuicesFromHimArousalGain(self):
+        def deepKissArousalGain(self):
             default_increase = 5
+            mouth_skill_multiplier = self.mouth_level / 1000
+            return default_increase, mouth_skill_multiplier
+        
+        def suckHerFingersArousalGain(self):
+            default_increase = 1
+            mouth_skill_multiplier = self.mouth_level / 1000
+            return default_increase, mouth_skill_multiplier
+        
+        def suckCumFingersArousalGain(self):
+            default_increase = 4
+            mouth_skill_multiplier = self.mouth_level / 1000
+            return default_increase, mouth_skill_multiplier
+        
+        def suckFluidsFromHimArousalGain(self):
+            default_increase = 2
             mouth_skill_multiplier = self.mouth_level / 1000
             return default_increase, mouth_skill_multiplier
         
@@ -128,14 +135,17 @@ init python:
         def increaseHandExp(self, amount):
             level_up = 0
             self.current_hand_exp += amount
-            while self.current_hand_exp >= self.hand_exp_for_level: # keep cycling this to increase level
+            hand_exp_for_level = self.hand_exp_for_level
+            while self.current_hand_exp >= hand_exp_for_level and hand_exp_for_level > 0: # keep cycling this to increase level
                 self.increaseHandLevel(1)
                 level_up += 1
+                hand_exp_for_level = pc.currentHandExpGet()
             return level_up
         # function to increase hand level, used when hand exp is greater than the amount required for the next level
         def increaseHandLevel(self, amount):
             self.hand_level += 1
-            self.hand_exp_for_level = currentHandExpGet()
+            self.hand_exp_for_level = pc.currentHandExpGet()
+            return self.hand_exp_for_level
 
         def rubBreastArousalGain(self):
             default_increase = 7
@@ -165,9 +175,11 @@ init python:
         def increaseVaginalExp(self, amount):
             level_up = 0
             self.current_vaginal_exp += amount
-            while self.current_vaginal_exp >= self.vaginal_exp_for_level: # keep cycling to increase level
+            vaginal_exp_for_level = self.vaginal_exp_for_level
+            while self.current_vaginal_exp >= vaginal_exp_for_level and vaginal_exp_for_level > 0: # keep cycling to increase level
                 self.increaseVaginalLevel(1)
                 level_up += 1
+                vaginal_exp_for_level = currentVaginalExpGet()
             return level_up
         
         # function to increase vaginal level, used when vaginal exp is greater than the amount required for the next level
@@ -213,8 +225,7 @@ init python:
         
         def increaseArousal(self, amount):
             self.arousal += amount
-            if self.arousal > 150: # check for orgasm
-                self.arousal = 150
+            if self.arousal >= 150: # check for orgasm
                 return True
             else:
                 return False
@@ -232,6 +243,98 @@ init python:
             self.stamina -= amount
             if self.stamina < 0:
                 self.stamina = 0
+
+        # check exp required for player levels
+        def currentHandExpGet(self):
+            exp_needed = 0
+            if self.hand_level <= 999:
+                amount = self.hand_level + 1
+                with open(renpy.loader.transfn("CSVs/hand table.csv"), "r", newline="") as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for index, row in enumerate(reader):
+                        if (index + 1 == amount):
+                            exp_needed = int(row["exp needed"])
+                            return exp_needed
+            else:
+                return 0
+        
+        def currentMouthExpGet(self):
+            exp_needed = 0
+            if self.mouth_level <= 999:
+                amount = self.mouth_level + 1
+                with open(renpy.loader.transfn("CSVs/mouth table.csv"), "r", newline="") as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for index, row in enumerate(reader):
+                        if (index + 1 == amount):
+                            exp_needed = int(row["exp needed"])
+                            return exp_needed
+            else:
+                return 0
+
+        def currentFootExpGet(self):
+            exp_needed = 0
+            if self.foot_level <= 999:
+                amount = self.foot_level + 1
+                with open(renpy.loader.transfn("CSVs/foot table.csv"), "r", newline="") as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for index, row in enumerate(reader):
+                        if (index + 1 == amount):
+                            exp_needed = int(row["exp needed"])
+                            return exp_needed
+            else:
+                return 0
+        
+        def currentVaginalExpGet(self):
+            exp_needed = 0
+            if self.vaginal_level <= 999:
+                amount = self.vaginal_level + 1
+                with open(renpy.loader.transfn("CSVs/vaginal table.csv"), "r", newline="") as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for index, row in enumerate(reader):
+                        if (index + 1 == amount):
+                            exp_needed = int(row["exp needed"])
+                            return exp_needed
+            else:
+                return 0
+        
+        def currentAnalExpGet(self):
+            exp_needed = 0
+            if self.anal_level < 999:
+                amount = self.anal_level + 1
+                with open(renpy.loader.transfn("CSVs/anal table.csv"), "r", newline="") as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for index, row in enumerate(reader):
+                        if (index + 1 == amount):
+                            exp_needed = int(row["exp needed"])
+                            return exp_needed
+            else:
+                return 0
+        # only needed for packs with a cock
+        def currentJustTheTipExpGet(self):
+            exp_needed = 0
+            if self.just_the_tip_level <= 999:
+                amount = self.just_the_tip_level + 1
+                with open(renpy.loader.transfn("CSVs/just the tip table.csv"), "r", newline="") as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for index, row in enumerate(reader):
+                        if (index + 1 == amount):
+                            exp_needed = int(row["exp needed"])
+                            return exp_needed
+            else:
+                return 0
+
+        def currentCockExpGet(self):
+            exp_needed = 0
+            if self.cock_level < 999:
+                amount = self.cock_level + 1
+                with open(renpy.loader.transfn("CSVs/cock table.csv"), "r", newline="") as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for index, row in enumerate(reader):
+                        if (index + 1 == amount):
+                            exp_needed = int(row["exp needed"])
+                            return exp_needed
+            else:
+                return 0
 
     class Upgrades:
         def __init__(self, starting_coins):
@@ -286,6 +389,7 @@ init python:
             self.upgrade_coins += coin_gain
             persistentIncreaseUpgradeCoins(coin_gain)
             return coin_gain
+        
         
         def reduceUpgradeCoins(self, amount):
             self.upgrade_coins -= amount

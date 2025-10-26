@@ -108,18 +108,6 @@ init python:
     #                                                                               #
     #################################################################################
     # check the current total exp required for current persistent hand level
-    def persistentHandExpForLevel():
-        exp_value_to_be_set = currentHandExpGet()
-        return exp_value_to_be_set
-    # increase current persistent hand exp and increase level if required
-    def increasePersistentHandExp(amount):
-        levels_gained = 0
-        persistent.current_hand_exp += amount
-        while persistent.current_hand_exp >= persistentHandExpForLevel():
-            persistent.hand_level += 1
-            levels_gained += 1
-        return levels_gained
-    # check the current mouth exp required for current persistent level
     def persistentMouthExpForLevel():
         exp_value_to_set = currentMouthExpGet()
         return exp_value_to_set
@@ -127,10 +115,34 @@ init python:
     def increasePersistentMouthExp(amount):
         levels_gained = 0
         persistent.current_mouth_exp += amount
-        while persistent.current_mouth_exp >= persistentMouthExpForLevel():
-            persistent.mouth_level += 1
+        mouth_exp_required = persistentMouthExpForLevel()
+        while persistent.current_mouth_exp >= mouth_exp_required and mouth_exp_required > 0:
+            increasePersistentMouthLevel(1)
             levels_gained += 1
+            mouth_exp_required = persistentMouthExpForLevel()
         return levels_gained
+    # increase persistent mouth level
+    def increasePersistentMouthLevel(amount):
+        persistent.mouth_level += amount
+        persistent.mouth_exp_for_level = persistentMouthExpForLevel()
+    def persistentHandExpForLevel():
+        exp_value_to_be_set = currentHandExpGet()
+        return exp_value_to_be_set
+    # increase current persistent hand exp and increase level if required
+    def increasePersistentHandExp(amount):
+        levels_gained = 0
+        persistent.current_hand_exp += amount
+        hand_exp_required = persistentHandExpForLevel()
+        while persistent.current_hand_exp >= hand_exp_required and hand_exp_required > 0:
+            increasePersistentHandLevel(1)
+            levels_gained += 1
+            hand_exp_required = persistentHandExpForLevel()
+        return levels_gained
+    # increase persistent hand level
+    def increasePersistentHandLevel(amount):
+        persistent.hand_level += amount
+        persistent.hand_exp_for_level = persistentHandExpForLevel()
+    
     # check the current foot exp required for current persistent level
     def persistentFootExpForLevel():
         exp_value_to_set = currentMouthExpGet()
@@ -139,10 +151,15 @@ init python:
     def increasePersistentFootExp(amount):
         levels_gained = 0
         persistent.current_foot_exp += amount
-        while persistent.current_foot_exp >= persistentFootExpForLevel():
-            persistent.foot_level += 1
+        foot_exp_required = persistentFootExpForLevel()
+        while persistent.current_foot_exp >= foot_exp_required and foot_exp_required > 0:
+            increasePersistentFootLevel(1)
             levels_gained += 1
+            foot_exp_required = persistentFootExpForLevel()
         return levels_gained
+    def increasePersistentFootLevel(amount):
+        persistent.foot_level += amount
+        persistent.foot_exp_for_level = persistentFootExpForLevel()
     # check the current vaginal exp required for current persistent level
     def persistentVaginalExpForLevel():
         exp_value_to_set = currentVaginalExpGet()
@@ -151,10 +168,15 @@ init python:
     def increasePersistentVaginalExp(amount):
         levels_gained = 0
         persistent.current_vaginal_exp += amount
-        while persistent.current_vaginal_exp >= persistentVaginalExpForLevel():
-            persistent.vaginal_level += 1
+        vaginal_exp_required = persistentVaginalExpForLevel()
+        while persistent.current_vaginal_exp >= vaginal_exp_required and vaginal_exp_required > 0:
+            increasePersistentVaginalLevel(1)
             levels_gained += 1
+            vaginal_exp_required = persistentVaginalExpForLevel()
         return levels_gained
+    def increasePersistentVaginalLevel(amount):
+        persistent.vaginal_level += amount
+        persistent.vaginal_exp_for_level = persistentVaginalExpForLevel()
     # check the current anal exp required for current persistent level
     def persistentAnalExpForLevel():
         exp_value_to_set = currentAnalExpGet()
@@ -163,16 +185,16 @@ init python:
     def increasePersistentAnalExp(amount):
         levels_gained = 0
         persistent.current_anal_exp += amount
-        while persistent.current_anal_exp >= persistentAnalExpForLevel():
-            persistent.anal_level += 1
+        anal_exp_required = persistentAnalExpForLevel()
+        while persistent.current_anal_exp >= anal_exp_required and anal_exp_required > 0:
+            increasePersistentAnalLevel(1)
             levels_gained += 1
+            anal_exp_required = persistentAnalExpForLevel()
         return levels_gained
+    def increasePersistentAnalLevel(amount):
+        persistent.anal_level += amount
+        persistent.anal_exp_for_level = persistentAnalExpForLevel()
     
-    #################################################################################
-    #                                                                               #
-    # body part experience gain for persistent`s for victim                         #
-    #                                                                               #
-    #################################################################################
     ##################################################
     #                                                #
     # for player types with penis                    #
@@ -185,10 +207,15 @@ init python:
     def increasePersistentJustTheTipExp(amount):
         levels_gained = 0
         persistent.current_just_the_tip_exp += amount
-        while persistent.current_just_the_tip_exp >= persistentJustTheTipExpForLevel():
-            persistent.just_the_tip_level += 1
+        tip_exp_required = persistentJustTheTipExpForLevel()
+        while persistent.current_just_the_tip_exp >= tip_exp_required and tip_exp_required > 0:
+            increasePersistentJustTheTipPlayer(1)
             levels_gained += 1
+            tip_exp_required = persistentJustTheTipExpForLevel()
         return levels_gained
+    def increasePersistentJustTheTipPlayer(amount):
+        persistent.just_the_tip_level += 1
+        persistent.just_the_tip_exp_for_level = persistentJustTheTipExpForLevel()
     # check the current cock epx required for current persistent level
     def persistentCockExpForLevel():
         exp_value_to_set = currentCockExpGet()
@@ -197,10 +224,15 @@ init python:
     def increasePersistentCockExp(amount):
         levels_gained = 0
         persistent.current_cock_exp += amount
-        while persistent.current_cock_exp >= persistentCockExpForLevel():
+        cock_exp_required = persistentCockExpForLevel()
+        while persistent.current_cock_exp >= cock_exp_required and cock_exp_required > 0:
             persistent.cock_level += 1
             levels_gained += 1
+            cock_exp_required = persistentCockExpForLevel()
         return levels_gained
+    def increasePersistentCockLevel(amount):
+        persistent.cock_level += amount
+        persistent.cock_exp_for_level = persistentCockExpForLevel()
     #
     # victim ejaculation amount
     #    
@@ -212,262 +244,30 @@ init python:
     def persistentIncreaseUpgradeCoins(amount):
         persistent.coins_earned += amount
 
-    ##################################################
-    #                                                #
-    # Functions for increasing persistent exp and    #
-    # levels for skill                               #
-    ##################################################
-    def currentHandExpGet():
-        exp_needed = 0
-        if persistent.hand_level <= 999:
-            amount = persistent.hand_level + 1
-            with open(renpy.loader.transfn("CSVs/hand table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            amount = 999
-            with open(renpy.loader.transfn("CSVs/hand table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-            additional = persistent.hand_level - 999
-            total_exp_needed = exp_needed + (additional * persistent.additional_exp)
-            return total_exp_needed
-        
-    
-    def currentMouthExpGet():
-        exp_needed = 0
-        if persistent.mouth_level <= 999:
-            amount = persistent.mouth_level + 1
-            with open(renpy.loader.transfn("CSVs/mouth table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            amount = 999
-            with open(renpy.loader.transfn("CSVs/mouth table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-            additional = persistent.mouth_level - 999
-            total_exp_needed = exp_needed + (additional * persistent.additional_exp)
-            return total_exp_needed
+    #################################################################################
+    #                                                                               #
+    # body part experience gain for persistent`s for victim                         #
+    #                                                                               #
+    #################################################################################
+    # check the current face resistance exp required for level
+    def persistentHisFaceExpForLevel():
+        exp_value_to_set = hisCurrentFaceExpGet()
+        return exp_value_to_set
+    # increase current face resistance exp and increase level if required
+    def increasePersistentHisFaceExp(amount):
+        levels_gained = 0
+        persistent.face_resistance_exp += amount
+        face_exp_required = persistentHisFaceExpForLevel()
+        while persistent.face_resistance_exp >= face_exp_required and face_exp_required > 0:
+            increasePersistentFaceResistanceLevel(1)
+            levels_gained += 1
+            face_exp_required = persistentHisFaceExpForLevel()
+        return levels_gained
+    def increasePersistentFaceResistanceLevel(amount):
+        persistent.face_resistance_level += amount
+        persistent.face_resistance_level = persistentHisFaceExpForLevel()
 
-    def currentFootExpGet():
-        exp_needed = 0
-        if persistent.foot_level <= 999:
-            amount = persistent.foot_level + 1
-            with open(renpy.loader.transfn("CSVs/foot table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            amount = 999
-            with open(renpy.loader.transfn("CSVs/foot table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-            additional = persistent.foot_level - 999
-            total_exp_needed = exp_needed + (additional * persistent.additional_exp)
-            return total_exp_needed
     
-    def currentVaginalExpGet():
-        exp_needed = 0
-        if persistent.vaginal_level <= 999:
-            amount = persistent.vaginal_level + 1
-            with open(renpy.loader.transfn("CSVs/vaginal table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            amount = 999
-            with open(renpy.loader.transfn("CSVs/vaginal table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-            additional = persistent.vaginal_level - 999
-            total_exp_needed = exp_needed + (additional * persistent.additional_exp)
-            return total_exp_needed
-    
-    def currentAnalExpGet():
-        exp_needed = 0
-        total_exp_needed = 0
-        if persistent.anal_level < 999:
-            amount = persistent.anal_level + 1
-            with open(renpy.loader.transfn("CSVs/anal table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            amount = 999
-            with open(renpy.loader.transfn("CSVs/anal table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-            additional = persistent.anal_level - 999
-            total_exp_needed = exp_needed + (additional * persistent.additional_exp)
-            return total_exp_needed
-    ##########################################################
-    # the following are only needed for futa/gay/trans packs # (need to decide if male presenting female or female presenting male)
-    ##########################################################
-    def currentJustTheTipExpGet():
-        exp_needed = 0
-        if persistent.just_the_tip_level <= 999:
-            amount = persistent.just_the_tip_level + 1
-            with open(renpy.loader.transfn("CSVs/just the tip table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            amount = 999
-            with open(reny.loader.transfn("CSVs/just the tip.csv"), "r", newline="") as csvfile:
-                reader = csv.DicReader(csvfile)
-                for idex, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp_needed"])
-            additional = persistent.just_the_tip_level - 999
-            total_exp_needed = exp_needed + (additional + persistent.additional_exp)
-            return total_exp_needed
-    
-    def currentCockExpGet():
-        exp_needed = 0
-        total_exp_needed = 0
-        if persistent.cock_level < 999:
-            amount = persistent.cock_level + 1
-            with open(renpy.loader.transfn("CSVs/cock table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            amount = 999
-            with open(renpy.loader.transfn("CSVs/cock table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-            additional = persistent.cock_level - 999
-            total_exp_needed = exp_needed + (additional * persistent.additional_exp)
-            return total_exp_needed
-    ##########################################################
-    # his persistent exp levels                              #
-    ##########################################################
-    def hisCurrentFaceExpGet():
-        exp_needed = 0
-        total_exp_needed = 0
-        if persistent.face_resistance_level < 999:
-            amount = persistent.face_resistance_level + 1
-            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            return 0
-    
-    def hisCurrentHandExpGet():
-        exp_needed = 0
-        total_exp_needed = 0
-        if persistent.hand_resistance_level < 999:
-            amount = persistent.hand_resistance_level + 1
-            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            return 0
-    
-    def hisCurrentChestExpGet():
-        exp_needed = 0
-        total_exp_needed = 0
-        if persistent.chest_resistance_level < 999:
-            amount = persistent.chest_resistance_level + 1
-            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            return 0
-    
-    def hisCurrentThighExpGet():
-        exp_needed = 0
-        total_exp_needed = 0
-        if persistent.thigh_resistance_level < 999:
-            amount = persistent.thigh_resistance_level + 1
-            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            return 0
-    
-    def hisCurrentTipExpGet():
-        exp_needed = 0
-        total_exp_needed = 0
-        if persistent.tip_resistance_level < 999:
-            amount = persistent.tip_resistance_level + 1
-            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            return 0
-    
-    def hisCurrentCockExpGet():
-        exp_needed = 0
-        total_exp_needed = 0
-        if persistent.cock_resistance_level < 999:
-            amount = persistent.cock_resistance_level + 1
-            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            return 0
-    
-    def hisCurrentAssExpGet():
-        exp_needed = 0
-        total_exp_needed = 0
-        if persistent.ass_resistance_level < 999:
-            amount = persistent.ass_resistance_level + 1
-            with open(renpy.loader.transfn("CSVs/resistance table.csv"), "r", newline="") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for index, row in enumerate(reader):
-                    if (index + 1 == amount):
-                        exp_needed = int(row["exp needed"])
-                        return exp_needed
-        else:
-            return 0
     ##################################################
     #                                                #
     # Functions for night time interactions          #
@@ -480,91 +280,8 @@ init python:
     #
     # Stroke hair (used to reduce wakefulness medium) increases face resistance, raises player arousal small amount
 
-    #
-    # Player mouth
-    #
-    # Kiss, raises player arousal small, raises victim arousal tiny, raises wakefulness small, reduce stamina tiny
-    # used to calculate arousal gained from action
-    def kissArousalGainGlobal():
-        default_arousal_increase, default_multiplier = pc.kissArousalGain()
-        upgrades_arousal_multiplier = (upgrades.mouth_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
-        return actual_arousal_gain
-    # increases players arousal and reduces stamina
-    def kissArousalIncrease():
-        arousal_gain = kissArousalGainGlobal()
-        did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(3)
+    
 
-    # player sucks her fingers, raises player arousal tiny, reduces wakefulness small, moistness players hands, neutral stamina
-
-    # player sucks girl cum/victim cum from fingers, raises player arousal tiny, reduces wakefulness small, removes girl cum from player hands, adds saliva to player hands, neutral stamina
-
-    # player cleans cum from victim, raises player arousal small, neutral wakefulness, removes cum from body part adds saliva to body part, raises suspicion if all cum not cleaned at end of night, neutral stamina
-
-    # 
-    # Player chest
-    #
-    # rub breast, increase player arousal medium, reduce stamina small, reduce wakefulness small
-    # used to calculate arousal gained from action
-    def rubBreastArousalGainGlobal():
-        default_arousal_increase, default_multiplier = pc.rubBreastArousalGain()
-        upgrades_arousal_multiplier = (upgrades.hand_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_arousal_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
-        return actual_arousal_gain
-    # increases players arousal and reduces stamina
-    def rubBreastArousalIncrease():
-        arousal_gain = rubBreastArousalGainGlobal()
-        did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(5)
-        return did_orgasm, arousal_gain
-
-    # rub both breasts, increase player arousal large, reduce stamina medium, reduce wakefulness small
-    # used to calculate arousal gained from action
-    def rubBothBreastArousalGainGlobal():
-        default_arousal_increase, default_multiplier = pc.rubBothBreastArousalGain()
-        upgrades_arousal_multiplier = (upgrades.hand_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_arousal_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
-        return actual_arousal_gain
-    # increases players arousal and reduces stamina
-    def rubBothBreastArousalIncrease():
-        arousal_gain = rubBothBreastArousalGainGlobal()
-        did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(7)
-        return did_orgasm, arousal_gain
-
-    # pinch nipple, increase player arousal large, reduce stamina medium, reduce wakefulness small
-    # used to calculate arousal gained from action
-    def pinchNippleArousalGainGlobal():
-        default_arousal_increase, default_multiplier = pc.pinchNippleArousalGain()
-        upgrades_arousal_multiplier = (upgrades.hand_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_arousal_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total* default_arousal_increase))
-        return actual_arousal_gain
-    # increases players arousal and reduces stamina
-    def pinchNippleArousalIncrease():
-        arousal_gain = pinchNippleArousalGainGlobal()
-        did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(5)
-        return did_orgasm, arousal_gain
-
-    # pinch both nipples, increase player arousal very large, reduce stamina large, reduce wakefulness small
-    # used to calculate arousal gained from action
-    def pinchBothNippleArousalGainGlobal():
-        default_arousal_increase, default_multiplier = pc.pinchBothNipplesArousalGain()
-        upgrades_arousal_multiplier = (upgrades.hand_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_arousal_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
-        return actual_arousal_gain
-    # increases players arousal and reduces stamina
-    def pinchBothNippleArousalIncrease():
-        arousal_gain = pinchBothNippleArousalGainGlobal()
-        did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(7)
-        return did_orgasm, arousal_gain
     #
     # player pussy
     #

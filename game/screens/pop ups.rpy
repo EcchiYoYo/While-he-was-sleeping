@@ -47,14 +47,13 @@ screen persistent_hand_level_up_screen(number_of_levels):
 screen vaginal_level_up_screen(number_of_levels):
     python:
         amount_gained = str(number_of_levels)
-    text f"You gained " + amount_gained + " hand vaginal levels" xpos 0.2 ypos 0.25
+    text f"You gained " + amount_gained + " vaginal levels" xpos 0.2 ypos 0.25
     timer 1.5 action Hide("vaginal_level_up_screen")
 
-screen vaginal_level_up_screen(number_of_levels):
+screen persistent_vaginal_level_up_screen(number_of_levels):
     python:
         amount_gained = str(number_of_levels)
     text f"You gained " + amount_gained + " global vaginal levels" xpos 0.4 ypos 0.25
-    timer 1.5 action Hide("vaginal_level_up_screen")
 
 screen money_earned_popup_screen(how_much):
     python:
