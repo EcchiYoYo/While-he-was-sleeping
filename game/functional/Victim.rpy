@@ -232,10 +232,12 @@ init python:
             multiplier_from_upgrades = (upgrades.mouth_arousal_multiplier / 1000)
             his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier+from_her_mouth_skill + multiplier_from_upgrades)))
             return his_actual_arousal_gain, default_arousal
-           
-
-
-
+        
+        #####################################
+        #                                   #
+        # chest related functions           #
+        #####################################
+        
         def rubChestArousalGain(self):
             default_increase = 5
             hand_skill_multiplier = self.hand_level / 1000
@@ -244,6 +246,30 @@ init python:
         def rubChestArousalGain(self):
             default_increase = 7
             return default_increase
+        
+        def rubChestWithFootArousalGain(amount):
+            default_arousal = 3
+            multiplier_from_her_foot_skill = amount
+            multiplier_from_upgrades = (upgrades.foot_arousal_multiplier / 1000)
+            his_actual_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier_from_her_foot_skill + multiplier_from_upgrades)))
+            return his_actual_arousal_gain, default_arousal
+        #####################################
+        #                                   #
+        # cock and balls related functions  #
+        #####################################
+        def rubHisBallsHerFootArousalGain(amount):
+            default_arousal = 3
+            multiplier_from_her_foot_skill = amount
+            multiplier_from_upgrades = (upgrades.foot_arousal_multiplier / 1000)
+            his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier_from_her_foot_skill + multiplier_from_upgrades)))
+            return his_actual_arousal_gain, default_arousal
+        
+        def footjobHisArousalGain(amount):
+            default_arousal = 5
+            multiplier_from_her_foot_skill = amount
+            multiplier_from_upgrades = (upgrades.foot_arousal_multiplier / 1000)
+            his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier_from_her_foot_skill + multiplier_from_upgrades)))
+            return his_actual_arousal_gain, default_arousal
 
         def increaseWakefulness(self, amount):
             self.wakefulness += amount

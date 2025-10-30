@@ -223,7 +223,7 @@ init python:
             level_up = 0
             self.current_anal_exp += amount
             anal_exp_for_level = self.anal_exp_for_level
-            while self.current_anal_exp >= vaginal_exp_for_level and anal_exp_fro_level > 0: # keep cycling to increase level
+            while self.current_anal_exp >= vaginal_exp_for_level and anal_exp_for_level > 0: # keep cycling to increase level
                 self.increaseAnalLevel(1)
                 level_up += 1
                 anal_exp_for_level = currentAnalExpGet()
@@ -245,6 +245,43 @@ init python:
             anal_skill_multiplier = self.anal_level / 1000
             skill_multiplier = hand_skill_multiplier + anal_skill_multiplier
             return default_arousal, skill_multiplier
+        #####################################
+        #                                   #
+        # foot related functions            #
+        #####################################
+        def increaseFootExp(self, amount):
+            level_up = 0
+            self.current_foot_exp += amount
+            foot_exp_for_level = self.foot_exp_for_level
+            while self.current_foot_exp >= foot_exp_for_level and foot_exp_for_level > 0: # keep cycling to increase level
+                self.increaseFootLevel(1)
+                level_up += 1
+                foot_exp_for_level = currentFootExpGet()
+            return level_up
+
+        def increaseFootLevel(self, amount):
+            self.foot_level += amount
+            self.foot_exp_for_level = currentFootExpGet()
+        
+        def rubChestWithFootArousalGain(self):
+            default_increase = 1
+            foot_skill_multiplier = self.foot_level / 1000
+            return default_arousal, foot_skill_multiplier
+
+        def heSucksHerToesArousalGain(self):
+            default_increase = 3
+            no_multiplier = 0
+            return default_increase, no_multiplier
+        
+        def rubHisBallsHerFootArousalGain(self):
+            default_arousal = 1
+            foot_skill_multiplier = self.foot_level / 1000
+            return default_arousal, foot_skill_multiplier
+        
+        def footjobArousalGain(self):
+            default_arousal = 3
+            foot_skill_multiplier = self.foot_level / 1000
+            return default_arousal, foot_skill_multiplier
 
         def resetMoistState(self):
             self.finger_state = "dry"

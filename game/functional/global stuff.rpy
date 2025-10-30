@@ -247,9 +247,10 @@ init python:
 
     #################################################################################
     #                                                                               #
-    # body part experience gain for persistent`s for victim                         #
+    # persistent body part experience gain`s for for victim                         #
     #                                                                               #
     #################################################################################
+    # face resistance level related functions
     # check the current face resistance exp required for level
     def persistentHisFaceExpForLevel():
         exp_value_to_set = hisCurrentFaceExpGet()
@@ -266,13 +267,106 @@ init python:
         return levels_gained
     def increasePersistentFaceResistanceLevel(amount):
         persistent.face_resistance_level += amount
-        persistent.face_resistance_level = persistentHisFaceExpForLevel()
-
+        persistent.face_resistance_exp_for_level = persistentHisFaceExpForLevel()
+    # hand related
+    def persistentHisHandExpForLevel():
+        exp_value_to_set = hisCurrentHandExpGet()
+        return exp_value_to_set
     
-    ##################################################
-    #                                                #
-    # Functions for night time interactions          #
-    #                                                #
+    def increasePersistentHisHandExp(amount):
+        levels_gained = 0
+        persistent.hand_resistance_exp += amount
+        hand_exp_required = persistentHisHandExpForLevel()
+        while persistent.hand_resistance_exp >= hand_exp_required and hand_exp_required > 0:
+            increasePersistentHandResistanceLevel(1)
+            levels_gained += 1
+            hand_exp_required = persistentHisHandExpForLevel()
+        return levels_gained
+    def increasePersistentHandResistanceLevel(amount):
+        persistent.hand_resistance_level += amount
+        persistent.hand_resistance_exp_for_level = persistentHisHandExpForLevel()
+    # chest related
+    def persistentHisChestExpForLevel():
+        exp_value_to_set = hisCurrentChestExpGet()
+        return exp_value_to_set
+    def increasePersistentHisChestExp(amount):
+        levels_gained = 0
+        persistent.chest_resistance_exp += amount
+        chest_exp_required = persistentHisChestExpForLevel()
+        while persistent.chest_resistance_exp >= chest_exp_required and chest_exp_required > 0:
+            increasePersistentChestResistanceLevel(1)
+            levels_gained += 1
+            chest_exp_required = persistentHisChestExpForLevel()
+        return levels_gained
+    
+    def increasePersistentChestResistanceLevel(amount):
+        persistent.chest_resistance_level += amount
+        persistent.chest_resistance_exp_for_level = persistentHisChestExpForLevel()
+    # thigh related
+    def persistentHisThighExpForLevel():
+        exp_value_to_set = hisCurrentThighExpGet()
+        return exp_value_to_set
+    def increasePersistentHisThighExp(amount):
+        levels_gained = 0
+        persistent.thigh_resistance_exp += amount
+        thigh_exp_required = persistentHisThighExpForLevel()
+        while persistent.thigh_resistance_exp >= thigh_exp_required and thigh_exp_required > 0:
+            increasePersistentThighResistanceLevel(1)
+            levels_gained += 1
+            thigh_exp_required = persistentHisThighExpForLevel()
+        return levels_gained
+    def increasePersistentThighResistanceLevel(amount):
+        persistent.thigh_resistance_level += amount
+        persistent.thigh_resistance_exp_for_level = persistentHisThighExpForLevel()
+    # tip related
+    def persistentHisTipExpForLevel():
+        exp_value_to_set = hisCurrentTipExpGet()
+        return exp_value_to_set
+    def increasePersistentHisTipExp(amount):
+        levels_gained = 0
+        persistent.tip_resistance_exp += amount
+        tip_exp_required = persistentHisTipExpForLevel()
+        while persistent.tip_resistance_exp >= tip_exp_required and tip_exp_required > 0:
+            increasePersistentTipResistanceLevel(1)
+            levels_gained += 1
+            tip_exp_required = persistentHisTipExpForLevel()
+        return levels_gained
+    def increasePersistentTipResistanceLevel(amount):
+        persistent.tip_resistance_level += amount
+        persistent.tip_resistance_exp_for_level = persistentHisTipExpForLevel()
+    # cock related
+    def persistentHisCockExpForLevel():
+        exp_value_to_set = hisCurrentChestExpGet()
+        return exp_value_to_set
+    def increasePersistentHisCockExp(amount):
+        levels_gained = 0
+        persistent.cock_resistance_exp += amount
+        cock_exp_required = persistentHisCockExpForLevel()
+        while persistent.cock_resistance_exp >= cock_exp_required and cock_exp_required > 0:
+            increasePersistentCockResistanceLevel(1)
+            levels_gained += 1
+            cock_exp_required = persistentHisCockExpForLevel()
+        return levels_gained
+    def increasePersistentCockResistanceLevel(amount):
+        persistent.cock_resistance_level += amount
+        persistent.cock_resistance_exp_for_level = persistentHisCockExpForLevel()
+    # ass related
+    def persistentHisAssExpForLevel():
+        exp_value_to_set = hisCurrentAssExpGet()
+        return exp_value_to_set
+    def increasePersistentHisAssExp(amount):
+        levels_gained = 0
+        persistent.ass_resistance_exp += amount
+        ass_exp_required = persistentHisAssExpForLevel()
+        while persistent.ass_resistance_exp >= ass_exp_required and ass_exp_required > 0:
+            increasePersistentAssResistanceLevel(1)
+            levels_gained += 1
+            ass_exp_required
+        return levels_gained
+    def increasePersistentAssResistanceLevel(amount):
+        persistent.ass_resistance_level += 1
+        persistent.ass_resistance_exp_for_level = persistentHisAssExpForLevel()
+    
     ##################################################
     # actions using players body                     #
     ##################################################
@@ -300,16 +394,7 @@ init python:
 
     # put tip of cock in victims mouth, increase player arousal large, reduce stamina medium, reduce wakefulness small
 
-    #
-    # players feet
-    #
-    # caress chest with foot, increase player arousal very tiny, increase victim arousal small, increase wakefulness small, reduce stamina small
-
-    # get victim to suck toe, increase player arousal small, reduce stamina small, increase wakefulness small
-
-    # rub victim balls with foot, increase player arousal very tiny, increase victim arousal tiny, reduce stamina tiny increase wakefulness tiny
-
-    # foot job, increase player arousal tiny, increase victim arousal medium, reduce stamina medium, increase wakefulness medium
+    
     ##################################################
     # actions using victims body                     #
     ##################################################
