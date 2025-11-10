@@ -55,6 +55,16 @@ screen persistent_vaginal_level_up_screen(number_of_levels):
         amount_gained = str(number_of_levels)
     text f"You gained " + amount_gained + " global vaginal levels" xpos 0.4 ypos 0.25
 
+screen anal_level_up_screen(number_of_levels):
+    python:
+        amount_gained = str(number_of_levels_gained)
+    text f"You gained " + amount_gained + " anal levels" xpos 0.2 ypos 0.30
+
+screen persistent_anal_level_up_screen(number_of_levels_gained):
+    python:
+        amount_gained = str(number_of_levels_gained)
+    text f"You gained " + amount_gained + " global anal levels" xpos 0.4 ypos 0.30
+
 screen money_earned_popup_screen(how_much):
     style_prefix "popupTextColorStyle"
     python:
