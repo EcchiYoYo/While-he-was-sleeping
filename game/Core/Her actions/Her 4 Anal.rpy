@@ -1,15 +1,17 @@
 # rub ass
 # finger ass
 label rub_bum_label:
+    python:
+        resetEventRelatedVariables()
     "You gently rub your bum cheeks"
     #
     #
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = rubBumCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = rubBumCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
         "You orgasmed from rubbing your bum cheeks"
@@ -20,16 +22,18 @@ label rub_bum_label:
     jump his_room
 
 label finger_arse_label:
+    python:
+        resetEventRelatedVariables()
     "You finger your own arsehole"
     #
     #
     #
     #
     python:
-        did_hand_level_up, did_persistent_hand_level_up, did_anal_level_up, did_persistent_anal_level_up, coin_gain, her_global_arousal_gain = fingerArseholeCombinedVariableGenerator()
+        did_hand_level_up, did_persistent_hand_level_up, did_anal_level_up, did_persistent_anal_level_up, coin_gain, her_arousal_gain = fingerArseholeCombinedVariableGenerator()
     
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
         "You orgasmed while fingering yourself"

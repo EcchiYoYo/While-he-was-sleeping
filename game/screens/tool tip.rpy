@@ -13,11 +13,6 @@ screen her_tooltip(input_text, x_pos, y_pos):
             vbox:
                 text input_text
 
-style herTooltips_text:
-    # font
-    size 18
-    color "#d77ac1"
-
 screen his_tooltip(input_text, x_pos, y_pos):
     style_prefix "hisTooltips"
     frame:
@@ -34,11 +29,6 @@ screen his_tooltip(input_text, x_pos, y_pos):
             vbox:
                 text input_text
 
-style hisTooltips_text:
-    # font
-    size 18
-    color "#5b7dbe"
-
 screen global_tooltip(input_text, x_pos, y_pos):
     style_prefix "globalTooltips"
     frame:
@@ -54,8 +44,3 @@ screen global_tooltip(input_text, x_pos, y_pos):
             box_wrap True
             vbox:
                 text input_text
-
-style globalTooltips_text:
-    # font
-    size 18
-    color  "#d0d0d1"

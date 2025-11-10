@@ -56,8 +56,8 @@ screen persistent_vaginal_level_up_screen(number_of_levels):
     text f"You gained " + amount_gained + " global vaginal levels" xpos 0.4 ypos 0.25
 
 screen money_earned_popup_screen(how_much):
+    style_prefix "popupTextColorStyle"
     python:
         amount_gained = str(how_much)
     text f"You earned £" + amount_gained xpos 0.5 ypos 0.5
     timer 1.5 action Hide("money_earned_popup_screen")
-   

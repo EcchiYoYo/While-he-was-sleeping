@@ -4,14 +4,16 @@
 # massage clit
 # finger pussy (only option to also increase vaginal exp)
 label rub_pubis_label:
+    python:
+        resetEventRelatedVariables()
     "Your rub your pubis"
     #
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = rubPubisCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = rubPubisCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
         "You orgasmed from rubbing your pubis"
@@ -22,14 +24,16 @@ label rub_pubis_label:
     jump his_room
 
 label rub_inner_thigh_label:
+    python:
+        resetEventRelatedVariables()
     "Your massage the top of your inner thigh"
     #
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = rubInnerThighCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = rubInnerThighCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
         "You orgasmed while rubbing your inner thigh"
@@ -40,14 +44,16 @@ label rub_inner_thigh_label:
     jump his_room
 
 label rub_outer_pussy_lips_label:
+    python:
+        resetEventRelatedVariables()
     "Your rub your outer pussy lips"
     #
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = rubOuterPussyLipsCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = rubOuterPussyLipsCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
         "You orgasmed while rubbing your outer pussy lips"
@@ -58,14 +64,16 @@ label rub_outer_pussy_lips_label:
     jump his_room
 
 label massage_clit_label:
+    python:
+        resetEventRelatedVariables()
     "You flick your bean"
     #
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain = massageClitCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = massageClitCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
         "You orgasmed while flicking your bean"
@@ -76,15 +84,17 @@ label massage_clit_label:
     jump his_room
 
 label finger_pussy_label:
+    python:
+        resetEventRelatedVariables()
     #
     # check for virginity (if not virgin more fingers, maybe if virgin some reference to not pushing to deep in fear of breaking hymen)
     #
     "You finger yourself"
     python:
         # check code to ensure dual multiplier is being accounted for. as well as dual skill increase
-        did_hand_level_up, did_persistent_hand_level_up, did_vaginal_level_up, did_persistent_vaginal_level_up, coin_gain, her_global_arousal_gain = fingerPussyCombinedVariableGenerator()
+        did_hand_level_up, did_persistent_hand_level_up, did_vaginal_level_up, did_persistent_vaginal_level_up, coin_gain, her_arousal_gain = fingerPussyCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
         "You orgasmed while fingering yourself"

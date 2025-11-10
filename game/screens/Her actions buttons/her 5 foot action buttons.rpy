@@ -95,7 +95,7 @@ screen footjob_button():
         focus_mask True
         idle "images/buttons/footjob button.png"
         hover "images/buttons/footjob button hover.png"
-        hovered Show("her_tooltip", input_text = "Masturbate him with your foot", x_pos = 0.15, y_pos = 0.53)
+        hovered Show("her_tooltip", input_text = "Masturbate him with your feet", x_pos = 0.15, y_pos = 0.53)
         unhovered Hide("her_tooltip")
         #
         #

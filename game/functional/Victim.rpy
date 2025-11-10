@@ -219,18 +219,18 @@ init python:
         #####################################
         # kiss him
         # calculate his arousal values both default and multiplied for coins and actual arousal gain
-        def kissArousalGain(amount):
+        def kissArousalGain(self, amount):
             default_arousal = 3
             multiplier_from_her_mouth_skill = amount
             multiplier_from_upgrades = (upgrades.mouth_arousal_multiplier / 1000)
             his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier_from_her_mouth_skill + multiplier_from_upgrades)))
             return his_actual_arousal_gain, default_arousal
         # calculate his arousal values for deep kiss
-        def deepKissArousalGain(amount):
+        def deepKissArousalGain(self, amount):
             default_arousal = 5
             multiplier_from_her_mouth_skill = amount
             multiplier_from_upgrades = (upgrades.mouth_arousal_multiplier / 1000)
-            his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier+from_her_mouth_skill + multiplier_from_upgrades)))
+            his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier_from_her_mouth_skill + multiplier_from_upgrades)))
             return his_actual_arousal_gain, default_arousal
         
         #####################################
@@ -247,7 +247,7 @@ init python:
             default_increase = 7
             return default_increase
         
-        def rubChestWithFootArousalGain(amount):
+        def rubChestWithFootArousalGain(self, amount):
             default_arousal = 3
             multiplier_from_her_foot_skill = amount
             multiplier_from_upgrades = (upgrades.foot_arousal_multiplier / 1000)
@@ -257,14 +257,14 @@ init python:
         #                                   #
         # cock and balls related functions  #
         #####################################
-        def rubHisBallsHerFootArousalGain(amount):
+        def rubHisBallsHerFootArousalGain(self, amount):
             default_arousal = 3
             multiplier_from_her_foot_skill = amount
             multiplier_from_upgrades = (upgrades.foot_arousal_multiplier / 1000)
             his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier_from_her_foot_skill + multiplier_from_upgrades)))
             return his_actual_arousal_gain, default_arousal
         
-        def footjobHisArousalGain(amount):
+        def footjobHisArousalGain(self, amount):
             default_arousal = 5
             multiplier_from_her_foot_skill = amount
             multiplier_from_upgrades = (upgrades.foot_arousal_multiplier / 1000)

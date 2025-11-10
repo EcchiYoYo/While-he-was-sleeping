@@ -137,7 +137,7 @@ screen finger_pussy_button():
         focus_mask True
         if pc.finger_state == "dry" and pc.vaginal_state == "dry":
             idle "images/buttons/finger button locked.png"
-            hovered Show("her_tooltip", input_text = "Your fingers or pussy must be moist to perform this action, raise arousal to increase pussy moistness or coat your fingers in some fluid")
+            hovered Show("her_tooltip", input_text = "Your fingers or pussy must be moist to perform this action, raise arousal to increase pussy moistness or coat your fingers in some fluid", x_pos = 0.15, y_pos = 0.33)
         else:
             idle "images/buttons/finger button.png"
             hover "images/buttons/finger button hover.png"

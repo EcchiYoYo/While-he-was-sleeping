@@ -14,6 +14,7 @@ screen practice_technique_screen():
     #
     #
     textbutton "Close":
+        style_prefix "practiceScreenTextButton"
         xalign 0.5
         ypos 0.92
         action Jump("players_room")

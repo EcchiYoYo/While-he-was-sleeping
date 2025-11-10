@@ -11,7 +11,7 @@ init python:
             self.block += 1
             if self.block > 4:
                 self.block = 1
-                advanceDay(1)
+                self.advanceDay(1)
         
         def advanceDay(self, amount):
             self.days_passed += 1
@@ -426,3 +426,14 @@ init python:
         did_orgasm = man.increaseArousal(arousal_gain)
         pc.reduceStamina(5)
         return did_orgasm, arousal_gain
+
+    def resetEventRelatedVariables():
+        did_level_up = False
+        did_persistent_level_up = False
+        did_he_level_up = False
+        did_he_persistent_level_up = False
+        did_orgasm = False
+        did_he_orgasm = False
+        coin_gain = 0
+        his_arousal_gain = 0
+        her_arousal_gain = 0

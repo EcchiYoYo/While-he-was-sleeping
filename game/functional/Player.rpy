@@ -53,7 +53,7 @@ init python:
             # set mouth exp and level
             self.current_mouth_exp = mouth_exp
             self.mouth_level = mouth_level
-            self.hand_exp_for_level = self.currentMouthExpGet()
+            self.mouth_exp_for_level = self.currentMouthExpGet()
             # set foot exp and level
             self.current_foot_exp = foot_exp
             self.foot_level = foot_level
@@ -94,12 +94,12 @@ init python:
             while self.current_mouth_exp >= mouth_exp_for_level and mouth_exp_for_level > 0:
                 self.increaseMouthLevel(1)
                 level_up += 1
-                mouth_exp_for_level = currentMouthExpGet()
+                mouth_exp_for_level = self.currentMouthExpGet()
             return level_up
         
         def increaseMouthLevel(self, amount):
             self.mouth_level += 1
-            self.mouth_exp_for_level = currentMouthExpGet()
+            self.mouth_exp_for_level = self.currentMouthExpGet()
         
         def kissArousalGain(self):
             default_increase = 5
@@ -139,12 +139,12 @@ init python:
             while self.current_hand_exp >= hand_exp_for_level and hand_exp_for_level > 0: # keep cycling this to increase level
                 self.increaseHandLevel(1)
                 level_up += 1
-                hand_exp_for_level = pc.currentHandExpGet()
+                hand_exp_for_level = self.currentHandExpGet()
             return level_up
         # function to increase hand level, used when hand exp is greater than the amount required for the next level
         def increaseHandLevel(self, amount):
             self.hand_level += 1
-            self.hand_exp_for_level = pc.currentHandExpGet()
+            self.hand_exp_for_level = self.currentHandExpGet()
             return self.hand_exp_for_level
 
         def rubBreastArousalGain(self):
@@ -179,13 +179,13 @@ init python:
             while self.current_vaginal_exp >= vaginal_exp_for_level and vaginal_exp_for_level > 0: # keep cycling to increase level
                 self.increaseVaginalLevel(1)
                 level_up += 1
-                vaginal_exp_for_level = currentVaginalExpGet()
+                vaginal_exp_for_level = self.currentVaginalExpGet()
             return level_up
         
         # function to increase vaginal level, used when vaginal exp is greater than the amount required for the next level
         def increaseVaginalLevel(self, amount):
             self.vaginal_level += amount
-            self.vaginal_exp_for_level = currentVaginalExpGet()
+            self.vaginal_exp_for_level = self.currentVaginalExpGet()
 
         def rubPubisArousalGain(self):
             default_increase = 3
@@ -226,13 +226,13 @@ init python:
             while self.current_anal_exp >= vaginal_exp_for_level and anal_exp_for_level > 0: # keep cycling to increase level
                 self.increaseAnalLevel(1)
                 level_up += 1
-                anal_exp_for_level = currentAnalExpGet()
+                anal_exp_for_level = self.currentAnalExpGet()
             return level_up
         
         # function to increase anal level, used when anal exp is greater than anal exp required for the next level
         def increaseAnalLevel(self, amount):
             self.anal_level += amount
-            self.anal_exp_for_level = currentAnalExpGet()
+            self.anal_exp_for_level = self.currentAnalExpGet()
         
         def rubBumArousalGain(self):
             default_increase = 5
@@ -256,12 +256,12 @@ init python:
             while self.current_foot_exp >= foot_exp_for_level and foot_exp_for_level > 0: # keep cycling to increase level
                 self.increaseFootLevel(1)
                 level_up += 1
-                foot_exp_for_level = currentFootExpGet()
+                foot_exp_for_level = self.currentFootExpGet()
             return level_up
 
         def increaseFootLevel(self, amount):
             self.foot_level += amount
-            self.foot_exp_for_level = currentFootExpGet()
+            self.foot_exp_for_level = self.currentFootExpGet()
         
         def rubChestWithFootArousalGain(self):
             default_increase = 1

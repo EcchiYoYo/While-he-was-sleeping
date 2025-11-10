@@ -5,7 +5,7 @@ init python:
     def kissArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.kissArousalGain()
         upgrades_arousal_multiplier = (upgrades.mouth_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_multiplier
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
     # increases players arousal and reduces stamina
@@ -17,8 +17,8 @@ init python:
     # deep kiss
     def deepKissArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.deepKissArousalGain()
-        upgrades_arousal_multiplier = (upgrades.mouth_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades-multiplier
+        upgrades_arousal_multiplier = (upgrades.mouth_arousal_multiplier / 1000)
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
     # increases players arousal and reduces stamina
@@ -31,7 +31,7 @@ init python:
     def suckDryFingersArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.suckHerFingersArousalGain()
         upgrades_arousal_multiplier = (upgrades.mouth_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_multiplier
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
     # increase players arousal no stamina reduction
@@ -49,7 +49,7 @@ init python:
     def suckCumFingersArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.suckCumFingersArousalGain()
         upgrades_arousal_multiplier = (upgrades.mouth_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_multiplier
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
     # increase players arousal no stamina reduction
@@ -67,7 +67,7 @@ init python:
     def suckFluidsFromHimArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.suckFluidsFromHimArousalGain()
         upgrades_arousal_multiplier = (upgrades.mouth_arousal_multiplier / 1000)
-        multiplier_total = default_multiplier + upgrades_multiplier
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
     # increase players arousal no stamina reduction
