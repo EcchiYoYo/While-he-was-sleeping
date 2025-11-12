@@ -60,6 +60,15 @@ init python:
     # Functions combining the above plus character specific     #
     # functions to generate variables required for events       #
     #############################################################
+    def introRubBreastCombinedVariableGenerator():
+        her_global_arousal_gain = 5
+        did_level_up = pc.increaseHandExp(her_global_arousal_gain)
+        did_persistent_level_up = increasePersistentHandExp(her_global_arousal_gain)
+        did_orgasm, not_used = rubBreastArousalIncrease()
+        base_coin_gain = her_global_arousal_gain
+        coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
+        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain, did_orgasm
+
     def rubBreastCombinedVariableGenerator():
         her_global_arousal_gain = rubBreastArousalGainGlobal()
         did_level_up = pc.increaseHandExp(her_global_arousal_gain)
@@ -67,7 +76,7 @@ init python:
         did_orgasm, not_used = rubBreastArousalIncrease()
         base_coin_gain, not_used = pc.rubBreastArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
-        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain
+        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain, did_orgasm
     
     def rubBothBreastCombinedVariableGenerator():
         her_global_arousal_gain = rubBothBreastArousalGainGlobal()
@@ -76,7 +85,7 @@ init python:
         did_orgasm, not_used = rubBothBreastArousalIncrease()
         base_coin_gain, not_used = pc.rubBothBreastArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
-        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain
+        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain, did_orgasm
         
     def pinchNippleCombinedVariableGenerator():
         her_global_arousal_gain = pinchNippleArousalGainGlobal()
@@ -85,7 +94,7 @@ init python:
         did_orgasm, not_used = pinchNippleArousalIncrease()
         base_coin_gain, not_used = pc.pinchNippleArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
-        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain
+        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain, did_orgasm
     
     def pinchBothNippleCombinedVariableGenerator():
         her_global_arousal_gain = pinchBothNippleArousalGainGlobal()
@@ -94,4 +103,4 @@ init python:
         did_orgasm, not_used = pinchBothNippleArousalIncrease()
         base_coin_gain, not_sued = pc.pinchBothNippleArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
-        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain
+        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain, did_orgasm

@@ -8,6 +8,11 @@ screen grace_shop_screen():
     image "screens/gabrielle shop/shop background.png" xalign 0.08 ypos 0.1 yzoom 0.8 xzoom 0.9
     image "screens/gabrielle shop/shop background.png" xalign 0.92 ypos 0.1 yzoom 0.8 xzoom 0.9
     image "screens/gabrielle shop/shop background.png" xalign 0.5 ypos 0.7 yzoom 0.25 xzoom 1.0
+    text "Money: [pc.money]":
+        xpos 0.625
+        ypos 0.705
+        xanchor 1.0 # anchoring o the right, makes text move left when amount of coins increases
+        yanchor 0.0
 
 
 

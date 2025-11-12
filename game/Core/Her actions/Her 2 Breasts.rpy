@@ -16,8 +16,11 @@ label rub_breast_introduction_scene:
     #
     #
     python:
-        intro_2_completed = True
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = rubBreastCombinedVariableGenerator()
+        if intro_2_completed == False:
+            did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = introRubBreastCombinedVariableGenerator()
+            intro_2_completed = True
+        else:
+            did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = rubBreastCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
@@ -44,7 +47,7 @@ label rub_left_breast_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = rubBreastCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = rubBreastCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
@@ -65,7 +68,7 @@ label rub_right_breast_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = rubBreastCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = rubBreastCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
@@ -86,7 +89,7 @@ label rub_both_breasts_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = rubBothBreastCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = rubBothBreastCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
@@ -107,7 +110,7 @@ label pinch_left_nipple_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = pinchNippleCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = pinchNippleCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
@@ -128,7 +131,7 @@ label pinch_right_nipple_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = pinchNippleCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = pinchNippleCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
@@ -149,7 +152,7 @@ label pinch_both_nipple_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = pinchBothNippleCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = pinchBothNippleCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
