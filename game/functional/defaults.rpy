@@ -27,6 +27,7 @@ default gabrielle = Character("????", image="gabrielle", who_color="#802626")
 default grace = Character("????", image="grace", who_color="#64d6df")
 
 default game_time = GameTime()
+default groceries = Groceries()
 default upgrades = Upgrades(int(floor(persistent.coins_earned/2)))
 default day_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 default random_girl_names_list = ["Bonnie", "Gemma", "Genevieve", "Amelia", "Freya", "Annalise", "Aurora", "Calista", "Calliope", "Dakota", "Eliza", "Harper", "Ivy", "Jolie", "Josephine", "Julia", "Leah", "Lorelei", "Nicole"]

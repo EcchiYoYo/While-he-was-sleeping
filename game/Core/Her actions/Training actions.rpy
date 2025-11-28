@@ -1,73 +1,142 @@
 label train_hands_label:
     python:
-        noneFunction()
-        #
-        # some function to check current hand level
-        # pc.current_hand_exp
-        # pc.hand_level
-        # pc.hand_exp_for_level
-        #
-    "This scene will be where to train your hands using [gabrielle.name]`s techniques."
-    #
-    # some function to add points to hand skill
-    #
+        location_choice = "None" # used to ensure variable is created and populated "Breast", "Pubis", "Bum", "Inner thigh", "Both Breasts"
+        location_choice = handTrainingLocationChoice() # choose random location to massage with hand
+        resetEventRelatedVariables()
+    if location_choice == "Breast":
+        "This scene will be where to train your hands using [gabrielle.name]`s techniques on your breasts."
+    elif location_choice == "Pubis":
+        "This scene will be where to train your hands using [gabrielle.name]`s techniques on your pubis."
+    elif location_choice == "Bum":
+        "This scene will be where to train your hands using [gabrielle.name]`s techniques on your bum."
+    elif location_choice == "Inner thigh":
+        "This scene will be where to train your hands using [gabrielle.name]`s techniques on your inner thigh."
+    elif location_choice == "Both Breasts":
+        "This scene will be where to train your hands using [gabrielle.name]`s techniques on both of your breasts."
+    else:
+        "{color=#E32636}Something went wrong with your randomly selected training plan, report this to the dev"
+    python:
+        her_arousal_gain, did_orgasm, did_level_up, did_persistent_level_up, coin_gain, stamina_cost = handTrainingVariableGenerator(location_choice)
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen player_stamina_reduction_screen(amount_lost = stamina_cost)
+    $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
+    if did_orgasm == True:
+        "You orgasmed while training your hands"
+    if did_level_up == True:
+        show screen hand_level_up_screen(number_of_levels = [did_level_up])
+    if did_persistent_level_up == True:
+        show screen persistent_hand_level_up_screen(number_of_levels = [did_persistent_level_up])
+    
     jump players_room
 
 label train_mouth_label:
     python:
-        noneFunction()
-        #
-        # some function to check current mouth level
-        # pc.self.current_mouth_exp
-        # pc.mouth_level
-        # pc.hand_exp_for_level
-        #
-    "This scene will be where you train your mouth using the techniques taught by [gabrielle.name]."
-    #
-    # some function to add points to mouth skill
-    #
+        location_choice = "None"
+        location_choice = mouthTrainingLocationChoice()
+        resetEventRelatedVariables()
+    if location_choice == "Fingers":
+        "This scene will be where you train your mouth using the techniques taught by [gabrielle.name] on your fingers."
+    elif location_choice == "Dildo":
+        "This scene will be where you train your mouth using the techniques taught by [gabrielle.name] using your dildo."
+    elif location_choice == "Training dummy":
+        "This scene will be where you train your mouth using the techniques taught by [gabrielle.name] training dummy."
+    else:
+        "{color=#E32636}Something went wrong with your randomly selected training plan, report this to the dev"
+    python:
+        her_arousal_gain, did_orgasm, did_level_up, did_persistent_level_up, coin_gain, stamina_cost = mouthTrainingVariableGenerator(location_choice)
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen player_stamina_reduction_screen(amount_lost = stamina_cost)
+    $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
+    if did_orgasm == True:
+        "You orgasmed while training your mouth"
+    if did_level_up == True:
+        show screen mouth_level_up_screen(number_of_levels = [did_level_up])
+    if did_persistent_level_up == True:
+        show screen persistent_mouth_level_up_screen(number_of_levels = [did_persistent_level_up])
     jump players_room
 
 label train_feet_label:
     python:
-        noneFunction()
-        #
-        # some function to check current foot level
-        # current_foot_exp
-        # foot_level
-        # foot_exp_for_level
-        #
-    "This scene will use the techniques taught by [gabrielle.name] to train foot level."
-    #
-    # some function to add points to feet level
-    #
+        location_choice = "None"
+        location_choice = footTrainingLocationChoice()
+        resetEventRelatedVariables()
+    if location_choice == "Fingers":
+        "This scene will be training your feet using your hands"
+    elif location_choice == "Dildo":
+        "This scene will be training your feet using a dildo"
+    elif location_choice == "Training dummy":
+        "This scene will be training your feet using a training dummy"
+    else:
+        "{color=#E32636}Something went wrong with your randomly selected training plan, report this to the dev"
+    python:
+        her_arousal_gain, did_orgasm, did_level_up, did_persistent_level_up, coin_gain, stamina_cost = footTrainingVariableGenerator(location_choice)
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen player_stamina_reduction_screen(amount_lost = stamina_cost)
+    $ renpy.block_rollback() # This must be here to prevent rolling back and gaining additional persistent exp
+    if did_orgasm == True:
+        "You somehow orgasmed from the thought or using your feet"
+    if did_level == True:
+        show screen foot_level_up_screen(number_of_levels = [did_level_up])
+    if did_persistent_level_up == True:
+        show screen persistent_foot_level_up_screen(number_of_levels = [did_level_up])
     jump players_room
 
 label train_vaginal_label:
     python:
-        noneFunction()
-        #
-        # some function to check current vaginal level
-        # current_vaginal_exp
-        # vaginal_level
-        # vaginal_exp_for_level
-        #
-    "This scene will use [gabrielle.name]`s techniques to train your vaginal skills."
-    #
-    # some function to increase vaginal experience
-    #
+        location_choice = "None"
+        location_choice = vaginalTrainingChoice()
+        resetEventRelatedVariables()
+    if location_choice == "Fingers":
+        "Vaginal training using fingers"
+    elif location_choice == "Clit":
+        "Vaginal training massaging clit"
+    elif location_choice == "Dildo outer":
+        "Vaginal training outercourse with dildo"
+    elif location_choice == "Dildo inter":
+        "Vaginal training intercourse with dildo"
+    elif location_choice == "Training dummy outer":
+        "Vaginal training outercourse with training dummy"
+    elif location_choice == "Training dummy inter":
+        "Vaginal training intercourse with training dummy"
+    else:
+        "{color=#E32636}Something went wrong with your randomly selected training plan, report this to the dev"
+    python:
+        her_arousal_gain, did_orgasm, did_level_up, did_persistent_level_up, coin_gain, stamina_cost = vaginalTrainingVariableGenerator(location_choice)
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen player_stamina_reduction_screen(amount_lost = stamina_cost)
+    $ renpy.block_rollback() # This must be here to prevent rolling back and gaining additional persistent exp
+    if did_orgasm == True:
+        "Your orgasmed while training your pussy"
+    if did_level == True:
+        show screen vaginal_level_up_screen(number_of_levels = [did_level_up])
+    if did_persistent_level_up == True:
+        show screen persistent_vaginal_level_up_screen(number_of_levels = [did_level_up])
     jump players_room
 
 label train_anal_label:
     python:
-        noneFunction()
-        #
-        # some function to check current anal level
-        # self.current_anal_exp
-        # self.anal_level
-        # self.anal_exp_for_level
-        #
-    "This scene will train your anal skill using the techniques taught by [gabrielle.name]."
+        location_choice = "None"
+        location_choice = analTrainingChoice()
+        resetEventRelatedVariables()
+    if location_choice == "Fingers":
+        "You train your arse with your fingers"
+    elif location_choice == "Dildo outer":
+        "You train your arse by using your dildo outside"
+    elif location_choice == "Dildo inter":
+        "You train your arse by fucking it with your dildo"
+    elif location_choice == "Training dummy outer":
+        "You train your arse by using your training dummy outside"
+    elif location_choice == "Training dummy inter":
+        "You train your arse by fucking your training dummy"
+    else:
+        "{color=#E32636}Something went wrong with your randomly selected training plan, report this to the dev"
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen player_stamina_reduction_screen(amount_lost = stamina_cost)
     #
     # some function to increase anal level
     #
@@ -80,6 +149,7 @@ label train_anal_label:
 label train_just_the_tip_label:
     python:
         noneFunction()
+        resetEventRelatedVariables()
         #
         # some function to check current just the tip level
         # current_just_the_tip_exp
@@ -87,6 +157,9 @@ label train_just_the_tip_label:
         # just_the_tip_exp_for_level
         #
     "Train your just the tip skill using the techniques taught by [gabrielle.name]."
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen player_stamina_reduction_screen(amount_lost = stamina_cost)
     #
     # some function to increase just the tip experience
     #
@@ -95,6 +168,7 @@ label train_just_the_tip_label:
 label train_cock_label:
     python:
         noneFunction()
+        resetEventRelatedVariables()
         #
         # some function to check current cock experience
         # current_cock_exp
@@ -102,6 +176,9 @@ label train_cock_label:
         # cock_exp_for_level
         #
     "Use the skills taught by [gabrielle.name] to train your cock skill."
+    show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen player_stamina_reduction_screen(amount_lost = stamina_cost)
     #
     # some function to increase cock experience
     #

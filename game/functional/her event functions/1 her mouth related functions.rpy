@@ -81,6 +81,30 @@ init python:
                 arousal_gain = 0
         did_orgasm = pc.increaseArousal(arousal_gain)
         return did_orgasm, arousal_gain
+    # suck dildo, used for training
+    def suckDildoArousalGainGlobal():
+        default_arousal_increase, default_multiplier = pc.suckDildoArousalGain()
+        upgrades_arousal_multiplier = (upgrades.mouth_arousal_multiplier / 1000)
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
+        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
+        return actual_arousal_gain
+    def suckDildoArousalIncrease():
+        arousal_gain = suckDildoArousalGainGlobal()
+        did_orgasm = pc.increaseArousal(arousal_gain)
+        pc.reduceStamina(2)
+        return did_orgasm, arousal_gain
+    # suck training dummy, used for training
+    def suckDummyArousalGainGlobal():
+        default_arousal_increase, default_multiplier = pc.suckDummyArousalGain()
+        upgrades_arousal_multiplier = (upgrades.mouth_arousal_multiplier / 1000)
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
+        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
+        return actual_arousal_gain
+    def suckDummyArousalIncrease():
+        arousal_gain = suckDummyArousalGainGlobal()
+        did_orgasm = pc.increaseArousal(arousal_gain)
+        pc.reduceStamina(4)
+        return did_orgasm, arousal_gain
     #############################################################
     # Functions combining the above plus character specific     #
     # functions to generate variables required for events       #

@@ -54,7 +54,10 @@ init python:
     def massageClitArousalIncrease():
         arousal_gain = massageClitArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(7)
+        if game_time.block == 4:
+            pc.reduceStamina(7)
+        else:
+            pc.reduceStamina(6)
         return did_orgasm, arousal_gain
     # finger pussy (requires moist pussy), increase player arousal very large, reduce stamina large, reduce wakefulness small
     # used to calculate arousal gained from action
@@ -68,8 +71,38 @@ init python:
     def fingerPussyArousalIncrease():
         arousal_gain = fingerPussyArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(10)
+        if game_time.block == 4:
+            pc.reduceStamina(10)
+        else:
+            pc.reduceStamina(6)
         return did_orgasm, arousal_gain
+    # vaginal outercourse
+    def vaginalOutercourseArousalGainGlobal():
+        default_arousal_increase, default_multiplier = pc.vaginalOutercourseArousalGain()
+        upgrades_arousal_multiplier = (upgrades.vaginal_arousal_multiplier / 1000)
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
+        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
+        return actual_arousal_gain
+    # increase players arousal and reduces stamina
+    def vaginalOutercourseArousalIncrease():
+        arousal_gain = vaginalOutercourseArousalGainGlobal()
+        did_orgasm = pc.increaseArousal(arousal_gain)
+        pc.reduceStamina(8)
+        return did_orgasm, arousal_gain
+    # vaginal intercourse
+    def vaginalIntercourseArousalGainGlobal():
+        default_arousal_increase, default_multiplier = pc.vaginalIntercourseArousalGain()
+        upgrades_arousal_multiplier = (upgrades.vaginal_arousal_multiplier / 1000)
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
+        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
+        return actual_arousal_gain
+    # increase players arousal and reduces stamina
+    def vaginalIntercourseArousalIncrease():
+        arousal_gain = vaginalIntercourseArousalGainGlobal()
+        did_orgasm = pc.increaseArousal(arousal_gain)
+        pc.reduceStamina(15)
+        return did_orgasm, arousal_gain
+
     #############################################################
     # Functions combining the above plus character specific     #
     # functions to generate variables required for events       #

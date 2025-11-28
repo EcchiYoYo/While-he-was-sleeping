@@ -24,9 +24,37 @@ init python:
     def fingerArseArousalIncrease():
         arousal_gain = fingerArseArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
-        pc.reduceStamina(5)
+        if game_time.block == 4:
+            pc.reduceStamina(5)
+        else:
+            pc.reduceStamina(6)
         return did_orgasm, arousal_gain
-
+    # anal outercourse
+    def analOutercourseArousalGainGlobal():
+        default_arousal_increase, default_multiplier = pc.analOutercourseArousalGain()
+        upgrades_arousal_multiplier = (upgrades.anal_arousal_multiplier / 1000)
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
+        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
+        return actual_arousal_gain
+    # increase players arousal and reduces stamina
+    def analOutercourseArousalIncrease():
+        arousal_gain = analOutercourseArousalGainGlobal()
+        did_orgasm = pc.increaseArousal(arousal_gain)
+        pc.reduceStamina(8)
+        return did_orgasm, arousal_gain
+    # anal intercourse
+    def analIntercourseArousalGainGlobal():
+        default_arousal_increase, default_multiplier = pc.analIntercourseArousalGain()
+        upgrades_arousal_multiplier = (upgrades.anal_arousal_multiplier / 1000)
+        multiplier_total = default_multiplier + upgrades_arousal_multiplier
+        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
+        return actual_arousal_gain
+    # increase players arousal and reduces stamina
+    def analIntercourseArousalIncrease():
+        arousal_gain = analIntercourseArousalGainGlobal()
+        did_orgasm = pc.increaseArousal(arousal_gain)
+        pc.reduceStamina(15)
+        return did_orgasm, arousal_gain
 
     # combined functions for variable generation in events
     def rubBumCombinedVariableGenerator():

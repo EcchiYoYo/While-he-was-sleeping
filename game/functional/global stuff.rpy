@@ -437,3 +437,4 @@ init python:
         coin_gain = 0
         his_arousal_gain = 0
         her_arousal_gain = 0
+        stamina_cost = 0

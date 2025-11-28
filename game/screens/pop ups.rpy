@@ -13,6 +13,12 @@ screen player_arousal_increase_screen(amount_gained):
     text f"You gained " + amount_gained + " arousal" xpos 0.4 ypos 0.4
     timer 1.5 action Hide("player_arousal_increase_screen")
 
+screen player_stamina_reduction_screen(amount_lost):
+    python:
+        amount_lost = str(amount_lost)
+    text f"You used " + amount_lost + " stamina" xpos 0.4 ypos 0.6
+    timer 1.5 action Hide("player_stamina_reduction_screen")
+
 screen victim_arousal_increase_screen(amount_gained):
     python:
         amount_gained = str(amount_gained)
@@ -43,6 +49,30 @@ screen persistent_hand_level_up_screen(number_of_levels):
         amount_gained = str(number_of_levels)
     text f"You gained " + amount_gained + " global hand levels" xpos 0.4 ypos 0.15
     timer 1.5 action Hide("persistent_hand_level_up_screen")
+
+screen mouth_level_up_screen(number_of_levels):
+    python:
+        amount_gained = str(number_of_levels)
+    text f"You gained " + amount_gained + " mouth levels" xpos 0.2 ypos 0.45
+    timer 1.5 action Hide("mouth_level_up_screen")
+
+screen persistent_mouth_level_up_screen(number_of_levels):
+    python:
+        amount_gained = str(number_of_levels)
+    text f"You gained " + amount_gained + " global mouth levels" xpos 0.4 ypos 0.45
+    timer 1.5 action Hide("persistent_mouth_level_up_screen")
+
+screen foot_level_up_screen(number_of_levels):
+    python:
+        amount_gained = str(number_of_levels)
+    text f"You gained " + amount_gained + " foot levels" xpos 0.2 ypos 0.4
+    timer 1.5 action Hide("foot_level_up_screen")
+
+screen persistent_foot_level_up_screen(number_of_levels):
+    python:
+        amount_gained = str(number_of_levels)
+    text f"You gained " + amount_gained + " global foot levels" xpos 0.4 ypos 0.4
+    timer 1.5 action Hide("persistent_foot_level_up_screen")
 
 screen vaginal_level_up_screen(number_of_levels):
     python:
