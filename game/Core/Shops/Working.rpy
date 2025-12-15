@@ -58,7 +58,7 @@ label you_work_a_little:
         globalAdvanceTime(1)
         cash_earned = globalPoundsEarnedWorking()
         pc.money += cash_earned
-    show screen money_earned_popup_screen(how_much = cash_earned)
+    show screen money_earned_popup_screen(how_much = [cash_earned])
     "You put in a shift at work and earned £[cash_earned]."
     
     #

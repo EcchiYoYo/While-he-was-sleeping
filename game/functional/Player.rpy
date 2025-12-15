@@ -86,6 +86,20 @@ init python:
             # used to show correct failure scene
             self.cycle_end_reason = "none"
 
+        def increaseMoney(self, amount):
+            self.money += amount
+        
+        def playerHasCockCheck(self):
+            if self.player_type == "trans_male" or self.player_type == "futa" or self.player_type == "gay":
+                return True
+            else:
+                return False
+        
+        def playerHasVaginaCheck(self):
+            if self.player_type == "default" or self.player_type == "futa":
+                return True
+            else:
+                return False
 
         #####################################
         #                                   #
@@ -201,49 +215,49 @@ init python:
             self.vaginal_exp_for_level = self.currentVaginalExpGet()
 
         def rubPubisArousalGain(self):
-            default_increase = 3
+            default_arousal = 3
             hand_skill_multiplier = self.hand_level / 1000
             return default_arousal, hand_skill_multiplier
         
         def rubInnerThighArousalGain(self):
-            default_increase = 5
+            default_arousal = 5
             hand_skill_multiplier = self.hand_level / 1000
             return default_arousal, hand_skill_multiplier
 
         def rubOuterPussyLipsArousalGain(self):
-            default_increase = 7
+            default_arousal = 7
             hand_skill_multiplier = self.hand_level / 1000
             return default_arousal, hand_skill_multiplier       
         
         def massageClitArousalGain(self):
-            default_increase = 7
+            default_arousal = 7
             hand_skill_multiplier = self.hand_level / 1000
             return default_arousal, hand_skill_multiplier
         
         def fingerPussyArousalGain(self):
-            default_increase = 10
+            default_arousal = 10
             hand_skill_multiplier = self.hand_level / 1000
             vaginal_skill_multiplier = self.vaginal_level / 1000
             skill_multiplier = hand_skill_multiplier + vaginal_skill_multiplier
             return default_arousal, skill_multiplier
 
         def vaginalOutercourseArousalGain(self):
-            default_increase = 12
+            default_arousal = 12
             vaginal_skill_multiplier = self.vaginal_level / 1000
             return default_arousal, vaginal_skill_multiplier
         
         def vaginalIntercourseArousalGain(self):
-            default_increase = 20
+            default_arousal = 20
             vaginal_skill_multiplier = self.vaginal_level / 1000
             return default_arousal, vaginal_skill_multiplier
 
         def analOutercourseArousalGain(self):
-            default_increase = 12
+            default_arousal = 12
             anal_skill_multiplier = self.anal_level / 1000
             return default_arousal, anal_skill_multiplier
         
         def analIntercourseArousalGain(self):
-            default_increase = 20
+            default_arousal = 20
             anal_skill_multiplier = self.anal_level / 1000
             return default_arousal, anal_skill_multiplier
         #####################################
@@ -267,7 +281,7 @@ init python:
             self.anal_exp_for_level = self.currentAnalExpGet()
         
         def rubBumArousalGain(self):
-            default_increase = 5
+            default_arousal = 5
             hand_skill_multiplier = self.hand_level / 1000
             return default_arousal, hand_skill_multiplier
         
@@ -296,14 +310,14 @@ init python:
             self.foot_exp_for_level = self.currentFootExpGet()
         
         def rubChestWithFootArousalGain(self):
-            default_increase = 1
+            default_arousal = 1
             foot_skill_multiplier = self.foot_level / 1000
             return default_arousal, foot_skill_multiplier
 
         def heSucksHerToesArousalGain(self):
-            default_increase = 3
+            default_arousal = 3
             no_multiplier = 0
-            return default_increase, no_multiplier
+            return default_arousal, no_multiplier
         
         def rubHisBallsHerFootArousalGain(self):
             default_arousal = 1
@@ -331,10 +345,10 @@ init python:
             else:
                 return False
         
-        def orgasm(self):
+        def increaseOrgasm(self):
+            self.orgasm += 1
             self.arousal = 0
         
-    
         def increaseStamina(self, amount):
             self.stamina += amount
             if self.stamina > pc.max_stamina:

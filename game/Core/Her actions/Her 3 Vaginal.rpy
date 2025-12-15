@@ -16,6 +16,8 @@ label rub_pubis_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed from rubbing your pubis"
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
@@ -36,6 +38,8 @@ label rub_inner_thigh_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed while rubbing your inner thigh"
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
@@ -56,6 +60,8 @@ label rub_outer_pussy_lips_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed while rubbing your outer pussy lips"
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
@@ -76,6 +82,8 @@ label massage_clit_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed while flicking your bean"
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
@@ -97,6 +105,8 @@ label finger_pussy_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed while fingering yourself"
     if did_hand_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_hand_level_up])

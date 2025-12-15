@@ -94,7 +94,7 @@ init python:
             else:
                 return False
         
-        def orgasm(self):
+        def increaseOrgasm(self):
             self.arousal = 0
             self.ejaculations_this_night += 1
             ejaculation_amount = self.ejaculation_amount / self.ejaculation_times

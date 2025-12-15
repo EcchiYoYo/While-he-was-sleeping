@@ -32,4 +32,3 @@ default upgrades = Upgrades(int(floor(persistent.coins_earned/2)))
 default day_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 default random_girl_names_list = ["Bonnie", "Gemma", "Genevieve", "Amelia", "Freya", "Annalise", "Aurora", "Calista", "Calliope", "Dakota", "Eliza", "Harper", "Ivy", "Jolie", "Josephine", "Julia", "Leah", "Lorelei", "Nicole"]
 default random_guy_names_list = ["David", "John", "Ethan", "Noah", "Samuel", "Jacob", "Nicholas", "Liam", "Oliver", "Henry", "Ryan", "Daniel", "Anthony", "Charles", "William", "Logan", "Romeo"]
-default is_patreon_version = False # used to set patreon status (may never be used) starts as false only switches to true if patreon patch is applied

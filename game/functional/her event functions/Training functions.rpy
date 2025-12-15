@@ -15,28 +15,32 @@ init python:
         picked = random.choice(choices)
         return picked
     def handTrainingVariableGenerator(location):
+        her_arousal_gain = 0
+        base_coin_gain = 0
+        did_orgasm = 0
+        stamina_cost = 0
         if location == "Breast":
             her_arousal_gain = rubBreastArousalGainGlobal()
             base_coin_gain, not_used = pc.rubBreastArousalGain()
             did_orgasm, not_used = rubBreastArousalIncrease()
             stamina_cost = 5
         elif location == "Pubis":
-            her_arousal_gain == rubPubisArousalGainGlobal()
+            her_arousal_gain = rubPubisArousalGainGlobal()
             base_coin_gain, not_used = pc.rubPubisArousalGain()
             did_orgasm, not_used = rubPubisArousalIncrease()
             stamina_cost = 3
         elif location == "Bum":
-            her_arousal_gain == rubBumArousalGainGlobal()
+            her_arousal_gain = rubBumArousalGainGlobal()
             base_coin_gain, not_used = pc.rubBumArousalGain()
             did_orgasm, not_used = rubBumArousalIncrease()
             stamina_cost = 5
         elif location == "Inner thigh":
-            her_arousal_gain == rubInnerThighArousalGainGlobal()
+            her_arousal_gain = rubInnerThighArousalGainGlobal()
             base_coin_gain, not_used = pc.rubInnerThighArousalGain()
             did_orgasm, not_used = rubInnerThighArousalIncrease()
             stamina_cost = 5
-        elif location == "Both breasts":
-            her_arousal_gain == rubBothBreastArousalGainGlobal()
+        elif location == "Both Breasts":
+            her_arousal_gain = rubBothBreastArousalGainGlobal()
             base_coin_gain, not_used = pc.rubBothBreastArousalGain()
             did_orgasm, not_used = rubBothBreastArousalIncrease()
             stamina_cost = 7
@@ -49,7 +53,7 @@ init python:
         did_level_up = pc.increaseHandExp(multiplied_exp_value)
         did_persistent_level_up = increasePersistentHandExp(multiplied_exp_value)
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
-        return her_arousal_gain, base_coin_gain, did_orgasm, did_level_up, did_persistent_level_up, coin_gain, stamina_cost
+        return her_arousal_gain, did_orgasm, did_level_up, did_persistent_level_up, coin_gain, stamina_cost
     # mouth training functions
     def mouthTrainingLocationChoice():
         choices = ["Fingers"]
@@ -60,6 +64,10 @@ init python:
         picked = random.choice(choices)
         return picked
     def mouthTrainingVariableGenerator(location):
+        her_arousal_gain = 0
+        base_coin_gain = 0
+        did_orgasm = 0
+        stamina_cost = 0
         if location == "Fingers":
             her_arousal_gain = suckDryFingersArousalGainGlobal()
             base_coin_gain, not_used = pc.suckHerFingersArousalGain()
@@ -96,6 +104,10 @@ init python:
         picked = random.choice(choices)
         return picked
     def footTrainingVariableGenerator(location):
+        her_arousal_gain = 0
+        base_coin_gain = 0
+        did_orgasm = 0
+        stamina_cost = 0
         if location == "Fingers":
             her_arousal_gain = rubChestWithFootArousalGainGlobal()
             base_coin_gain, not_used = pc.rubChestWithFootArousalGain()
@@ -135,6 +147,10 @@ init python:
         picked = random.choice(choices)
         return picked
     def vaginalTrainingVariableGenerator(location):
+        her_arousal_gain = 0
+        base_coin_gain = 0
+        did_orgasm = 0
+        stamina_cost = 0
         if location == "Fingers":
             her_arousal_gain = fingerPussyArousalGainGlobal()
             base_coin_gain, not_used = pc.fingerPussyArousalGain()
@@ -179,6 +195,10 @@ init python:
         picked = random.choice(choices)
         return picked
     def analTrainingVariableGenerator(location):
+        her_arousal_gain = 0
+        base_coin_gain = 0
+        did_orgasm = 0
+        stamina_cost = 0
         if location == "Fingers":
             her_arousal_gain = fingerArseArousalGainGlobal()
             base_coin_gain, not_used = pc.fingerArseArousalGain()

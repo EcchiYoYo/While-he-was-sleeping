@@ -25,6 +25,8 @@ label rub_breast_introduction_scene:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed from your breast massage"
         #
         # need to set arousal back to zero plus whatever is over 150
@@ -52,6 +54,8 @@ label rub_left_breast_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed from your breast massage"
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
@@ -73,6 +77,8 @@ label rub_right_breast_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed from your breast massage"
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
@@ -94,6 +100,8 @@ label rub_both_breasts_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed from your breast massage"
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
@@ -115,6 +123,8 @@ label pinch_left_nipple_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed from pinching and rolling your nipple"
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
@@ -136,6 +146,8 @@ label pinch_right_nipple_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed from pinching and rolling your nipple"
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
@@ -157,6 +169,8 @@ label pinch_both_nipple_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm == True:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed from pinching and rolling your nipples"
     if did_level_up == True:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])

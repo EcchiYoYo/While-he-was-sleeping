@@ -4,7 +4,6 @@
 # give him a footjob
 init python:
     import math
-
     def rubChestWithFootArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.rubChestWithFootArousalGain()
         upgrades_arousal_multiplier = (upgrades.foot_arousal_multiplier / 1000)

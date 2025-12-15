@@ -32,6 +32,7 @@ label opening_scene:
         jump default_opening
 
 label select_from_installed_packs:
+    # If no packs are installed the opening will skip this block (due to no available options from the menu) and jump to the default opening
     "Please select the pack you wish to play."
     menu:
         "Play the young pack?" if l_pack == True:
@@ -42,7 +43,7 @@ label select_from_installed_packs:
             jump g_pack_opening
         "Play the hermaphrodite pack?" if h_pack == True:
             jump f_pack_opening    
-    
+
 label default_opening:
     #
     # MC in bed
@@ -126,35 +127,49 @@ label victim_relation_setting:
     # Standing image victim clothing level dependant upon some yet undecided metric
     #
     #
-    menu:
-        "And here we have the target of your lust..."
-        
-        "Your Friend":
-            python:
-                man.relationship = "Friend"
-            "This is your childhood friend, he is staying for a week during the holidays, but whenever he stays you can`t help but lust after him."
-            "He shows no interest in you sexually which frustrates you even more, he has no idea about your night time fantasies involving him."
-        "Your Brother":
-            python:
-                man.relationship = "Brother"
-            "Although he is your brother you share a close relationship and unknown to him, he is frequently the target of your night time fantasies."
-            "He of course shows no sexual interest in his sister, but he does however love you quite dearly."
-        "Your Father":
-            python:
-                man.relationship = "Daddy"
-            "Many of your nightly fantasies involve your daddy, you just can`t help how much you find him sexually arousing."
-            "As any father does, he loves his little girl without exception, and as with any normal father he does not have any sexual attraction to you, his daughter, his sweet little princess."
-        "Your Uncle":
-            python:
-                man.relationship = "Uncle"
-            "You can`t help but lust after your uncle, a man you share a close familial bond with but don`t see all that often, how could you not lust after him." 
-            "He loves his niece and would do anything to make her smile."
-            "During your night time fantasies you dream of him making you smile in a much more perverse way than he would ever consider."
-        "A Stranger":
-            python:
-                man.relationship = "Stranger"
-            "This man is unknown to you, he is a friend of your fathers and is staying for a while, he is gone when you wake in the morning and asleep before you get home at night, so you have no idea who he is."
-            "Since he came to stay you can`t help but fantasise about this unknown man performing lewd acts with you, the added arousal from him being a complete stranger is almost too much to bear."
+    if is_patreon_version == False:
+        menu:
+            "And here we have the target of your lust..."
+            
+            "Your Friend":
+                python:
+                    man.relationship = "Friend"
+                "This is your childhood friend, he is staying for a week during the holidays, but whenever he stays you can`t help but lust after him."
+                "He shows no interest in you sexually which frustrates you even more, he has no idea about your night time fantasies involving him."
+            "Your Brother":
+                python:
+                    man.relationship = "Brother"
+                "Although he is your brother you share a close relationship and unknown to him, he is frequently the target of your night time fantasies."
+                "He of course shows no sexual interest in his sister, but he does however love you quite dearly."
+            "Your Father":
+                python:
+                    man.relationship = "Daddy"
+                "Many of your nightly fantasies involve your daddy, you just can`t help how much you find him sexually arousing."
+                "As any father does, he loves his little girl without exception, and as with any normal father he does not have any sexual attraction to you, his daughter, his sweet little princess."
+            "Your Uncle":
+                python:
+                    man.relationship = "Uncle"
+                "You can`t help but lust after your uncle, a man you share a close familial bond with but don`t see all that often, how could you not lust after him." 
+                "He loves his niece and would do anything to make her smile."
+                "During your night time fantasies you dream of him making you smile in a much more perverse way than he would ever consider."
+            "A Stranger":
+                python:
+                    man.relationship = "Stranger"
+                "This man is unknown to you, he is a friend of your fathers and is staying for a while, he is gone when you wake in the morning and asleep before you get home at night, so you have no idea who he is."
+                "Since he came to stay you can`t help but fantasise about this unknown man performing lewd acts with you, the added arousal from him being a complete stranger is almost too much to bear."
+    else:
+        menu:
+            "And here we have the target of your lust... ({color=#E32636}Some options are not available in this version of the game{/color})"
+            "Your Friend":
+                python:
+                    man.relationship = "Friend"
+                "This is your childhood friend, he is staying for a week during the holidays, but whenever he stays you can`t help but lust after him."
+                "He shows no interest in you sexually which frustrates you even more, he has no idea about your night time fantasies involving him."
+            "A Stranger":
+                python:
+                    man.relationship = "Stranger"
+                "This man is unknown to you, he is a friend of your fathers and is staying for a while, he is gone when you wake in the morning and asleep before you get home at night, so you have no idea who he is."
+                "Since he came to stay you can`t help but fantasise about this unknown man performing lewd acts with you, the added arousal from him being a complete stranger is almost too much to bear."
     python:
         if man.relationship == "Friend":
             single_use = "your childhood friend"

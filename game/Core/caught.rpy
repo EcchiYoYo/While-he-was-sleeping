@@ -13,4 +13,3 @@ label the_thing_label:
         "Every cycle should result in more levels and coins being earned, leading to a faster ramp up time for each cycle played."
     "You have currently played [persistent.cycle_number ] cycles."
     jump main_menu
-    

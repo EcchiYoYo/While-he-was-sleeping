@@ -44,6 +44,14 @@ init python:
             self.train_anal_unlocked = False
             self.train_just_the_tip_unlocked = False
             self.train_cock_unlocked = False
+            # passive unlock costs ( these are here for ease of balancing the costs)
+            self.train_mouth_cost = 15
+            self.train_hands_cost = 5
+            self.train_feet_cost = 25
+            self.train_vaginal_cost = 50
+            self.train_anal_cost = 50
+            self.train_just_the_tip_cost = 50
+            self.train_cock_cost = 50
 
         def increaseUpgradeCoins(self, amount):
             base_coins = amount
