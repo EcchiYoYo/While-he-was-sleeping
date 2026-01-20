@@ -38,9 +38,6 @@ screen breast_actions_select_screen():
 screen rub_left_breast_button():
     python:
         increase_arousal = str(rubBreastArousalGainGlobal())
-    #
-    # some calculation for amount of experience and arousal gained
-    #
     imagebutton:
         at her_breast_custom_zoom
         xanchor 1.0
@@ -56,7 +53,7 @@ screen rub_left_breast_button():
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_left_breast_label")]
             else:
                 idle "images/buttons/left breast button locked.png"
-                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina]")
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)")
                 action NullAction()
         else:
             idle "images/buttons/left breast button.png"
@@ -68,9 +65,6 @@ screen rub_left_breast_button():
 screen rub_right_breast_button():
     python:
         increase_arousal = str(rubBreastArousalGainGlobal())
-    #
-    # some calculation for amount of experience and arousal gained
-    #
     imagebutton:
         at her_breast_custom_zoom
         xanchor 1.0
@@ -86,7 +80,7 @@ screen rub_right_breast_button():
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_right_breast_label")]
             else:
                 idle "images/buttons/left breast button locked.png"
-                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina]", x_pos = 0.15, y_pos = 0.23)
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.23)
                 action NullAction()
         else:
             idle "images/buttons/right breast button locked.png"
@@ -98,9 +92,6 @@ screen rub_right_breast_button():
 screen rub_both_breasts_button():
     python:
         increase_arousal = str(rubBothBreastArousalGainGlobal())
-    #
-    # some calculation for amount of experience and arousal gained
-    #
     imagebutton:
         at her_breast_custom_zoom
         xanchor 1.0
@@ -116,7 +107,7 @@ screen rub_both_breasts_button():
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_both_breasts_label")]
             else:
                 idle "images/buttons/both breasts button locked.png"
-                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 7 you have [pc.stamina]", x_pos = 0.15, y_pos = 0.33)
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 7 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.33)
                 action NullAction()
         else:
             idle "images/buttons/both breasts button locked.png"
@@ -127,9 +118,6 @@ screen rub_both_breasts_button():
 screen pinch_left_nipple_button():
     python:
         increase_arousal = str(pinchNippleArousalGainGlobal())
-    #
-    # some calculation for amount of experience and arousal gained
-    #
     imagebutton:
         at her_breast_custom_zoom
         xanchor 1.0
@@ -145,7 +133,7 @@ screen pinch_left_nipple_button():
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("pinch_left_nipple_label")]
             else:
                 idle "images/buttons/left nipple button locked.png"
-                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina]", x_pos = 0.15, y_pos = 0.43)
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.43)
                 action NullAction()
         else:
             idle "images/buttons/left nipple button locked.png"
@@ -156,9 +144,6 @@ screen pinch_left_nipple_button():
 screen pinch_right_nipple_button():
     python:
         increase_arousal = str(pinchNippleArousalGainGlobal())
-    #
-    # some calculation for amount of experience and arousal gained
-    #
     imagebutton:
         at her_breast_custom_zoom
         xanchor 1.0
@@ -174,7 +159,7 @@ screen pinch_right_nipple_button():
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("pinch_right_nipple_label")]
             else:
                 idle "images/buttons/right nipple button locked.png"
-                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina]", x_pos = 0.15, y_pos = 0.53)
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 5 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.53)
                 action NullAction()
         else:
             idle "images/buttons/right nipple button locked.png"
@@ -185,9 +170,6 @@ screen pinch_right_nipple_button():
 screen pinch_both_nipples_button():
     python:
         increase_arousal = str(pinchBothNippleArousalGainGlobal())
-    #
-    # some calculation for amount of experience and arousal gained
-    #
     imagebutton:
         at her_breast_custom_zoom
         xanchor 1.0
@@ -203,7 +185,7 @@ screen pinch_both_nipples_button():
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("pinch_both_nipple_label")]
             else:
                 idle "images/buttons/both nipples button locked.png"
-                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 7 you have [pc.stamina]",x_pos = 0.15, y_pos = 0.63)
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action, requires 7 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)",x_pos = 0.15, y_pos = 0.63)
         else:
             idle "images/buttons/both nipples button locked.png"
             hovered Show("her_tooltip", input_text="Cannot be used in introduction",x_pos = 0.15, y_pos = 0.63)

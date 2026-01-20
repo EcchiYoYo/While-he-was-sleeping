@@ -35,6 +35,8 @@ screen your_feet_actions_select_screen():
     use footjob_button()
 
 screen feet_rub_chest_button():
+    python:
+        increase_arousal = str(rubChestWithFootArousalGainGlobal())
     imagebutton:
         at her_feet_custom_zoom
         xanchor 1.0
@@ -52,6 +54,8 @@ screen feet_rub_chest_button():
         action NullAction()
 
 screen feet_suck_toes_button():
+    python:
+        increase_arousal = str(heSucksHerToesArousalGainGlobal())
     imagebutton:
         at her_feet_custom_zoom
         xanchor 1.0
@@ -69,6 +73,8 @@ screen feet_suck_toes_button():
         action NullAction()
 
 screen rub_his_balls_with_your_feet_button():
+    python:
+        increase_arousal = str(rubHisBallsHerFootArousalGainGlobal())
     imagebutton:
         at her_feet_custom_zoom
         xanchor 1.0
@@ -86,6 +92,8 @@ screen rub_his_balls_with_your_feet_button():
         action NullAction()
 
 screen footjob_button():
+    python:
+        increase_arousal = str(footjobHerArousalGainGlobal())
     imagebutton:
         at her_feet_custom_zoom
         xanchor 1.0

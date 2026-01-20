@@ -24,7 +24,7 @@ label rub_chest_introduction_scene:
 label rub_his_chest:
     python:
         resetEventRelatedVariables()
-    if intro_3_completed == False:
+    if not intro_3_completed:
         jump rub_chest_introduction_scene
     "Caress his chest hair"
 

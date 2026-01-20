@@ -36,6 +36,8 @@ screen mouth_actions_select_screen():
     use clean_cum_from_him_button()
 
 screen kiss_button():
+    python:
+        increase_arousal = str(kissArousalGainGlobal())
     imagebutton:
         at her_mouth_custom_zoom
         xanchor 1.0
@@ -46,8 +48,8 @@ screen kiss_button():
         if pc.stamina >= 3:
             idle "images/buttons/kiss button.png"
             hover "images/buttons/kiss button hover.png"
-            hovered Show("her_tooltip", input_text="Lightly kiss him",x_pos = 0.15, y_pos = 0.13)
-            action [Hide("her_tooltip"), Jump("her_mouth_kiss_label")]
+            hovered Show("her_tooltip", input_text = f"Lightly kiss him, increasing your arousal by " + increase_arousal + ".",x_pos = 0.15, y_pos = 0.13)
+            action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_kiss_label")]
         else:
             hovered Show("her_tooltip", input_text="Not enough stamina to do that, consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)",x_pos = 0.15, y_pos = 0.23)
             action NullLAction()
@@ -55,6 +57,8 @@ screen kiss_button():
         unhovered Hide("her_tooltip")
 
 screen deep_kiss_button():
+    python:
+        increase_arousal = str(deepKissArousalGainGlobal())
     imagebutton:
         at her_mouth_custom_zoom
         xanchor 1.0
@@ -65,15 +69,23 @@ screen deep_kiss_button():
         if pc.stamina >= 3:
             idle "images/buttons/deep kiss button.png"
             hover "images/buttons/deep kiss button hover.png"
-            hovered Show("her_tooltip", input_text="Kiss him using plenty of tongue action",x_pos = 0.15, y_pos = 0.23)
-            action [Hide("her_tooltip"), Jump("her_mouth_deep_kiss_label")]
+            hovered Show("her_tooltip", input_text=f"Kiss him using plenty of tongue action, increasing your arousal by " + increase_arousal + ".",x_pos = 0.15, y_pos = 0.23)
+            action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_deep_kiss_label")]
         else:                
-            hovered Show("her_tooltip", input_text="Not enough stamina to do that, consider ending the night ({color='#E3263'}Make sure you hide any evidence left on his body)",x_pos = 0.15, y_pos = 0.23)
+            hovered Show("her_tooltip", input_text="Not enough stamina to do that, consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)",x_pos = 0.15, y_pos = 0.23)
             action NullAction()
             idle "images/buttons/deep kiss button locked.png"
         unhovered Hide("her_tooltip")
 
 screen suck_your_fingers_button():
+    python:
+        if pc.arousal < 40:
+            base_increase_arousal = suckDryFingersArousalGainGlobal()
+            if base_increase_arousal + pc.arousal > 40:
+                actual_increase_arousal = base_increase_arousal - (base_increase_arousal + pc.arousal - 40)
+            else:
+                actual_increase_arousal = base_increase_arousal
+        increase_arousal = str(actual_increase_arousal)
     imagebutton:
         at her_mouth_custom_zoom
         xanchor 1.0
@@ -84,8 +96,8 @@ screen suck_your_fingers_button():
         if pc.finger_state == "dry":
             idle "images/buttons/suck her fingers button.png"
             hover "images/buttons/suck her fingers button hover.png"
-            hovered Show("her_tooltip", input_text="Suck your fingers to get them moist",x_pos = 0.15, y_pos = 0.33)
-            action [Hide("her_tooltip"), Jump("her_mouth_suck_your_fingers_label")]
+            hovered Show("her_tooltip", input_text=f"Suck your fingers to get them moist, increasing your arousal by " + increase_arousal + ".",x_pos = 0.15, y_pos = 0.33)
+            action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_suck_your_fingers_label")]
         else:
             if pc.finger_state == "saliva":
                 hovered Show("her_tooltip", input_text="Your fingers are already coated in saliva",x_pos = 0.15, y_pos = 0.33)
@@ -98,6 +110,14 @@ screen suck_your_fingers_button():
         unhovered Hide("her_tooltip")
         
 screen suck_juices_button():
+    python:
+        if pc.arousal < 75:
+            base_increase_arousal = suckCumFingersArousalGainGlobal()
+            if base_increase_arousal + pc.arousal > 75:
+                actual_increase_arousal = base_increase_arousal - (base_increase_arousal + pc.arousal - 75)
+            else:
+                actual_increase_arousal = base_increase_arousal
+        increase_arousal = str(actual_increase_arousal)
     imagebutton:
         at her_mouth_custom_zoom
         xanchor 1.0
@@ -116,13 +136,15 @@ screen suck_juices_button():
             idle "images/buttons/suck her juices button.png"
             hover "images/buttons/suck her juices hover.png"
             if pc.finger_state == "girl cum":
-                hovered Show("her_tooltip", input_text="Suck the girl cum from your fingers",x_pos = 0.15, y_pos = 0.43)
+                hovered Show("her_tooltip", input_text="Suck the girl cum from your fingers, increasing your arousal by " + increase_arousal + ".",x_pos = 0.15, y_pos = 0.43)
             else:
-                hovered Show("her_tooltip", input_text="Consume the slimy cum coating your fingers",x_pos = 0.15, y_pos = 0.43)
-            action [Hide("her_tooltip", Jump("her_mouth_suck_juices_from_fingers_label"))]
+                hovered Show("her_tooltip", input_text="Consume the slimy cum coating your fingers" + increase_arousal + ".",x_pos = 0.15, y_pos = 0.43)
+            action [Hide("her_tooltip", Hide("mouth_actions_select_screen"), Jump("her_mouth_suck_juices_from_fingers_label"))]
         unhovered Hide("her_tooltip")
 
 screen clean_cum_from_him_button():
+    python:
+        increase_arousal = str(suckFluidsFromHimArousalGainGlobal())
     imagebutton:
         at her_mouth_custom_zoom
         xanchor 1.0
@@ -136,51 +158,51 @@ screen clean_cum_from_him_button():
             hover "images/buttons/clean cum from him button hover.png"
             if man.face_state == "girl cum":
                 hovered Show("her_tooltip", input_text="Slurp your girl cum from his face, hiding the evidence you were ever here",x_pos = 0.15, y_pos = 0.53)
-                action [Hide("her_tooltip"), Jump("her_mouth_clean_girl_cum_from_face_label")]
+                action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_clean_girl_cum_from_face_label")]
             else:
                 hovered Show("her_tooltip", input_text="Slurp up the cum covering his face, hiding the evidence it was ever there",x_pos = 0.15, y_pos = 0.53)
-                action [Hide("her_tooltip"), Jump("her_mouth_clean_cum_from_face_label")]
+                action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_clean_cum_from_face_label")]
         elif man.chest_state == "girl cum" or man.chest_state == "cum":
             idle "images/buttons/clean cum from him button.png"
             hover "images/buttons/clean cum from him button hover.png"
             if man.chest_state == "girl cum":
                 hovered Show("her_tooltip", input_text="Lap up your girl cum from his chest, hiding the evidence you were ever here",x_pos = 0.15, y_pos = 0.53)
-                action [Hide("her_tooltip"), Jump("her_mouth_clean_girl_cum_from_chest_label")]
+                action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_clean_girl_cum_from_chest_label")]
             else:
                 hovered Show("her_tooltip", input_text="Lap up the cum coating his chest, hiding the evidence it was ever there",x_pos = 0.15, y_pos = 0.53)
-                action [Hide("her_tooltip"), Jump("her_mouth_clean_cum_from_chest_label")]
+                action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_clean_cum_from_chest_label")]
         elif man.stomach_state == "girl cum" or man.stomach_state == "cum":
             idle "images/buttons/clean cum from him button.png"
             hover "images.buttons/clean cum from him button hover.png"
             if man.stomach_state == "girl cum":
                 hovered Show("her_tooltip", input_text="Lick the girl cum from his stomach, hiding the evidence you were ever here",x_pos = 0.15, y_pos = 0.53)
-                action [Hide("her_tooltip", Jump("her_mouth_clean_girl_cum_stomach_label"))]
+                action [Hide("her_tooltip", Hide("mouth_actions_select_screen"), Jump("her_mouth_clean_girl_cum_stomach_label"))]
             else:
                 hovered Show("her_tooltip", input_text="Lick the cum from his stomach, hiding the evidence it was ever there",x_pos = 0.15, y_pos = 0.53)
-                action [Hide("her_tooltip", Jump("her_mouth_clean_cum_stomach_label"))]
+                action [Hide("her_tooltip", Hide("mouth_actions_select_screen"), Jump("her_mouth_clean_cum_stomach_label"))]
         elif man.finger_state == "girl cum" or man.finger_state == "cum":
             idle "images/buttons/clean cum from him button.png"
             hover "images/buttons/clean cum from him button hover.png"
             if man.finger_state == "girl cum":
                 hovered Show("her_tooltip", input_text="Suck the girl cum from his fingers, hiding the evidence you were ever here",x_pos = 0.15, y_pos = 0.53)
-                action [Hide("her_tooltip"), Jump("her_mouth_clean_girl_cum_fingers_label")]
+                action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_clean_girl_cum_fingers_label")]
             else:
                 hovered Show("her_tooltip", input_text="Suck away the cum coating his fingers, hiding the evidence it was ever there",x_pos = 0.15, y_pos = 0.53)
-                action [Hide("her_tooltip"), Jump("her_mouth_clean_cum_fingers_label")]
+                action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_clean_cum_fingers_label")]
         elif man.thigh_state == "girl cum" or man.thigh_state == "cum":
             idle "images/buttons/clean cum from him button.png"
             hover "images/buttons/clean cum from him button hover.png"
             if man.thigh_state == "girl cum":
                 hovered Show("her_tooltip", input_text="Lick his thighs clean of your girl cum, hiding the evidence you were ever here",x_pos = 0.15, y_pos = 0.53)
-                action [Hide("her_tooltip"), Jump("her_mouth_clean_girl_cum_thighs_label")]
+                action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_clean_girl_cum_thighs_label")]
             else:
                 hovered Show("her_tooltip", input_text="Lick his thighs clean of the cum coating them, hiding the evidence it was ever there",x_pos = 0.15, y_pos = 0.53)
-                action [Hide("her_tooltip"), Jump("her_mouth_clean_cum_thighs_label")]
+                action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_clean_cum_thighs_label")]
         elif man.ass_state == "cum":
             idle "images/buttons/clean cum from him button.png"
             hover "images/buttons/clean cum from him button hover.png"
             hovered Show("her_tooltip", input_text="Give him a rimjob making sure to suck out all your cum, hiding the evidence you were ever here",x_pos = 0.15, y_pos = 0.53)
-            action [Hide("her_tooltip"), Jump("her_mouth_cum_ass_label")]
+            action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_cum_ass_label")]
         else:
             idle "images/buttons/clean cum from him button locked.png"
             hovered Show("her_tooltip", input_text="The only fluids (if any) left on him is saliva, it`s like you were never here",x_pos = 0.15, y_pos = 0.53)

@@ -52,7 +52,9 @@ init python:
             self.train_anal_cost = 50
             self.train_just_the_tip_cost = 50
             self.train_cock_cost = 50
-
+            # other variables that need to be recorded
+            self.first_shop_visit = False
+            
         def increaseUpgradeCoins(self, amount):
             base_coins = amount
             points_multiplier = self.coin_multiplier
@@ -60,7 +62,6 @@ init python:
             self.upgrade_coins += coin_gain
             persistentIncreaseUpgradeCoins(coin_gain)
             return coin_gain
-        
         
         def reduceUpgradeCoins(self, amount):
             self.upgrade_coins -= amount

@@ -41,7 +41,7 @@ screen suck_his_fingers_button():
         xpos 0.905
         ypos 0.3
         focus_mask True
-        if man.finger_state != "dry": # add stamina check for action here
+        if man.finger_state == "dry":
             idle "images/buttons/suck his fingers button.png"
             hover "images/buttons/suck his finger button hover.png"
             hovered Show("his_tooltip", input_text = "Suck his fingers to get them moist", x_pos = 0.83, y_pos = 0.23)
@@ -50,15 +50,12 @@ screen suck_his_fingers_button():
             #
             action NullAction()
         else:
-            if man.finger_state == "dry":
-                hovered Show("his_tooltip", input_text = "Not enough stamina to do that", x_pos = 0.83, y_pos = 0.23)
+            if man.finger_state == "saliva":
+                hovered Show("his_tooltip", input_text = "His fingers are already coated in saliva", x_pos = 0.83, y_pos = 0.23)
+            elif man.finger_state == "girl cum":
+                hovered Show("his_tooltip", input_text = "His fingers are slick with girl cum", x_pos = 0.83, y_pos = 0.23)
             else:
-                if man.finger_state == "saliva":
-                    hovered Show("his_tooltip", input_text = "His fingers are already coated in saliva", x_pos = 0.83, y_pos = 0.23)
-                elif man.finger_state == "girl cum":
-                    hovered Show("his_tooltip", input_text = "His fingers are slick with girl cum", x_pos = 0.83, y_pos = 0.23)
-                else:
-                    hovered Show("his_tooltip", input_text = "His fingers are slimy with cum", x_pos = 0.83, y_pos = 0.23)
+                hovered Show("his_tooltip", input_text = "His fingers are slimy with cum", x_pos = 0.83, y_pos = 0.23)
             idle "images/buttons/suck his fingers button locked.png"
             action NullAction()
         unhovered Hide("his_tooltip")
@@ -82,13 +79,13 @@ screen he_sucks_her_fingers_button():
             idle "images/buttons/he sucks her fingers button.png"
             hover "images/buttons/he sucks her fingers button hover.png"
             if pc.finger_state == "girl cum":
-                hovered Show("his_tooltip", input_text = "Make him suck your juices from his fingers", x_pos = 0.83, y_pos = 0.33)
+                hovered Show("his_tooltip", input_text = "Make him suck your juices from your fingers", x_pos = 0.83, y_pos = 0.33)
                 #
                 #
                 #
                 action NullAction()
             else:
-                hovered Show("his_tooltip", input_text = "Make him suck his own slimy cum from his fingers", x_pos = 0.83, y_pos = 0.33)
+                hovered Show("his_tooltip", input_text = "Make him suck his own slimy cum from your fingers", x_pos = 0.83, y_pos = 0.33)
                 #
                 #
                 #

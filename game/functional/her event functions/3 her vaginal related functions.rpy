@@ -114,7 +114,7 @@ init python:
         did_orgasm, not_used = rubPubisArousalIncrease()
         base_coin_gain, not_used = pc.rubPubisArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
-        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain
+        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain, did_orgasm
     
     def rubInnerThighCombinedVariableGenerator():
         her_global_arousal_gain = rubInnerThighArousalGainGlobal()
@@ -123,7 +123,7 @@ init python:
         did_orgasm, not_used = rubInnerThighArousalIncrease()
         base_coin_gain, not_used = pc.rubInnerThighArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
-        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain
+        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain, did_orgasm
 
     def rubOuterPussyLipsCombinedVariableGenerator():
         her_global_arousal_gain = rubOuterPussyLipsArousalGainGlobal()
@@ -132,7 +132,7 @@ init python:
         did_orgasm, not_used = rubOuterPussyLipsArousalIncrease()
         base_coin_gain, not_used = pc.rubOuterPussyLipsArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
-        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain
+        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain, did_orgasm
 
     def massageClitCombinedVariableGenerator():
         her_global_arousal_gain = massageClitArousalGainGlobal()
@@ -141,7 +141,7 @@ init python:
         did_orgasm, not_used = massageClitArousalIncrease()
         base_coin_gain, not_used = pc.massageClitArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
-        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain
+        return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain, did_orgasm
     
     def fingerPussyCombinedVariableGenerator():
         her_global_arousal_gain = fingerPussyArousalGainGlobal()
@@ -152,4 +152,4 @@ init python:
         did_orgasm, not_used = fingerPussyArousalIncrease()
         base_coin_gain, not_used = pc.fingerPussyArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
-        return did_hand_level_up, did_persistent_hand_level_up, did_vaginal_level_up, did_persistent_vaginal_level_up, coin_gain, her_global_arousal_gain
+        return did_hand_level_up, did_persistent_hand_level_up, did_vaginal_level_up, did_persistent_vaginal_level_up, coin_gain, her_global_arousal_gain, did_orgasm

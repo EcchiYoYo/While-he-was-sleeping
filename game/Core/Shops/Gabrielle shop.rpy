@@ -5,6 +5,25 @@ init:
 label gabrielle_shop_screen_label():
     # add in Gabrielle shop background (different angle of Players room)
     # fuck renpy
+    python:
+        # Map relationship types to display names
+        relationship_names = {
+            "Friend": "Your childhood friend",
+            "Brother": "Your big brother",
+            "Daddy": "Your daddy",
+            "Uncle": "Your uncle",
+        }
+        single_use = relationship_names.get(man.relationship, "the stranger")
+    if not upgrades.first_shop_visit:
+        gabrielle "I see this is your first visit to my shop, as such I`ll give you some free coins use them to purchase the wakefulness bar upgrade."
+        python:
+            actual_coins_gained = upgrades.increaseUpgradeCoins(5)
+            upgrades.first_shop_visit = True
+        show screen coins_gained_popup_screen(amount_gained = actual_coins_gained)
+        pc_talk "Wakefulness bar?"
+        gabrielle "It is what it is, it will allow you to know how close to waking up [single_use] is."
+        gabrielle "Although until you`ve bought a few more upgrades and I teach you how to better read their body language it will only give you a very rough idea of how close they are to waking."
+        gabrielle "With that in mind make sure you take things slow until you`ve learnt a little more."
     call screen gabrielle_shop_screen
 
 screen gabrielle_shop_screen():
@@ -15,7 +34,7 @@ screen gabrielle_shop_screen():
     text "Coins: [upgrades.upgrade_coins]":
         xpos 0.625
         ypos 0.705
-        xanchor 1.0 # anchoring o the right, makes text move left when amount of coins increases
+        xanchor 1.0 # anchoring to the right, makes text move left when amount of coins increases
         yanchor 0.0
     # blinking Gabrielle image
 
@@ -40,14 +59,16 @@ screen gabrielle_shop_screen():
         xanchor 1.0
         yanchor 1.0
         focus_mask True
-        if upgrades.upgrade_coins >= upgrades.train_mouth_cost and upgrades.train_mouth_unlocked == False:
+        if upgrades.upgrade_coins >= upgrades.train_mouth_cost and upgrades.train_mouth_unlocked == False and upgrades.view_victim_wakefulness_bar != 0:
             idle "images/buttons/mouth techniques button.png"
             hover "images/buttons/mouth techniques button hover.png"
             hovered Show("global_tooltip", input_text = "Pay [gabrielle.name] to teach you some techniques to increase your mouth skill", x_pos = 0.13, y_pos = 0.3)
             action [Hide("global_tooltip"), Jump("unlock_train_mouth_label")]
         else:
             idle "images/buttons/mouth techniques button locked.png"
-            if upgrades.train_mouth_unlocked == True:
+            if upgrades.view_victim_wakefulness_bar == 0:
+                hovered Show("global_tooltip", input_text = "You must unlock the wakefulness bar first", x_pos = 0.13, y_pos = 0.3)
+            elif upgrades.train_mouth_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these techniques", x_pos = 0.13, y_pos = 0.3)
             else:
                 hovered Show("global_tooltip", input_text = "You don't have enough coins to unlock this, required [upgrades.train_mouth_cost] you have [upgrades.upgrade_coins]", x_pos = 0.13, y_pos = 0.3)
@@ -61,14 +82,16 @@ screen gabrielle_shop_screen():
         xanchor 1.0
         yanchor 1.0
         focus_mask True
-        if upgrades.upgrade_coins >= upgrades.train_hands_cost and upgrades.train_hands_unlocked == False:
+        if upgrades.upgrade_coins >= upgrades.train_hands_cost and upgrades.train_hands_unlocked == False and upgrades.view_victim_wakefulness_bar != 0:
             idle "images/buttons/hand techniques button.png"
             hover "images/buttons/hand techniques button hover.png"
             hovered Show("global_tooltip", input_text = "Purchase the techniques related to training your hands", x_pos = 0.19, y_pos = 0.3)
             action [Hide("global_tooltip"), Jump("unlock_train_hands_label")]
         else:
             idle "images/buttons/hand techniques button locked.png"
-            if upgrades.train_hands_unlocked == True:
+            if upgrades.view_victim_wakefulness_bar == 0:
+                hovered Show("global_tooltip", input_text = "You must unlock the wakefulness bar first", x_pos = 0.19, y_pos = 0.3)
+            elif upgrades.train_hands_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these techniques", x_pos = 0.19, y_pos = 0.3)
             else:
                 hovered Show("global_tooltip", input_text = "You don't have enough coins to unlock this, required [upgrades.train_hands_cost] you have [upgrades.upgrade_coins]", x_pos = 0.19, y_pos = 0.3)
@@ -82,14 +105,16 @@ screen gabrielle_shop_screen():
         xanchor 1.0
         yanchor 1.0
         focus_mask True
-        if upgrades.upgrade_coins >= upgrades.train_feet_cost and upgrades.train_feet_unlocked == False:
+        if upgrades.upgrade_coins >= upgrades.train_feet_cost and upgrades.train_feet_unlocked == False and upgrades.view_victim_wakefulness_bar != 0:
             idle "images/buttons/foot techniques button.png"
             hover "images/buttons/foot techniques button hover.png"
             hovered Show("global_tooltip", input_text = "Purchase the techniques related to training your feet", x_pos = 0.25, y_pos = 0.3)
             action [Hide("global_tooltip"), Jump("unlock_train_feet_label")]
         else:
             idle "images/buttons/foot techniques button locked.png"
-            if upgrades.train_feet_unlocked == True:
+            if upgrades.view_victim_wakefulness_bar == 0:
+                hovered Show("global_tooltip", input_text = "You must unlock wakefulness bar first", x_pos = 0.19, y_pos = 0.3)
+            elif upgrades.train_feet_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these techniques", x_pos = 0.25, y_pos = 0.3)
             else:
                 hovered Show("global_tooltip", input_text = "You don't have enough coins to unlock this, required [upgrades.train_feet_cost] you have [upgrades.upgrade_coins]", x_pos = 0.25, y_pos = 0.3)
@@ -105,16 +130,18 @@ screen gabrielle_shop_screen():
         focus_mask True
         if pc.playerHasVaginaCheck() == False:
             idle "images/buttons/vaginal techniques button no vagina.png"
-            hovered Show("global_tooltip", input_text = "You don`t have the required body part")
+            hovered Show("global_tooltip", input_text = "You don`t have the required body part", x_pos = 0.31, y_pos = 0.3)
             action NullAction()
-        elif upgrades.upgrade_coins >= upgrades.train_vaginal_cost and upgrades.train_vaginal_unlocked == False:
+        elif upgrades.upgrade_coins >= upgrades.train_vaginal_cost and upgrades.train_vaginal_unlocked == False and upgrades.view_victim_wakefulness_bar != 0:
             idle "images/buttons/vaginal technique button.png"
             hover "images/buttons/vaginal technique button hover.png"
             hovered Show("global_tooltip", input_text = "Purchase techniques related to training your vagina", x_pos = 0.31, y_pos = 0.3)
             action [Hide("global_tooltip"), Jump("unlock_train_vagina_label")]
         else:
             idle "images/buttons/vaginal techniques button locked.png"
-            if upgrades.train_vaginal_unlocked == True:
+            if upgrades.view_victim_wakefulness_bar == 0:
+                hovered Show("global_tooltip", input_text = "You must unlock wakefulness bar first", x_pos = 0.31, y_pos = 0.3)
+            elif upgrades.train_vaginal_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these techniques", x_pos = 0.31, y_pos = 0.3)
             else:
                 hovered Show("global_tooltip", input_text = "You don`t have enough coins to unlock this, required [upgrades.train_vaginal_cost] you have [upgrades.upgrade_coins]", x_pos = 0.31, y_pos = 0.3)
@@ -128,15 +155,17 @@ screen gabrielle_shop_screen():
         xanchor 1.0
         yanchor 1.0
         focus_mask True
-        if upgrades.upgrade_coins >= upgrades.train_anal_cost and upgrades.train_anal_unlocked == False:
+        if upgrades.upgrade_coins >= upgrades.train_anal_cost and upgrades.train_anal_unlocked == False and upgrades.view_victim_wakefulness_bar != 0:
             idle "images/buttons/anal technique button.png"
             hover "images/buttons/anal technique button hover.png"
-            hovered Show("global_tooltip", input_text = "Purchase techniques related to training your arse")
-            action[Hide("global_tooltip"), Jump("unlock_train_anal_label")]
+            hovered Show("global_tooltip", input_text = "Purchase techniques related to training your arse", x_pos = 0.16, y_pos = 0.40)
+            action [Hide("global_tooltip"), Jump("unlock_train_anal_label")]
         else:
             idle "images/buttons/anal techniques button locked.png"
-            if upgrades.train_anal_unlocked == True:
-                hovered Show("global_tooltip", input_text = "You`ve already purchased these technique", x_pos = 0.16, y_pos = 0.40)
+            if upgrades.view_victim_wakefulness_bar == 0:
+                hovered Show("global_tooltip", input_text = "You must unlock wakefulness bar first", x_pos = 0.16, y_pos = 0.40)
+            elif upgrades.train_anal_unlocked == True:
+                hovered Show("global_tooltip", input_text = "You`ve already purchased these technique`s", x_pos = 0.16, y_pos = 0.40)
             else:
                 hovered Show("global_tooltip", input_text = "You don`t have enough coins to unlock this, required [upgrades.train_anal_cost] you have [upgrades.upgrade_coins]", x_pos = 0.16, y_pos = 0.40)
             action NullAction()
@@ -153,14 +182,16 @@ screen gabrielle_shop_screen():
             idle "images/buttons/just the tip techniques button no cock.png"
             hovered Show("global_tooltip", input_text = "You don`t have the required body part", x_pos = 0.22, y_pos = 0.40)
             action NullAction()
-        elif upgrades.upgrade_coins >= upgrades.train_just_the_tip_cost and upgrades.train_just_the_tip_unlocked == False:
+        elif upgrades.upgrade_coins >= upgrades.train_just_the_tip_cost and upgrades.train_just_the_tip_unlocked == False and upgrades.view_victim_wakefulness_bar != 0:
             idle "images/buttons/just the tip technique button.png"
             hover "images/buttons/just the tip technique button hover.png"
-            hovered Show("global_tooltip", input_text = "Purchase techniques related to training just the tip")
-            action [Hide("global_tooltip"), Jump("unlock_train_just_the_tip")]
+            hovered Show("global_tooltip", input_text = "Purchase techniques related to training just the tip", x_pos = 0.22, y_pos = 0.40)
+            action [Hide("global_tooltip"), Jump("unlock_train_just_the_tip_label")]
         else:
             idle "images/buttons/just the tip technique button locked.png"
-            if upgrades.train_just_the_tip_unlocked == True:
+            if upgrades.view_victim_wakefulness_bar == 0:
+                hovered Show("global_tooltip", input_text = "You must unlock wakefulness bar first", x_pos = 0.22, y_pos = 0.40)
+            elif upgrades.train_just_the_tip_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these techniques", x_pos = 0.22, y_pos = 0.40)
             else:
                 hovered Show("global_tooltip", input_text = "You don`t have enough coins to unlock this, required [upgrades.train_just_the_tip_cost] you have [upgrades.upgrade_coins]", x_pos = 0.22, y_pos = 0.40)
@@ -178,17 +209,19 @@ screen gabrielle_shop_screen():
             idle "images/buttons/cock techniques button no cock.png"
             hovered Show("global_tooltip", input_text = "You don`t have the required body part", x_pos = 0.28, y_pos = 0.40)
             action NullAction()
-        elif upgrades.upgrade_coins >= upgrades.train_cock_cost and upgrades.train_cock_unlocked == False:
+        elif upgrades.upgrade_coins >= upgrades.train_cock_cost and upgrades.train_cock_unlocked == False and upgrades.view_victim_wakefulness_bar != 0:
             idle "images/buttons/cock techniques button.png"
             hover "images/buttons/cock techniques button hover.png"
-            hovered Show("global_tooltip", input_text = "Purchase techniques related to training your cock")
-            action [Hide("global_tooltip"), Jump("unlock_train_cock")]
+            hovered Show("global_tooltip", input_text = "Purchase techniques related to training your cock", x_pos = 0.28, y_pos = 0.40)
+            action [Hide("global_tooltip"), Jump("unlock_train_cock_label")]
         else:
             idle "images/buttons/cock techniques button locked.png"
-            if upgrades.train_cock_unlocked == True:
+            if upgrades.view_victim_wakefulness_bar == 0:
+                hovered Show("global_tooltip", input_text = "You must unlock wakefulness bar first", x_pos = 0.28, y_pos = 0.40)
+            elif upgrades.train_cock_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these techniques", x_pos = 0.28, y_pos = 0.40)
             else:
-                hovered Show("global_tooltip", input_text = "You don`t have enough coins to unlock this, required [upgrades.train_cock_cost] you have [upgrades.upgrade.coins]", x_pos = 0.28, y_pos = 0.40)
+                hovered Show("global_tooltip", input_text = "You don`t have enough coins to unlock this, required [upgrades.train_cock_cost] you have [upgrades.upgrade_coins]", x_pos = 0.28, y_pos = 0.40)
             action NullAction()
         unhovered Hide("global_tooltip")
     #####################################################################################################################
@@ -196,8 +229,26 @@ screen gabrielle_shop_screen():
     # passives (first visit forces player to buy wakefulness bar tier 1)                                                #
     #                                                                                                                   #
     #####################################################################################################################
-    text "{size=+5}Unlock passive skills" xalign 0.088 ypos 0.53
+    text "{size=+5}Unlock passive skills" xalign 0.088 ypos 0.43
     # wakefulness (0 means no view, 1 is thirds, 2 is fifths, 3 is tenths, 4 is twenty-fifths, 5 is hundredths and 6 is thousandths)
+    # unlock tier 0
+    imagebutton:
+        at technique_purchase_button_custom_zoom
+        xpos 0.125
+        ypos 0.49
+        xanchor 1.0
+        yanchor 1.0
+        focus_mask True
+        if upgrades.view_victim_wakefulness_bar == 0:
+            idle "images/buttons/wakefulness tier 0 button.png"
+            hover "images/buttons/wakefulness tier 0 button hover.png"
+            hovered Show("global_tooltip", input_text = "Unlock the first tier of the wakefulness bar", x_pos = 0.13, y_pos = 0.52)
+            action [Hide("global_tooltip"), Jump("unlock_tier_0_wakefulness_bar_label")]
+        else:
+            idle "images/buttons/wakefulness tier 0 button locked.png"
+            hovered Show("global_tooltip", input_text = "You`ve already purchased this upgrade", x_pos = 0.13, y_pos = 0.52)
+            action NullAction()
+        unhovered Hide("global_tooltip")
 
     # view victim arousal
 
@@ -235,7 +286,7 @@ screen gabrielle_shop_screen():
 
     # cock
 
-    textbutton"Close":
+    textbutton "Close":
         xalign 0.5
         ypos 0.9
         action [Hide("gabrielle_shop_screen"), Jump("players_room")]
@@ -292,4 +343,12 @@ label unlock_train_cock_label:
         upgrades.reduceUpgradeCoins(50)
         upgrades.train_cock_unlocked = True
     "[gabrielle.name] teaches you techniques to train your cock skills"
+    jump players_room
+
+
+label unlock_tier_0_wakefulness_bar_label:
+    "stuff and things to unlock tier 0 wakefulness bar"
+    python:
+        upgrades.view_victim_wakefulness_bar = 1
+        upgrades.reduceUpgradeCoins(5)
     jump players_room

@@ -340,6 +340,8 @@ init python:
         
         def increaseArousal(self, amount):
             self.arousal += amount
+            if self.vaginal_state == "dry" and self.arousal >= 40:
+                self.vaginal_state == "girl cum"
             if self.arousal >= 150: # check for orgasm
                 return True
             else:

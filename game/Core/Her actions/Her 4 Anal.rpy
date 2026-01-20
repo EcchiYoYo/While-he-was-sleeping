@@ -9,17 +9,17 @@ label rub_bum_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = rubBumCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = rubBumCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
-    if did_orgasm == True:
+    if did_orgasm:
         python:
             pc.increaseOrgasm()
         "You orgasmed from rubbing your bum cheeks"
-    if did_level_up == True:
+    if did_level_up:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
-    if did_persistent_level_up == True:
+    if did_persistent_level_up:
         show screen persistent_hand_level_up_screen(number_of_levels = [did_persistent_level_up])
     jump his_room
 
@@ -32,20 +32,21 @@ label finger_arse_label:
     #
     #
     python:
-        did_hand_level_up, did_persistent_hand_level_up, did_anal_level_up, did_persistent_anal_level_up, coin_gain, her_arousal_gain = fingerArseholeCombinedVariableGenerator()
+        did_hand_level_up, did_persistent_hand_level_up, did_anal_level_up, did_persistent_anal_level_up, coin_gain, her_arousal_gain, did_orgasm = fingerArseholeCombinedVariableGenerator()
     
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
-    if did_orgasm == True:
+    if did_orgasm:
         python:
             pc.increaseOrgasm()
         "You orgasmed while fingering your arse hole"
-    if did_hand_level_up == True:
+    if did_hand_level_up:
         show screen hand_level_up_screen(number_of_levels = [did_hand_level_up])
-    if did_persistent_hand_level_up == True:
+    if did_persistent_hand_level_up:
         show screen persistent_hand_level_up_screen(number_of_levels = [did_persistent_hand_level_up])
-    if did_anal_level_up == True:
+    if did_anal_level_up:
         show screen anal_level_up_screen(number_of_levels = [did_anal_level_up])
-    if did_persistent_anal_level_up == True:
+    if did_persistent_anal_level_up:
         show screen persistent_anal_level_up_screen(number_of_levels = [did_persistent_anal_level_up])
+    jump his_room

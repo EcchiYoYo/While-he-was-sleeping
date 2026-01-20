@@ -1,27 +1,15 @@
 label opening_scene:
     # This block checks for installed packs and if present activates them
     python:
-        try:
-            if l_pack_installed == True:
-                l_pack = True
-        except:
-            l_pack = False
-        try:
-            if t_pack_installed == True:
-                t_pack = True
-        except:
-            t_pack = False
-        try:
-            if g_pack_installed == True:
-                g_pack = True
-        except:
-            g_pack = False
-        try:
-            if f_pack_installed == True:
-                f_pack = True
-        except:
-            f_pack = False
-    if l_pack == True or t_pack == True or g_pack == True or f_pack == True:
+        pack_names = ['l_pack', 't_pack', 'g_pack', 'f_pack']
+        for pack in pack_names:
+            try:
+                if globals()[f"{pack}_installed"]:
+                    globals()[pack] = True
+            except:
+                globals()[pack] = False
+    
+    if l_pack or t_pack or g_pack or f_pack:
         "Would you like to select from an installed pack or play using the default girl?"
         menu:
             "Play default":
@@ -35,13 +23,13 @@ label select_from_installed_packs:
     # If no packs are installed the opening will skip this block (due to no available options from the menu) and jump to the default opening
     "Please select the pack you wish to play."
     menu:
-        "Play the young pack?" if l_pack == True:
+        "Play the young pack?" if l_pack:
             jump l_pack_opening
-        "Play the trans pack?" if t_pack == True:
+        "Play the trans pack?" if t_pack:
             jump t_pack_opening
-        "Play the gay pack?" if g_pack == True:
+        "Play the gay pack?" if g_pack:
             jump g_pack_opening
-        "Play the hermaphrodite pack?" if h_pack == True:
+        "Play the hermaphrodite pack?" if h_pack:
             jump f_pack_opening    
 
 label default_opening:
@@ -171,16 +159,14 @@ label victim_relation_setting:
                 "This man is unknown to you, he is a friend of your fathers and is staying for a while, he is gone when you wake in the morning and asleep before you get home at night, so you have no idea who he is."
                 "Since he came to stay you can`t help but fantasise about this unknown man performing lewd acts with you, the added arousal from him being a complete stranger is almost too much to bear."
     python:
-        if man.relationship == "Friend":
-            single_use = "your childhood friend"
-        elif man.relationship == "Brother":
-            single_use = "your big brother"
-        elif man.relationship == "Daddy":
-            single_use = "your daddy"
-        elif man.relationship == "Uncle":
-            single_use = "your uncle"
-        else:
-            single_use = "a complete stranger"
+        # Map relationship types to display names
+        relationship_names = {
+            "Friend": "Your childhood friend",
+            "Brother": "Your big brother",
+            "Daddy": "Your daddy",
+            "Uncle": "Your uncle",
+        }
+        single_use = relationship_names.get(man.relationship, "the stranger")
     menu:
         "The target of your lust is [single_use], is that correct?"
         "Yes":
