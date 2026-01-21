@@ -21,6 +21,8 @@ screen practice_technique_screen():
         action Jump("players_room")
 
 screen train_mouth_button():
+    python:
+        minimum_increase_arousal, maximum_increase_arousal = trainMouthMinMaxCheck()
     imagebutton:
         xpos 0.25
         ypos 0.9
@@ -37,11 +39,13 @@ screen train_mouth_button():
             if upgrades.train_mouth_unlocked == False:
                 hovered Show("global_tooltip", input_text = "You must unlock this technique in [gabrielle.name]`s shop", x_pos = 0.25, y_pos = 0.895)
             else:
-                hovered Show("global_tooltip", input_text = "You need at least 2 stamina to use these training techniques", x_pos = 0.25, y_pos = 0.895)
+                hovered Show("global_tooltip", input_text = "Not enough stamina for this action requires 2 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.25, y_pos = 0.895)
             action NullAction()
         unhovered Hide("global_tooltip")
 
 screen train_hands_button():
+    python:
+        minium_increase_arousal, maximum_increase_arousal = trainHandsMinMaxCheck()
     imagebutton:
         xpos 0.35
         ypos 0.9
@@ -51,14 +55,14 @@ screen train_hands_button():
         if upgrades.train_hands_unlocked == True and pc.stamina >= 3:
             idle "images/buttons/her hands action button.png"
             hover "images/buttons/her hands action button hover.png"
-            hovered Show("global_tooltip", input_text = "Train your hands using the techniques taught to you by [gabrielle.name]", x_pos = 0.35, y_pos = 0.895)
+            hovered Show("global_tooltip", input_text = f"Train your hands using the techniques taught to you by [gabrielle.name], increasing your arousal by {minium_increase_arousal}-{maximum_increase_arousal}", x_pos = 0.35, y_pos = 0.895)
             action [Hide("global_tooltip"), Jump("train_hands_label")]
         else:
             idle "images/buttons/her hands action button locked.png"
             if upgrades.train_hands_unlocked == False:
                 hovered Show("global_tooltip", input_text = "You must unlock this technique in [gabrielle.name]`s shop", x_pos = 0.35, y_pos = 0.895)
             else:
-                hovered Show("global_tooltip", input_text = "You need at least 3 stamina to train using these training techniques", x_pos = 0.35, y_pos = 0.895)
+                hovered Show("global_tooltip", input_text = "Not enough stamina for this action requires 3 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.35, y_pos = 0.895)
             action NullAction()
         unhovered Hide("global_tooltip")
 

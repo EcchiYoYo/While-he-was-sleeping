@@ -72,10 +72,11 @@ init python:
             her_arousal_gain = suckDryFingersArousalGainGlobal()
             base_coin_gain, not_used = pc.suckHerFingersArousalGain()
             did_orgasm, not_used = suckDryFingersArousalIncrease()
+            # this needs to be here as other functions called within this file reduce stamina in arousal increase function calls
             stamina_cost = 2
             pc.reduceStamina(stamina_cost)
         elif location == "Dildo":
-            her_arousal_gain = pc.suckDildoArousalGain()
+            her_arousal_gain = suckDildoArousalGainGlobal()
             base_coin_gain, not_used = pc.suckDildoArousalGain()
             did_orgasm, not_used = suckDildoArousalIncrease()
             stamina_cost = 2
@@ -224,3 +225,60 @@ init python:
         did_persistent_level_up = increasePersistentAnalExp(multiplied_exp_value)
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
         return her_arousal_gain, did_orgasm, did_level_up, did_persistent_level_up, coin_gain, stamina_cost
+
+    #####################################################
+    # Functions to calculate min and max arousal gained #
+    # from training actions                             #
+    #                                                   #
+    #####################################################
+    def trainHandsMinMaxCheck():
+        # breast
+        rub_breast_training_action = rubBreastArousalGainGlobal()
+        # pubis
+        rub_pubis_training_action = rubPubisArousalGainGlobal()
+        # bum
+        rub_bum_training_action = rubBumArousalGainGlobal()
+        # inner thigh
+        rub_inner_thigh_training_action = rubInnerThighArousalGainGlobal()
+        # both breasts
+        rub_both_breast_training_action = rubBothBreastArousalGainGlobal()
+        hand_training_arousals = [rub_breast_training_action, rub_pubis_training_action, rub_bum_training_action, rub_inner_thigh_training_action, rub_both_breast_training_action]
+        return min(hand_training_arousals), max(hand_training_arousals)
+    def trainMouthMinMaxCheck():
+        # fingers
+        suck_fingers_training_action = suckDryFingersArousalGainGlobal()
+        # dildo
+        suck_dildo_training_action = suckDildoArousalGainGlobal()
+        # dummy
+        blowjob_dummy_training_action = suckDummyArousalGainGlobal()
+        mouth_training_arousals = [suck_fingers_training_action, suck_dildo_training_action, blowjob_dummy_training_action]
+        return min(mouth_training_arousals), max(mouth_training_arousals)
+    def trainFeetMinMaxCheck():
+        # fingers
+        massage_feet_training_action = rubChestWithFootArousalGainGlobal()
+        # dildo
+        practice_footjob_training_action = footjobHerArousalGainGlobal()
+        # dummy
+        practice_dummy_ball_rub_training_action = rubHisBallsHerFootArousalGainGlobal()
+        foot_training_arousal = [massage_feet_training_action, practice_footjob_training_action, practice_dummy_ball_rub_training_action]
+        return min(foot_training_arousal), max(foot_training_arousal)
+    def trainVaginalMinMaxCheck():
+        # fingers
+        finger_pussy_training_action = fingerPussyArousalGainGlobal()
+        # clit
+        massage_clit_training_action = massageClitArousalGainGlobal()
+        # outercourse
+        outercourse_vaginal_training_action =  vaginalOutercourseArousalGainGlobal()
+        # intercourse
+        intercourse_vaginal_training_action = vaginalIntercourseArousalGainGlobal()
+        vaginal_training_arousal = [finger_pussy_training_action, massage_clit_training_action, outercourse_vaginal_training_action, intercourse_vaginal_training_action]
+        return min(vaginal_training_arousal), max(vaginal_training_arousal)
+    def trainAnalMinMaxCheck():
+        # fingers
+        finger_arse_training_action = fingerArseArousalGainGlobal()
+        # outercourse
+        outercourse_anal_training_action = analOutercourseArousalGainGlobal()
+        # intercourse
+        intercourse_anal_training_action = analIntercourseArousalGainGlobal()
+        anal_training_arousal = [finger_arse_training_action, outercourse_anal_training_action, intercourse_anal_training_action]
+        return min(anal_training_arousal), max(anal_training_arousal)

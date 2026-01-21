@@ -49,7 +49,7 @@ screen rub_left_breast_button():
             if pc.stamina >= 5:
                 idle "images/buttons/left breast button.png"
                 hover "images/buttons/left breast button hover.png"
-                hovered Show("her_tooltip", input_text = f"Rub your left breast increasing your arousal level by " + increase_arousal + ".", x_pos = 0.15, y_pos = 0.13)
+                hovered Show("her_tooltip", input_text = f"Rub your left breast increasing your arousal level by {increase_arousal}", x_pos = 0.15, y_pos = 0.13)
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_left_breast_label")]
             else:
                 idle "images/buttons/left breast button locked.png"
@@ -76,7 +76,7 @@ screen rub_right_breast_button():
             if pc.stamina >= 5:
                 idle "images/buttons/right breast button.png"
                 hover "images/buttons/right breast button hover.png"
-                hovered Show("her_tooltip", input_text = f"Rub your right breast increasing your arousal level by " + increase_arousal +" .", x_pos = 0.15, y_pos = 0.23)
+                hovered Show("her_tooltip", input_text = f"Rub your right breast increasing your arousal level by {increase_arousal}", x_pos = 0.15, y_pos = 0.23)
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_right_breast_label")]
             else:
                 idle "images/buttons/left breast button locked.png"
@@ -103,7 +103,7 @@ screen rub_both_breasts_button():
             if pc.stamina >= 7:
                 idle "images/buttons/both breasts button.png"
                 hover "images/buttons/both breasts button hover.png"
-                hovered Show("her_tooltip", input_text = f"Rub both of your breasts increasing your arousal level by " + increase_arousal +  ".", x_pos = 0.15, y_pos = 0.33)
+                hovered Show("her_tooltip", input_text = f"Rub both of your breasts increasing your arousal level by {increase_arousal}", x_pos = 0.15, y_pos = 0.33)
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("rub_both_breasts_label")]
             else:
                 idle "images/buttons/both breasts button locked.png"
@@ -129,7 +129,7 @@ screen pinch_left_nipple_button():
             if pc.stamina >= 5:
                 idle "images/buttons/left nipple button.png"
                 hover "images/buttons/left nipple button hover.png"
-                hovered Show("her_tooltip", input_text = f"Pinch your left nipple increasing your arousal level by " + increase_arousal + ".", x_pos = 0.15, y_pos = 0.43)
+                hovered Show("her_tooltip", input_text = f"Pinch your left nipple increasing your arousal level by {increase_arousal}", x_pos = 0.15, y_pos = 0.43)
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("pinch_left_nipple_label")]
             else:
                 idle "images/buttons/left nipple button locked.png"
@@ -155,7 +155,7 @@ screen pinch_right_nipple_button():
             if pc.stamina >= 5:
                 idle "images/buttons/right nipple button.png"
                 hover "images/buttons/right nipple button hover.png"
-                hovered Show("her_tooltip", input_text = f"Pinch your right nipple increasing your arousal level by " + increase_arousal + ".", x_pos = 0.15, y_pos = 0.53)
+                hovered Show("her_tooltip", input_text = f"Pinch your right nipple increasing your arousal level by {increase_arousal}", x_pos = 0.15, y_pos = 0.53)
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("pinch_right_nipple_label")]
             else:
                 idle "images/buttons/right nipple button locked.png"
@@ -181,7 +181,7 @@ screen pinch_both_nipples_button():
             if pc.stamina >= 7:
                 idle "images/buttons/both nipples button.png"
                 hover "images/buttons/both nipples button hover.png"
-                hovered Show("her_tooltip", input_text = f"Pinch both of your nipples increasing your arousal level by " + increase_arousal + ".",x_pos = 0.15, y_pos = 0.63)
+                hovered Show("her_tooltip", input_text = f"Pinch both of your nipples increasing your arousal level by {increase_arousal}",x_pos = 0.15, y_pos = 0.63)
                 action [Hide("her_tooltip"), Hide("breast_actions_select_screen"), Jump("pinch_both_nipple_label")]
             else:
                 idle "images/buttons/both nipples button locked.png"

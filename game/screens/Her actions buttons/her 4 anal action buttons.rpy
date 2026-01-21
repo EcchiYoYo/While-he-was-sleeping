@@ -46,7 +46,7 @@ screen rub_arse_her_button():
         if pc.stamina >= 5:
             idle "images/buttons/rub her ass button.png"
             hover "images/buttons/rub her ass button hover.png"
-            hovered Show("her_tooltip", input_text = f"You gently massage your buttocks, increasing your arousal by " + increase_arousal + ".", x_pos = 0.15, y_pos = 0.23)
+            hovered Show("her_tooltip", input_text = f"You gently massage your buttocks, increasing your arousal by {increase_arousal}", x_pos = 0.15, y_pos = 0.23)
             action [Hide("her_tooltip"), Hide("your_arse_actions_select_screen"), Jump("rub_bum_label")]
         else:
             idle "images/buttons/rub her ass button locked.png"
@@ -67,7 +67,7 @@ screen finger_her_arse_her_fingers_button():
         if pc.finger_state != "dry" and pc.stamina >= 5:
             idle "images/buttons/finger her ass button.png"
             hover "images/buttons/finger her ass button hover.png"
-            hovered Show("her_tooltip", input_text = f"Finger your backdoor, increasing your arousal by " + increase_arousal + ".", x_pos = 0.15, y_pos = 0.33)
+            hovered Show("her_tooltip", input_text = f"Finger your backdoor, increasing your arousal by {increase_arousal}", x_pos = 0.15, y_pos = 0.33)
             action [Hide("her_tooltip"), Hide("your_arse_actions_select_screen"), Jump("finger_arse_label")]
         else:
             idle "images/buttons/finger her ass button locked.png"
