@@ -48,11 +48,11 @@ screen rub_pubis_button():
         if pc.stamina >= 3:
             idle "images/buttons/pubis button.png"
             hover "images/buttons/pubis button hover.png"
-            hovered Show("her_tooltip", input_text = f"Rub your pubis, increasing your arousal by {increase_arousal}", x_pos = 0.15, y_pos = 0.13)
+            hovered Show("her_tooltip", input_text = f"Rub your pubis, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}", x_pos = 0.15, y_pos = 0.13)
             action [Hide("her_tooltip"), Hide("pussy_actions_select_screen"), Jump("rub_pubis_label")]
         else:
             idle "images/buttons/pubis button locked.png"
-            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 3 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.13)
+            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 3 you have [pc.stamina], consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.13)
             action NullAction()
         unhovered Hide("her_tooltip")
 
@@ -69,11 +69,11 @@ screen rub_inner_thigh_button():
         if pc.stamina >= 5:
             idle "images/buttons/inner thigh button.png"
             hover "images/buttons/inner thigh button hover.png"
-            hovered Show("her_tooltip", input_text = f"Rub your inner thigh, increasing your arousal by {increase_arousal}", x_pos = 0.15, y_pos = 0.23)
+            hovered Show("her_tooltip", input_text = f"Rub your inner thigh, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}", x_pos = 0.15, y_pos = 0.23)
             action [Hide("her_tooltip"), Hide("pussy_actions_select_screen"), Jump("rub_inner_thigh_label")]
         else:
             idle "images/buttons/inner thigh button locked.png"
-            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 5 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.23)
+            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 5 you have [pc.stamina], consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.23)
             action NullAction()
         unhovered Hide("her_tooltip")
 
@@ -90,11 +90,11 @@ screen rub_outer_pussy_lips_button():
         if pc.stamina >= 5:
             idle "images/buttons/outer lips button.png"
             hover "images/buttons/outer lips button hover.png"
-            hovered Show("her_tooltip", input_text = f"Rub your outer pussy lips, increasing your arousal by {increase_arousal}", x_pos = 0.15, y_pos = 0.33)
+            hovered Show("her_tooltip", input_text = f"Rub your outer pussy lips, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}", x_pos = 0.15, y_pos = 0.33)
             action [Hide("her_tooltip"), Hide("pussy_actions_select_screen"), Jump("rub_outer_pussy_lips_label")]
         else:
             idle "images/buttons/outer lips button locked.png"
-            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 5 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.33)
+            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 5 you have [pc.stamina], consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.33)
             action NullAction()
         unhovered Hide("her_tooltip")
 
@@ -111,7 +111,7 @@ screen massage_clit_button():
         if pc.finger_state != "dry" and pc.stamina >= 7:
             idle "images/buttons/clit button.png"
             hover "images/buttons/clit button hover.png"
-            hovered Show("her_tooltip", input_text = f"Massage your clit, increasing your arousal by {increase_arousal}", x_pos = 0.15, y_pos = 0.43)
+            hovered Show("her_tooltip", input_text = f"Massage your clit, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}", x_pos = 0.15, y_pos = 0.43)
             action [Hide("her_tooltip"), Hide("pussy_actions_select_screen"), Jump("massage_clit_label")]
         else:
             idle "images/buttons/clit button locked.png"
@@ -119,7 +119,7 @@ screen massage_clit_button():
             if pc.finger_state == "dry":
                 hovered Show("her_tooltip", input_text = "Your fingers must be moist to perform this action, coat your fingers in some fluid", x_pos = 0.15, y_pos = 0.43)
             else:
-                hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 7 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.43)
+                hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 7 you have [pc.stamina], consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.43)
             action NullAction()
         unhovered Hide("her_tooltip")
 
@@ -135,7 +135,7 @@ screen finger_pussy_button():
         focus_mask True
         if pc.stamina < 10:
             idle "images/buttons/finger button locked.png"
-            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 10 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.53)
+            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 10 you have [pc.stamina], consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.53)
             action NullAction()
         # fingers or pussy must be moist to finger self
         elif pc.finger_state == "dry" and pc.vaginal_state == "dry":
@@ -145,6 +145,6 @@ screen finger_pussy_button():
         else:
             idle "images/buttons/finger button.png"
             hover "images/buttons/finger button hover.png"
-            hovered Show("her_tooltip", input_text = f"Vigorously finger yourself, increasing your arousal by {increase_arousal}", x_pos = 0.15, y_pos = 0.53)
+            hovered Show("her_tooltip", input_text = f"Vigorously finger yourself, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}", x_pos = 0.15, y_pos = 0.53)
             action [Hide("her_tooltip"), Hide("pussy_actions_select_screen"), Jump("finger_pussy_label")]
         unhovered Hide("her_tooltip")

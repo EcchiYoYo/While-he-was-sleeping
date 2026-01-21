@@ -48,11 +48,11 @@ screen feet_rub_chest_button():
         if pc.stamina >= 3:
             idle "images/buttons/rub chest feet button.png"
             hover "images/buttons/rub chest feet button hover.png"
-            hovered Show("her_tooltip", input_text ="Caress his chest with your foot, increasing your arousal by " + increase_arousal + ".", x_pos = 0.15, y_pos = 0.23)
+            hovered Show("her_tooltip", input_text =f"Caress his chest with your foot, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}", x_pos = 0.15, y_pos = 0.23)
             action [Hide("her_tooltip"), Hide("your_feet_actions_select_screen"), Jump("rub_chest_with_foot_label")]
         else:
             idle "images/buttons/rub chest feet button locked.png"
-            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 3 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.23)
+            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 3 you have [pc.stamina], consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.23)
             action NullAction()
         unhovered Hide("her_tooltip")    
 
@@ -70,11 +70,11 @@ screen feet_suck_toes_button():
         if pc.stamina >= 3:
             idle "images/buttons/suck toes button.png"
             hover "images/buttons/suck toes button hover.png"
-            hovered Show("her_tooltip", input_text = "Have him suck your toes, increasing your arousal by " + increase_arousal + ".", x_pos = 0.15, y_pos = 0.33)
+            hovered Show("her_tooltip", input_text = f"Have him suck your toes, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}", x_pos = 0.15, y_pos = 0.33)
             action [Hide("her_tooltip"), Hide("your_feet_actions_select_screen"), Jump("he_sucks_her_toes_label")]
         else:
             idle "images/buttons/suck toes button locked.png"
-            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 3 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.33)
+            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 3 you have [pc.stamina], consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.33)
             action NullAction()
         unhovered Hide("her_tooltip")
 
@@ -92,11 +92,11 @@ screen rub_his_balls_with_your_feet_button():
         if pc.stamina >= 1:
             idle "images/buttons/rub balls with feet button.png"
             hover "images/buttons/rub balls with feet button hover.png"
-            hovered Show("her_tooltip", input_text = "Gently caress his balls with your foot, increasing your arousal by " + increase_arousal + ".", x_pos = 0.15, y_pos = 0.43)
+            hovered Show("her_tooltip", input_text = f"Gently caress his balls with your foot, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}", x_pos = 0.15, y_pos = 0.43)
             action [Hide("her_tooltip"), Hide("your_feet_actions_select_screen"), Jump("rub_his_balls_with_foot_label")]
         else:
             idle "images/buttons/rub balls with feet button locked.png"
-            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 1 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.43)
+            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 1 you have [pc.stamina], consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.43)
             action NullAction()
         unhovered Hide("her_tooltip")
 
@@ -114,10 +114,10 @@ screen footjob_button():
         if pc.stamina >= 5:
             idle "images/buttons/footjob button.png"
             hover "images/buttons/footjob button hover.png"
-            hovered Show("her_tooltip", input_text = "Masturbate him with your feet, increasing your arousal by " + increase_arousal + ".", x_pos = 0.15, y_pos = 0.53)
+            hovered Show("her_tooltip", input_text = f"Masturbate him with your feet, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}", x_pos = 0.15, y_pos = 0.53)
             action [Hide("her_tooltip"), Hide("your_feet_actions_select_screen"), Jump("footjob_label")]
         else:
             idle "images/buttons/footjob button locked.png"
-            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 5 you have [pc.stamina], consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.53)
+            hovered Show("her_tooltip", input_text = "Not enough stamina for this action requires 5 you have [pc.stamina], consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)", x_pos = 0.15, y_pos = 0.53)
             action NullAction()
         unhovered Hide("her_tooltip")

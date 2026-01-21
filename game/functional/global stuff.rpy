@@ -12,6 +12,7 @@ init python:
             if self.block > 4:
                 self.block = 1
                 self.advanceDay(1)
+            self.healOverTime()
         
         def advanceDay(self, amount):
             self.days_passed += 1
@@ -20,6 +21,19 @@ init python:
             else:
                 self.game_end = False
             return self.game_end
+        
+        def healOverTime(self):
+            if self.block != 1:
+                if pc.stamina != pc.max_stamina:
+                    heal_amount = (pc.max_stamina / 100) * 40
+                    if pc.stamina + heal_amount > pc.max_stamina:
+                        pc.stamina = pc.max_stamina
+                    else:
+                        pc.stamina = pc.stamina + floor(heal_amount)
+            else:
+                pc.stamina = pc.max_stamina
+            pc.arousal = 0
+            man.arousal = 0
 
     def noneFunction():
         1 + 1
@@ -32,8 +46,8 @@ init python:
             suspicion_gained = suspicionGainFromPreviousNight()
             man.suspicion = suspicion_gained
             # used to update victim cum number of times once threshold reached
-            if ((persistent.total_ejaculation_all_cycles / 1000) + 1) != man.self.ejaculation_times:
-                man.self.ejaculation_times = ((persistent.total_ejaculation_all_cycles / 1000) + 1)
+            if ((persistent.total_ejaculation_all_cycles / 1000) + 1) != man.ejaculation_times:
+                man.ejaculation_times = ((persistent.total_ejaculation_all_cycles / 1000) + 1)
         # advance time by amount specified in function call block
         game_time.advanceTime(amount)
         pc.resetMoistState()
@@ -146,7 +160,7 @@ init python:
     
     # check the current foot exp required for current persistent level
     def persistentFootExpForLevel():
-        exp_value_to_set = currentMouthExpGet()
+        exp_value_to_set = currentFootExpGet()
         return exp_value_to_set
     # increase current persistent foot exp and increase level if required
     def increasePersistentFootExp(amount):

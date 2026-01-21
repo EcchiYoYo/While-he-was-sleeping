@@ -1,6 +1,19 @@
 label opening_scene:
     # This block checks for installed packs and if present activates them
     python:
+        #########################################################
+        # this has to be here because ren'py is fucking retarded
+        did_level_up = False
+        did_persistent_level_up = False
+        did_he_level_up = False
+        did_he_persistent_level_up = False
+        did_orgasm = False
+        did_he_orgasm = False
+        coin_gain = 0
+        his_arousal_gain = 0
+        her_arousal_gain = 0
+        stamina_cost = 0
+        #######################################################
         pack_names = ['l_pack', 't_pack', 'g_pack', 'f_pack']
         for pack in pack_names:
             try:

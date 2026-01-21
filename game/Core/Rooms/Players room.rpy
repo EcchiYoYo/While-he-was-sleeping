@@ -13,6 +13,9 @@ screen players_room_screen():
         text day + ": Evening" xpos 0.02 ypos 0.05
     else:
         text day + ": Night" xpos 0.02 ypos 0.05
+    text "{color=#000000}Stamina: [pc.stamina]/[pc.max_stamina]" xpos 0.02 ypos 0.11
+    text "{color=#000000}Arousal: [pc.arousal]/150" xpos 0.02 ypos 0.17
+    text "{color=#000000}Coins: [upgrades.upgrade_coins]" xpos 0.02 ypos 0.23
     use go_to_work_button()
     use item_shop_button()
     use technique_shop_button()

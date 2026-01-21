@@ -136,7 +136,7 @@ screen gabrielle_shop_screen():
             idle "images/buttons/vaginal technique button.png"
             hover "images/buttons/vaginal technique button hover.png"
             hovered Show("global_tooltip", input_text = "Purchase techniques related to training your vagina", x_pos = 0.31, y_pos = 0.3)
-            action [Hide("global_tooltip"), Jump("unlock_train_vagina_label")]
+            action [Hide("global_tooltip"), Jump("unlock_train_vaginal_label")]
         else:
             idle "images/buttons/vaginal techniques button locked.png"
             if upgrades.view_victim_wakefulness_bar == 0:

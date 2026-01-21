@@ -99,6 +99,7 @@ label her_mouth_suck_your_fingers_label():
         "Stuff for her persistent level up"
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
+    $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     jump his_room
 
 label her_mouth_suck_juices_from_fingers_label():

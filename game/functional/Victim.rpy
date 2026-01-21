@@ -21,25 +21,31 @@ init python:
             self.wakefulness = 0 # default cap of 100, can be increased
             self.wakefulness_cap = wakefulness_cap
             self.arousal = 0 # orgasm at 150
-
+            # face
             self.face_resistance_exp = face_resistance
             self.face_resistance_exp_for_level = hisCurrentFaceExpGet()
             self.face_resistance_level = face_resistance_level
+            # hand
             self.hand_resistance = hand_resistance
             self.hand_resistance_exp_for_level = hisCurrentHandExpGet()
             self.hand_resistance_level = hand_resistance_level
+            # chest
             self.chest_resistance = chest_resistance
             self.chest_resistance_exp_for_level = hisCurrentChestExpGet()
             self.chest_resistance_level = chest_resistance_level
+            # thighs
             self.thigh_resistance = thigh_resistance
             self.thigh_resistance_exp_for_level = hisCurrentThighExpGet()
             self.thigh_resistance_level = thigh_resistance_level
+            # just the tip
             self.tip_resistance = tip_resistance
             self.tip_resistance_exp_for_level = hisCurrentTipExpGet()
             self.tip_resistance_level = tip_resistance_level
-            self.cock_resistance = cock_resistance
+            # cock
+            self.cock_resistance_exp = cock_resistance
             self.cock_resistance_exp_for_level = hisCurrentCockExpGet()
             self.cock_resistance_level = cock_resistance_level
+            # ass
             self.ass_resistance = ass_resistance
             self.ass_resistance_exp_for_level = hisCurrentAssExpGet()
             self.ass_resistance_level = ass_resistance_level

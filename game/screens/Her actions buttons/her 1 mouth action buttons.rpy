@@ -48,11 +48,11 @@ screen kiss_button():
         if pc.stamina >= 3:
             idle "images/buttons/kiss button.png"
             hover "images/buttons/kiss button hover.png"
-            hovered Show("her_tooltip", input_text = f"Lightly kiss him, increasing your arousal by {increase_arousal}",x_pos = 0.15, y_pos = 0.13)
+            hovered Show("her_tooltip", input_text = f"Lightly kiss him, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}",x_pos = 0.15, y_pos = 0.13)
             action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_kiss_label")]
         else:
-            hovered Show("her_tooltip", input_text="Not enough stamina to do that, consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)",x_pos = 0.15, y_pos = 0.23)
-            action NullLAction()
+            hovered Show("her_tooltip", input_text="Not enough stamina to do that, consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)",x_pos = 0.15, y_pos = 0.13)
+            action NullAction()
             idle "images/buttons/kiss button locked.png"
         unhovered Hide("her_tooltip")
 
@@ -69,10 +69,10 @@ screen deep_kiss_button():
         if pc.stamina >= 3:
             idle "images/buttons/deep kiss button.png"
             hover "images/buttons/deep kiss button hover.png"
-            hovered Show("her_tooltip", input_text=f"Kiss him using plenty of tongue action, increasing your arousal by {increase_arousal}",x_pos = 0.15, y_pos = 0.23)
+            hovered Show("her_tooltip", input_text=f"Kiss him using plenty of tongue action, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}",x_pos = 0.15, y_pos = 0.23)
             action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_deep_kiss_label")]
         else:                
-            hovered Show("her_tooltip", input_text="Not enough stamina to do that, consider ending the night ({color='#E32636'}Make sure you hide any evidence left on his body)",x_pos = 0.15, y_pos = 0.23)
+            hovered Show("her_tooltip", input_text="Not enough stamina to do that, consider ending the night ({color=#E32636}Make sure you hide any evidence left on his body)",x_pos = 0.15, y_pos = 0.23)
             action NullAction()
             idle "images/buttons/deep kiss button locked.png"
         unhovered Hide("her_tooltip")
@@ -85,6 +85,8 @@ screen suck_your_fingers_button():
                 actual_increase_arousal = base_increase_arousal - (base_increase_arousal + pc.arousal - 40)
             else:
                 actual_increase_arousal = base_increase_arousal
+        else:
+            actual_increase_arousal = 0
         increase_arousal = str(actual_increase_arousal)
     imagebutton:
         at her_mouth_custom_zoom
@@ -96,7 +98,7 @@ screen suck_your_fingers_button():
         if pc.finger_state == "dry":
             idle "images/buttons/suck her fingers button.png"
             hover "images/buttons/suck her fingers button hover.png"
-            hovered Show("her_tooltip", input_text=f"Suck your fingers to get them moist, increasing your arousal by {increase_arousal}",x_pos = 0.15, y_pos = 0.33)
+            hovered Show("her_tooltip", input_text=f"Suck your fingers to get them moist, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}",x_pos = 0.15, y_pos = 0.33)
             action [Hide("her_tooltip"), Hide("mouth_actions_select_screen"), Jump("her_mouth_suck_your_fingers_label")]
         else:
             if pc.finger_state == "saliva":
@@ -117,6 +119,8 @@ screen suck_juices_button():
                 actual_increase_arousal = base_increase_arousal - (base_increase_arousal + pc.arousal - 75)
             else:
                 actual_increase_arousal = base_increase_arousal
+        else:
+            actual_increase_arousal = 0
         increase_arousal = str(actual_increase_arousal)
     imagebutton:
         at her_mouth_custom_zoom
@@ -136,9 +140,9 @@ screen suck_juices_button():
             idle "images/buttons/suck her juices button.png"
             hover "images/buttons/suck her juices hover.png"
             if pc.finger_state == "girl cum":
-                hovered Show("her_tooltip", input_text=f"Suck the girl cum from your fingers, increasing your arousal by {increase_arousal}",x_pos = 0.15, y_pos = 0.43)
+                hovered Show("her_tooltip", input_text=f"Suck the girl cum from your fingers, increasing your arousal by {{color=#FFB0F2}}{increase_arousal}",x_pos = 0.15, y_pos = 0.43)
             else:
-                hovered Show("her_tooltip", input_text=f"Consume the slimy cum coating your fingers {increase_arousal}",x_pos = 0.15, y_pos = 0.43)
+                hovered Show("her_tooltip", input_text=f"Consume the slimy cum coating your fingers {{color=#FFB0F2}}{increase_arousal}",x_pos = 0.15, y_pos = 0.43)
             action [Hide("her_tooltip", Hide("mouth_actions_select_screen"), Jump("her_mouth_suck_juices_from_fingers_label"))]
         unhovered Hide("her_tooltip")
 

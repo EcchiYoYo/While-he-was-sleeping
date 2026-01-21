@@ -109,6 +109,7 @@ init python:
         base_coin_gain = 0
         did_orgasm = 0
         stamina_cost = 0
+        training_multiplier = 1.5
         if location == "Fingers":
             her_arousal_gain = rubChestWithFootArousalGainGlobal()
             base_coin_gain, not_used = pc.rubChestWithFootArousalGain()
@@ -129,7 +130,7 @@ init python:
             base_coin_gain = 0
             did_orgasm = False
             stamina_cost = 0
-        multiplied_exp_value = int(floor(her_arousal_gain * pc.training_multiplier))
+        multiplied_exp_value = int(floor(her_arousal_gain * training_multiplier))
         did_level_up = pc.increaseFootExp(multiplied_exp_value)
         did_persistent_level_up = increasePersistentFootExp(multiplied_exp_value)
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
@@ -157,27 +158,31 @@ init python:
             base_coin_gain, not_used = pc.fingerPussyArousalGain()
             did_orgasm, not_used = fingerPussyArousalIncrease()
             stamina_cost = 6
+            training_multiplier = 1.25
         elif location == "Clit":
             her_arousal_gain = massageClitArousalGainGlobal()
             base_coin_gain, not_used = pc.massageClitArousalGain()
             did_orgasm, not_used = massageClitArousalIncrease()
             stamina_cost = 6
+            training_multiplier = 1.25
         elif location == "Dildo outer" or location == "Training dummy outer":
             her_arousal_gain = vaginalOutercourseArousalGainGlobal()
             base_coin_gain, not_used = pc.vaginalOutercourseArousalGain()
             did_orgasm, not_used = vaginalOutercourseArousalIncrease()
             stamina_cost = 8
+            training_multiplier = 1.6
         elif location == "Training dummy inter" or location == "Dildo inter":
             her_arousal_gain = vaginalIntercourseArousalGainGlobal()
             base_coin_gain, not_used = pc.vaginalIntercourseArousalGain()
             did_orgasm, not_used = vaginalIntercourseArousalIncrease()
             stamina_cost = 15
+            training_multiplier = 1.8
         else:
             her_arousal_gain = 0
             base_coin_gain = 0
             did_orgasm = False
             stamina_cost = 0
-        multiplied_exp_value = int(floor(her_arousal_gain * pc.training_multiplier))
+        multiplied_exp_value = int(floor(her_arousal_gain * training_multiplier))
         did_level_up = pc.increaseVaginalExp(multiplied_exp_value)
         did_persistent_level_up = increasePersistentVaginalExp(multiplied_exp_value)
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
@@ -200,27 +205,31 @@ init python:
         base_coin_gain = 0
         did_orgasm = 0
         stamina_cost = 0
+        training_multiplier = 1
         if location == "Fingers":
             her_arousal_gain = fingerArseArousalGainGlobal()
             base_coin_gain, not_used = pc.fingerArseArousalGain()
             did_orgasm, not_used = fingerArseArousalIncrease()
             stamina_cost = 6
+            training_multiplier = 1.25
         elif location == "Dildo outer" or location == "Training dummy outer":
             her_arousal_gain = analOutercourseArousalGainGlobal()
             base_coin_gain, not_used = pc.analOutercourseArousalGain()
             did_orgasm, not_used = analOutercourseArousalIncrease()
             stamina_cost = 8
+            training_multiplier = 1.6
         elif location == "Dildo inter" or location == "Training dummy inter":
             her_arousal_gain = analIntercourseArousalGainGlobal()
             base_coin_gain, not_used = pc.analIntercourseArousalGain()
             did_orgasm, not_used = analIntercourseArousalIncrease()
             stamina_cost = 15
+            training_multiplier = 1.8
         else:
             her_arousal_gain = 0
             base_coin_gain = 0
             did_orgasm = False
             stamina_cost = 0
-        multiplied_exp_value = int(floor(her_arousal_gain * pc.training_multiplier))
+        multiplied_exp_value = int(floor(her_arousal_gain * training_multiplier))
         did_level_up = pc.increaseAnalExp(multiplied_exp_value)
         did_persistent_level_up = increasePersistentAnalExp(multiplied_exp_value)
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)

@@ -286,7 +286,7 @@ init python:
             return default_arousal, hand_skill_multiplier
         
         def fingerArseArousalGain(self):
-            default_arousal_gain = 7
+            default_arousal = 7
             hand_skill_multiplier = self.hand_level / 1000
             anal_skill_multiplier = self.anal_level / 1000
             skill_multiplier = hand_skill_multiplier + anal_skill_multiplier
@@ -398,6 +398,8 @@ init python:
                         if (index + 1 == amount):
                             exp_needed = int(row["exp needed"])
                             return exp_needed
+                        else:
+                            return 0
             else:
                 return 0
         

@@ -26,7 +26,7 @@ screen player_stamina_reduction_screen(amount_lost):
         if isinstance(amount_lost, int):
             actual_lost = amount_lost
         else:
-            actual_lost = "".join(map(str, amount_gained))
+            actual_lost = "".join(map(str, amount_lost))
         stamina_lost = actual_lost
     text "{color=#007500}You used [stamina_lost] stamina" xpos 0.4 ypos 0.6
     timer 2.5 action Hide("player_stamina_reduction_screen")

@@ -11,10 +11,10 @@ label rub_chest_with_foot_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_global_arousal_gain, his_arousal_increase = rubChestWithFootCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_arousal_gain, his_arousal_gain = rubChestWithFootCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
-    show screen victim_arousal_increase_screen(amount_gained = [his_arousal_increase])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen victim_arousal_increase_screen(amount_gained = [his_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
@@ -43,9 +43,9 @@ label he_sucks_her_toes_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, did_orgasm, coin_gain, her_global_arousal_gain = heSucksHerToesCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, did_orgasm, coin_gain, her_arousal_gain = heSucksHerToesCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
@@ -66,10 +66,10 @@ label rub_his_balls_with_foot_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_global_arousal_gain, his_arousal_increase = rubHisBallsHerFootCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_arousal_gain, his_arousal_gain = rubHisBallsHerFootCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
-    show screen victim_arousal_increase_screen(amount_gained = [his_arousal_increase])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen victim_arousal_increase_screen(amount_gained = [his_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
@@ -98,10 +98,10 @@ label footjob_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_global_arousal_gain, his_arousal_increase = footjobCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_arousal_gain, his_arousal_gain = footjobCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
-    show screen player_arousal_increase_screen(amount_gained = [her_global_arousal_gain])
-    show screen victim_arousal_increase_screen(amount_gained = [his_arousal_increase])
+    show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
+    show screen victim_arousal_increase_screen(amount_gained = [his_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:

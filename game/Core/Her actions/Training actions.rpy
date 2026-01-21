@@ -21,13 +21,13 @@ label train_hands_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     show screen player_stamina_reduction_screen(amount_lost = [stamina_cost])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
-    if did_orgasm == True:
+    if did_orgasm:
         python:
             pc.increaseOrgasm()
         "You orgasmed while training your hands"
-    if did_level_up == True:
+    if did_level_up:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
-    if did_persistent_level_up == True:
+    if did_persistent_level_up:
         show screen persistent_hand_level_up_screen(number_of_levels = [did_persistent_level_up])
     jump players_room
 
@@ -50,13 +50,13 @@ label train_mouth_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     show screen player_stamina_reduction_screen(amount_lost = [stamina_cost])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
-    if did_orgasm == True:
+    if did_orgasm:
         python:
             pc.increaseOrgasm()
         "You orgasmed while training your mouth"
-    if did_level_up == True:
+    if did_level_up:
         show screen mouth_level_up_screen(number_of_levels = [did_level_up])
-    if did_persistent_level_up == True:
+    if did_persistent_level_up:
         show screen persistent_mouth_level_up_screen(number_of_levels = [did_persistent_level_up])
     jump players_room
 
@@ -78,21 +78,21 @@ label train_feet_label:
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     show screen player_stamina_reduction_screen(amount_lost = [stamina_cost])
-    $ renpy.block_rollback() # This must be here to prevent rolling back and gaining additional persistent exp
-    if did_orgasm == True:
+    $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
+    if did_orgasm:
         python:
             pc.increaseOrgasm()
         "You somehow orgasmed from the thought or using your feet"
-    if did_level == True:
+    if did_level_up:
         show screen foot_level_up_screen(number_of_levels = [did_level_up])
-    if did_persistent_level_up == True:
-        show screen persistent_foot_level_up_screen(number_of_levels = [did_level_up])
+    if did_persistent_level_up:
+        show screen persistent_foot_level_up_screen(number_of_levels = [did_persistent_level_up])
     jump players_room
 
 label train_vaginal_label:
     python:
         location_choice = "None"
-        location_choice = vaginalTrainingChoice()
+        location_choice = vaginalTrainingLocationChoice()
         resetEventRelatedVariables()
     if location_choice == "Fingers":
         "Vaginal training using fingers"
@@ -114,14 +114,14 @@ label train_vaginal_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     show screen player_stamina_reduction_screen(amount_lost = [stamina_cost])
     $ renpy.block_rollback() # This must be here to prevent rolling back and gaining additional persistent exp
-    if did_orgasm == True:
+    if did_orgasm:
         python:
             pc.increaseOrgasm()
         "Your orgasmed while training your pussy"
-    if did_level == True:
+    if did_level_up:
         show screen vaginal_level_up_screen(number_of_levels = [did_level_up])
-    if did_persistent_level_up == True:
-        show screen persistent_vaginal_level_up_screen(number_of_levels = [did_level_up])
+    if did_persistent_level_up:
+        show screen persistent_vaginal_level_up_screen(number_of_levels = [did_persistent_level_up])
     jump players_room
 
 label train_anal_label:
@@ -147,14 +147,14 @@ label train_anal_label:
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     show screen player_stamina_reduction_screen(amount_lost = [stamina_cost])
     $ renpy.block_rollback() # This must be here to prevent rolling back and gaining additional persistent exp
-    if did_orgasm == True:
+    if did_orgasm:
         python:
             pc.increaseOrgasm()
         "Your orgasmed while training your arse"
-    if did_level == True:
+    if did_level_up:
         show screen anal_level_up_screen(number_of_levels = [did_level_up])
-    if did_persistent_level_up == True:
-        show screen persistent_anal_level_up_screen(number_of_levels = [did_level_up])
+    if did_persistent_level_up:
+        show screen persistent_anal_level_up_screen(number_of_levels = [did_persistent_level_up])
     jump players_room
 
 #######################################################
