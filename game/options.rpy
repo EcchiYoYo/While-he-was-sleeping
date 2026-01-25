@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("While He Was Sleeping")
+define config.name = _("While he was Sleeping")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -24,7 +24,6 @@ define gui.show_name = True
 ## The version of the game.
 
 define config.version = "1.0"
-define build.itch_project = "ecchiyoyo/while-he-was-sleeping"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -38,7 +37,7 @@ define gui.about = _p("""
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "WhileHeWasSleeping"
+define build.name = "WhilehewasSleeping"
 
 
 ## Sounds and music ############################################################
@@ -50,10 +49,6 @@ define build.name = "WhileHeWasSleeping"
 define config.has_sound = True
 define config.has_music = True
 define config.has_voice = True
-
-define config.default_music_volume = 0.1
-define config.default_sfx_volume = 0.4
-define config.default_voice_volume = 0.4
 
 
 ## To allow the user to play a test sound on the sound or voice channel,
@@ -148,7 +143,7 @@ default preferences.afm_time = 15
 ## This generally should not be changed, and if it is, should always be a
 ## literal string, not an expression.
 
-define config.save_directory = "WhileHeWasSleeping"
+define config.save_directory = "WhilehewasSleeping-1769315139"
 
 
 ## Icon ########################################################################
@@ -161,8 +156,6 @@ define config.window_icon = "gui/window_icon.png"
 ## Build configuration #########################################################
 ##
 ## This section controls how Ren'Py turns your project into distribution files.
-
-define config.console = True
 
 init python:
 
@@ -182,14 +175,7 @@ init python:
     ## For example, "*.txt" matches txt files in the base directory, "game/
     ## **.ogg" matches ogg files in the game directory or any of its
     ## subdirectories, and "**.psd" matches psd files anywhere in the project.
-    build.archive("images", "all")
-    build.archive("sound", "all")
 
-
-    build.classify("game/**.png", "images")
-    build.classify("game/**.jpg", "images")
-    build.classify("game/**.mp3", "sound")
-    build.classify("game/**.wav", "sound")
     ## Classify files as None to exclude them from the built distributions.
 
     build.classify('**~', None)

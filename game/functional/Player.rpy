@@ -19,8 +19,6 @@ init python:
             self.max_stamina = max_stamina
             self.arousal = 0
             self.finger_state = "dry"
-            self.player_finger_cum_amount = 0
-            self.victim_finger_cum_amount = 0
             self.vaginal_state = "dry"
             self.anal_state = "dry"
             self.tip_state = "dry"
@@ -335,8 +333,6 @@ init python:
             self.anal_state = "dry"
             self.tip_state = "dry"
             self.cock_state = "dry"
-            self.player_finger_cum_amount = 0
-            self.victim_finger_cum_amount = 0
         
         def increaseArousal(self, amount):
             self.arousal += amount

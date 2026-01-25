@@ -156,8 +156,8 @@ label her_mouth_clean_cum_from_face_label():
         "Something went wrong and the game does not know who`s cum is on his face please report this."
     python:
         man.face_state = "saliva"
-        man.player_face_cum_amount = 0
-        man.victim_face_cum_amount = 0
+        sperm_location_amounts.player_face_cum_amount = 0
+        sperm_location_amounts.victim_face_cum_amount = 0
         did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
         #
         # add function for stat changes
@@ -200,8 +200,8 @@ label her_mouth_clean_cum_from_chest_label():
         "Something went wrong and the game does not know who`s cum is on his chest please report this."
     python:
         man.chest_state = "saliva"
-        man.player_chest_cum_amount = 0
-        man.victim_chest_cum_amount = 0
+        sperm_location_amounts.player_chest_cum_amount = 0
+        sperm_location_amounts.victim_chest_cum_amount = 0
         did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
         #
         # add stat change function here
@@ -244,8 +244,8 @@ label her_mouth_clean_cum_stomach_label():
         "Something went wrong and the game does not know who`s cum is on his stomach please report this."
     python:
         man.stomach_state = "saliva"
-        man.victim_stomach_cum_amount = 0
-        man.player_stomach_cum_amount = 0
+        sperm_location_amounts.victim_stomach_cum_amount = 0
+        sperm_location_amounts.player_stomach_cum_amount = 0
         did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
         #
         # add stat changes here
@@ -289,8 +289,8 @@ label her_mouth_clean_cum_fingers_label():
         "Something went wrong and the game does not know who`s cum is on his fingers please report this."
     python:
         man.finger_state = "saliva"
-        man.victim_finger_cum_amount = 0
-        man.player_finger_cum_amount = 0
+        sperm_location_amounts.victim_finger_cum_amount = 0
+        sperm_location_amounts.player_finger_cum_amount = 0
         did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
         #
         #
@@ -334,8 +334,8 @@ label her_mouth_clean_cum_thighs_label():
         "Something went wrong and the game does not know who`s cum is on his thighs please report this."
     python:
         man.thigh_state = "saliva"
-        man.player_thigh_cum_amount = 0
-        man.victim_thigh_cum_amount = 0
+        sperm_location_amounts.player_thigh_cum_amount = 0
+        sperm_location_amounts.victim_thigh_cum_amount = 0
         did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
         #
         #

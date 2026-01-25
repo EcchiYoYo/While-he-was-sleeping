@@ -1,7 +1,3 @@
-init:
-    transform her_feet_custom_zoom:
-        zoom 0.90
-
 screen your_feet():
     imagebutton:
         at her_feet_custom_zoom

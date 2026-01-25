@@ -1,7 +1,3 @@
-init:
-    transform him_face_custom_zoom:
-        zoom 0.90
-
 screen him_face():
     imagebutton:
         at him_face_custom_zoom

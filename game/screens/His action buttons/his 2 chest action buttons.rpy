@@ -1,7 +1,3 @@
-init:
-    transform chest_custom_zoom:
-        zoom 0.90
-
 screen his_chest():
     imagebutton:
         at chest_custom_zoom

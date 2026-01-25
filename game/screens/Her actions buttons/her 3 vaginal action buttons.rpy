@@ -1,7 +1,3 @@
-init:
-    transform pussy_custom_zoom:
-        zoom 0.90
-
 screen your_pussy():
     imagebutton:
         at pussy_custom_zoom

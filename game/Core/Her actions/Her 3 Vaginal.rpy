@@ -50,6 +50,11 @@ label rub_inner_thigh_label:
 label rub_outer_pussy_lips_label:
     python:
         resetEventRelatedVariables()
+        if sperm_location_amounts.player_finger_cum_amount > 0:
+            noneFunction()
+            #
+            # code for calculations if player has sperm on her fingers
+            #
     "You rub your outer pussy lips"
     #
     #
@@ -72,6 +77,11 @@ label rub_outer_pussy_lips_label:
 label massage_clit_label:
     python:
         resetEventRelatedVariables()
+        if sperm_location_amounts.player_finger_cum_amount > 0:
+            noneFunction()
+            #
+            # code for calculations if player has sperm on her fingers
+            #
     "You flick your bean"
     #
     #
@@ -94,6 +104,11 @@ label massage_clit_label:
 label finger_pussy_label:
     python:
         resetEventRelatedVariables()
+        if sperm_location_amounts.player_finger_cum_amount > 0:
+            noneFunction()
+            #
+            # code for calculations if player has sperm on her fingers
+            #
     #
     # check for virginity (if not virgin more fingers, maybe if virgin some reference to not pushing to deep in fear of breaking hymen)
     #

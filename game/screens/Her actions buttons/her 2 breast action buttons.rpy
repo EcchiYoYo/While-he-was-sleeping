@@ -1,7 +1,3 @@
-init:
-    transform her_breast_custom_zoom:
-        zoom 0.90
-
 screen your_breast():
     imagebutton:
         at her_breast_custom_zoom

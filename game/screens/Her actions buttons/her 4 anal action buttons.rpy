@@ -1,7 +1,3 @@
-init:
-    transform her_ass_custom_zoom:
-        zoom 0.90
-
 screen your_arse():
     imagebutton:
         at her_ass_custom_zoom

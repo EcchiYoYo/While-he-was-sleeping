@@ -6,7 +6,7 @@ screen her_tooltip(input_text, x_pos, y_pos):
         ypadding 10 # change this to increase/decrease space between letters and edge of image top and bottom
         xpos x_pos
         ypos y_pos
-        xmaximum 350
+        xmaximum 500
         hbox:
             spacing 10
             box_wrap True
@@ -21,7 +21,7 @@ screen his_tooltip(input_text, x_pos, y_pos):
         ypadding 10 # change this to increase/decrease space between letters and edge of image top and bottom
         xpos x_pos
         ypos y_pos
-        xmaximum 350
+        xmaximum 500
         xanchor 1.0
         hbox:
             spacing 10
@@ -37,7 +37,7 @@ screen global_tooltip(input_text, x_pos, y_pos):
         ypadding 10
         xpos x_pos
         ypos y_pos
-        xmaximum 350
+        xmaximum 500
         yanchor 1.0
         hbox:
             spacing 10

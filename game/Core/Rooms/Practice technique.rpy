@@ -24,6 +24,7 @@ screen train_mouth_button():
     python:
         minimum_increase_arousal, maximum_increase_arousal = trainMouthMinMaxCheck()
     imagebutton:
+        at global_button_size_zoom
         xpos 0.25
         ypos 0.9
         xanchor 1.0
@@ -47,6 +48,7 @@ screen train_hands_button():
     python:
         minimum_increase_arousal, maximum_increase_arousal = trainHandsMinMaxCheck()
     imagebutton:
+        at global_button_size_zoom
         xpos 0.35
         ypos 0.9
         xanchor 1.0
@@ -70,6 +72,7 @@ screen train_feet_button():
     python:
         minimum_increase_arousal, maximum_increase_arousal = trainFeetMinMaxCheck()
     imagebutton:
+        at global_button_size_zoom
         xpos 0.45
         ypos 0.9
         xanchor 1.0
@@ -92,6 +95,7 @@ screen train_vaginal_button():
     python:
         minimum_increase_arousal, maximum_increase_arousal = trainVaginalMinMaxCheck()
     imagebutton:
+        at global_button_size_zoom
         xpos 0.55
         ypos 0.9
         xanchor 1.0
@@ -119,6 +123,7 @@ screen train_anal_button():
     python:
         minimum_increase_arousal, maximum_increase_arousal = trainAnalMinMaxCheck()
     imagebutton:
+        at global_button_size_zoom
         xpos 0.65
         ypos 0.9
         xanchor 1.0
@@ -142,6 +147,7 @@ screen train_just_the_tip_button():
     # add in functionality for min max
     #
     imagebutton:
+        at global_button_size_zoom
         xpos 0.75
         ypos 0.9
         xanchor 1.0
@@ -167,6 +173,7 @@ screen train_cock_button():
     # add in functionality for min max
     #
     imagebutton:
+        at global_button_size_zoom
         xpos 0.85
         ypos 0.9
         xanchor 1.0

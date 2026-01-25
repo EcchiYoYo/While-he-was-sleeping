@@ -93,13 +93,11 @@ label introduction_to_mechanics_final:
     #
     gabrielle "You`ve taken enough chances, time to get out of here."
     "Not wanting to get caught you dash out the door and head back to your own room."
-    #
-    # transition to players room
-    #
-    "Safely in your own room you decide to turn in for the night, but vow that you will return again and use [first_use] sleeping form for your own pleasure."
     jump talk_to_player_scene
 
 label talk_to_player_scene:
+    scene her room
+    "Safely in your own room you decide to turn in for the night, but vow that you will return again and use [first_use] sleeping form for your own pleasure."
     gabrielle "Right, now that she`s sleeping let`s teach you how to use the shop."
     #
     # gabrielle turning and shouting to left

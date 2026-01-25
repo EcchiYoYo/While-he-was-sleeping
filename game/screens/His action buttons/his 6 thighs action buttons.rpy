@@ -1,7 +1,3 @@
-init:
-    transform his_thighs_custom_zoom:
-        zoom 0.90
-
 screen his_thigh_screen():
     imagebutton:
         at his_thighs_custom_zoom

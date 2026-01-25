@@ -1,7 +1,3 @@
-init:
-    transform her_cock_custom_zoom:
-        zoom 0.90
-
 screen your_cock():
     imagebutton:
         at her_feet_custom_zoom

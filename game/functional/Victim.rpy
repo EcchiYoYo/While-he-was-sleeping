@@ -55,40 +55,20 @@ init python:
             self.ejaculations_this_night = 0 # used to count orgasms this night, used for max victim times in single night
 
             self.chest_state = "dry"
-            self.player_chest_cum_amount = 0
-            self.victim_chest_cum_amount = 0
             self.stomach_state = "dry"
-            self.player_stomach_cum_amount = 0
-            self.victim_stomach_cum_amount = 0
             self.finger_state = "dry"
-            self.player_finger_cum_amount = 0
-            self.victim_finger_cum_amount = 0
             self.thigh_state = "dry"
-            self.player_thigh_cum_amount = 0
-            self.victim_thigh_cum_amount = 0
             self.face_state = "dry"
-            self.player_face_cum_amount = 0
-            self.victim_face_cum_amount = 0
             self.tip_state = "dry"
             self.cock_state = "dry"
             self.ass_state = "dry"
         
         def resetMoistState(self):
             self.chest_state = "dry"
-            self.player_chest_cum_amount = 0
-            self.victim_chest_cum_amount = 0
             self.stomach_state = "dry"
-            self.player_stomach_cum_amount = 0
-            self.victim_stomach_cum_amount = 0
             self.finger_state = "dry"
-            self.player_finger_cum_amount = 0
-            self.victim_finger_cum_amount = 0
             self.thigh_state = "dry"
-            self.player_thigh_cum_amount = 0
-            self.victim_thigh_cum_amount = 0
             self.face_state = "dry"
-            self.player_face_cum_amount = 0
-            self.victim_face_cum_amount = 0
             self.tip_state = "dry"
             self.cock_state = "dry"
             self.ass_state = "dry"

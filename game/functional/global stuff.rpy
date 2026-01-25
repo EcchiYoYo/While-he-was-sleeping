@@ -452,3 +452,28 @@ init python:
         his_arousal_gain = 0
         her_arousal_gain = 0
         stamina_cost = 0
+
+    class spermLocationAmounts:
+        def __init__(self):
+            self.player_chest_cum_amount = 0
+            self.victim_chest_cum_amount = 0
+            self.player_stomach_cum_amount = 0
+            self.victim_stomach_cum_amount = 0
+            self.player_finger_cum_amount = 0
+            self.victim_finger_cum_amount = 0
+            self.player_thigh_cum_amount = 0
+            self.victim_thigh_cum_amount = 0
+            self.player_face_cum_amount = 0
+            self.victim_face_cum_amount = 0
+        
+        def resetSpermAmounts(self):
+            self.player_chest_cum_amount = 0
+            self.victim_chest_cum_amount = 0
+            self.player_stomach_cum_amount = 0
+            self.victim_stomach_cum_amount = 0
+            self.player_finger_cum_amount = 0
+            self.victim_finger_cum_amount = 0
+            self.player_thigh_cum_amount = 0
+            self.victim_thigh_cum_amount = 0
+            self.player_face_cum_amount = 0
+            self.victim_face_cum_amount = 0

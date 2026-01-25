@@ -43,10 +43,10 @@ label start:
         "Do you want to reset your stats from previous play through`s?"
         menu:
             "You are currently on cycle [persistent.cycle_number], you will only get this opportunity once per playthrough."
-            "Yes":
+            "{color=#E32636}Yes":
                 python:
                     fullReset()
                 jump opening_scene
-            "No":
+            "{color=#84DE02}No":
                 jump opening_scene
     return

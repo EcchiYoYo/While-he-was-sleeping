@@ -1,7 +1,3 @@
-init:
-    transform her_mouth_custom_zoom:
-        zoom 0.90
-
 screen your_mouth():
     imagebutton:
         at her_mouth_custom_zoom

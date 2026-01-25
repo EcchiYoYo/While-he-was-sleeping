@@ -1,7 +1,3 @@
-init:
-    transform his_hand_custom_zoom:
-        zoom 0.90
-
 screen his_hand():
     imagebutton:
         at his_hand_custom_zoom

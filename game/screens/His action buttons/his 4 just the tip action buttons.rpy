@@ -1,7 +1,3 @@
-init:
-    transform his_just_the_tip_custom_zoom:
-        zoom 0.90
-
 screen his_just_the_tip_screen():
     imagebutton:
         at his_just_the_tip_custom_zoom

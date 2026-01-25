@@ -13,19 +13,18 @@ screen players_room_screen():
         text day + ": Evening" xpos 0.02 ypos 0.05
     else:
         text day + ": Night" xpos 0.02 ypos 0.05
-    text "{color=#000000}Stamina: [pc.stamina]/[pc.max_stamina]" xpos 0.02 ypos 0.11
-    text "{color=#000000}Arousal: [pc.arousal]/150" xpos 0.02 ypos 0.17
-    text "{color=#000000}Coins: [upgrades.upgrade_coins]" xpos 0.02 ypos 0.23
     use go_to_work_button()
     use item_shop_button()
     use technique_shop_button()
     use practice_technique_button()
     use predator_button()
     use skip_time_button()
+    use player_stats_screen_button()
 
 # Button used to go to work from players room screen
 screen go_to_work_button():
     imagebutton:
+        at global_button_size_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.3
@@ -52,6 +51,7 @@ screen item_shop_button():
         # minimum+money_needed = someFunction()
         minimum_money_needed = 1
     imagebutton:
+        at global_button_size_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.4
@@ -91,6 +91,7 @@ screen technique_shop_button():
         # minimum_points_needed = someFunction()
         minimum_points_needed = 1
     imagebutton:
+        at global_button_size_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.5
@@ -124,6 +125,7 @@ screen technique_shop_button():
 # button used to open practice menu from players room
 screen practice_technique_button():
     imagebutton:
+        at global_button_size_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.6
@@ -143,6 +145,7 @@ screen practice_technique_button():
 # button used to move to victims room from players room
 screen predator_button():     
     imagebutton:
+        at global_button_size_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.7
@@ -180,6 +183,7 @@ screen predator_button():
 
 screen skip_time_button():
     imagebutton:
+        at global_button_size_zoom
         xanchor 1.0
         yanchor 1.0
         xpos 0.8

@@ -1,7 +1,3 @@
-init:
-    transform technique_purchase_button_custom_zoom:
-        zoom 0.80
-
 label gabrielle_shop_screen_label():
     # add in Gabrielle shop background (different angle of Players room)
     # fuck renpy
@@ -28,9 +24,10 @@ label gabrielle_shop_screen_label():
 
 screen gabrielle_shop_screen():
     add "gabrielle_shop"
-    image "screens/gabrielle shop/shop background.png" xalign 0.08 ypos 0.1 yzoom 0.8 xzoom 0.9 # left panel
-    image "screens/gabrielle shop/shop background.png" xalign 0.92 ypos 0.1 yzoom 0.8 xzoom 0.9 #  right panel
-    image "screens/gabrielle shop/shop background.png" xalign 0.5 ypos 0.7 yzoom 0.25 xzoom 1.0 # central panel
+    add "gabrielle_shop_eyes"
+    image "screens/gabrielle shop/shop background.png" xalign 0.08 ypos 0.1 yzoom 1.5 xzoom 1.8 # left panel
+    image "screens/gabrielle shop/shop background.png" xalign 0.92 ypos 0.1 yzoom 1.5 xzoom 1.8 #  right panel
+    image "screens/gabrielle shop/shop background.png" xalign 0.5 ypos 0.7 yzoom 0.50 xzoom 2.0 # central panel
     text "Coins: [upgrades.upgrade_coins]":
         xpos 0.625
         ypos 0.705
@@ -235,17 +232,17 @@ screen gabrielle_shop_screen():
     imagebutton:
         at technique_purchase_button_custom_zoom
         xpos 0.125
-        ypos 0.49
+        ypos 0.575
         xanchor 1.0
         yanchor 1.0
         focus_mask True
         if upgrades.view_victim_wakefulness_bar == 0:
-            idle "images/buttons/wakefulness tier 0 button.png"
-            hover "images/buttons/wakefulness tier 0 button hover.png"
+            idle "images/buttons/wakefulness button.png"
+            hover "images/buttons/wakefulness button hover.png"
             hovered Show("global_tooltip", input_text = "Unlock the first tier of the wakefulness bar", x_pos = 0.13, y_pos = 0.52)
             action [Hide("global_tooltip"), Jump("unlock_tier_0_wakefulness_bar_label")]
         else:
-            idle "images/buttons/wakefulness tier 0 button locked.png"
+            idle "images/buttons/wakefulness button locked.png"
             hovered Show("global_tooltip", input_text = "You`ve already purchased this upgrade", x_pos = 0.13, y_pos = 0.52)
             action NullAction()
         unhovered Hide("global_tooltip")

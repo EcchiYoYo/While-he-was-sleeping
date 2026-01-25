@@ -5,9 +5,10 @@ label grace_shop_screen_label():
 
 screen grace_shop_screen():
     add "grace_shop"
-    image "screens/gabrielle shop/shop background.png" xalign 0.08 ypos 0.1 yzoom 0.8 xzoom 0.9
-    image "screens/gabrielle shop/shop background.png" xalign 0.92 ypos 0.1 yzoom 0.8 xzoom 0.9
-    image "screens/gabrielle shop/shop background.png" xalign 0.5 ypos 0.7 yzoom 0.25 xzoom 1.0
+    add "grace_shop_eyes"
+    image "screens/gabrielle shop/shop background.png" xalign 0.08 ypos 0.1 yzoom 1.6 xzoom 1.8
+    image "screens/gabrielle shop/shop background.png" xalign 0.92 ypos 0.1 yzoom 1.6 xzoom 1.8
+    image "screens/gabrielle shop/shop background.png" xalign 0.5 ypos 0.7 yzoom 0.50 xzoom 2.0
     text "Money: [pc.money]":
         xpos 0.625
         ypos 0.705
