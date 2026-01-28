@@ -18,10 +18,12 @@ label rub_chest_with_foot_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed from rubbing his chest with your foot"
     if did_he_orgasm:
         python:
+            # this will also reset arousal to 0
             man.increaseOrgasm()
         "He orgasmed while you rubbed his chest with your foot"
     if did_level_up:
@@ -49,6 +51,7 @@ label he_sucks_her_toes_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed while he sucked your toes"
     if did_level_up:
@@ -73,10 +76,12 @@ label rub_his_balls_with_foot_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed while massaging his balls with your foot"
     if did_he_orgasm:
         python:
+            # this will also reset arousal to 0
             man.increaseOrgasm()
         "He orgasmed while you massaged his balls with your foot"
     if did_level_up:
@@ -105,10 +110,12 @@ label footjob_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed while giving him a footjob"
     if did_he_orgasm:
         python:
+            # this will also reset arousal to 0
             man.increaseOrgasm()
         "He orgasmed from your footjob"
     if did_level_up:

@@ -5,6 +5,8 @@ init python:
     import random
     import heapq
     from math import floor
+    from math import ceil
+    import csv
 
 #################################################################
 #                                                               #
@@ -26,19 +28,19 @@ init python:
             self.face_resistance_exp_for_level = hisCurrentFaceExpGet()
             self.face_resistance_level = face_resistance_level
             # hand
-            self.hand_resistance = hand_resistance
+            self.hand_resistance_exp = hand_resistance
             self.hand_resistance_exp_for_level = hisCurrentHandExpGet()
             self.hand_resistance_level = hand_resistance_level
             # chest
-            self.chest_resistance = chest_resistance
+            self.chest_resistance_exp = chest_resistance
             self.chest_resistance_exp_for_level = hisCurrentChestExpGet()
             self.chest_resistance_level = chest_resistance_level
             # thighs
-            self.thigh_resistance = thigh_resistance
+            self.thigh_resistance_exp = thigh_resistance
             self.thigh_resistance_exp_for_level = hisCurrentThighExpGet()
             self.thigh_resistance_level = thigh_resistance_level
             # just the tip
-            self.tip_resistance = tip_resistance
+            self.tip_resistance_exp = tip_resistance
             self.tip_resistance_exp_for_level = hisCurrentTipExpGet()
             self.tip_resistance_level = tip_resistance_level
             # cock
@@ -46,7 +48,7 @@ init python:
             self.cock_resistance_exp_for_level = hisCurrentCockExpGet()
             self.cock_resistance_level = cock_resistance_level
             # ass
-            self.ass_resistance = ass_resistance
+            self.ass_resistance_exp = ass_resistance
             self.ass_resistance_exp_for_level = hisCurrentAssExpGet()
             self.ass_resistance_level = ass_resistance_level
 
@@ -83,7 +85,7 @@ init python:
         def increaseOrgasm(self):
             self.arousal = 0
             self.ejaculations_this_night += 1
-            ejaculation_amount = self.ejaculation_amount / self.ejaculation_times
+            ejaculation_amount = floor(self.ejaculation_amount / self.ejaculation_times)
             persistent.total_ejaculation_all_cycles += ejaculation_amount
             if self.ejaculations_this_night >= self.ejaculation_times:
                 return True, ejaculation_amount # reached ejaculation limit + ejaculation amount (used to keep track of sperm count t on/in body parts)
@@ -117,12 +119,13 @@ init python:
                 while self.hand_resistance_exp >= self.hand_resistance_exp_for_level:
                     self.increaseHandLevel(1)
                     level_up += 1
-                    if self.face_resistance_level >= 999:
+                    if self.hand_resistance_level >= 999:
                         break
+            return level_up
         
         def increaseHandLevel(self, amount):
             self.hand_resistance_level += amount
-            self.resistance_exp_for_level = hisCurrentHandExpGet()
+            self.hand_resistance_exp_for_level = hisCurrentHandExpGet()
         # Chest
         def increaseChestExp(self, amount):
             level_up = 0
@@ -182,9 +185,9 @@ init python:
         
         def increaseCockLevel(self, amount):
             self.cock_resistance_level += amount
-            self.cock_resistance_exp_for_level = hisCurrentAssExpGet()
+            self.cock_resistance_exp_for_level = hisCurrentCockExpGet()
         # ass
-        def increaseAssLevel(self, amount):
+        def increaseAssExp(self, amount):
             level_up = 0
             if self.ass_resistance_level < 999:
                 self.ass_resistance_exp += amount
@@ -197,6 +200,7 @@ init python:
         
         def increaseAssLevel(self, amount):
             self.ass_resistance_level += amount
+            self.ass_resistance_exp_for_level = hisCurrentAssExpGet()
 
         
         #####################################
@@ -226,10 +230,10 @@ init python:
         
         def rubChestArousalGain(self):
             default_increase = 5
-            hand_skill_multiplier = self.hand_level / 1000
+            hand_skill_multiplier = pc.hand_level / 1000
             return default_increase, hand_skill_multiplier
 
-        def rubChestArousalGain(self):
+        def rubNipplesArousalGain(self):
             default_increase = 7
             return default_increase
         
@@ -237,7 +241,14 @@ init python:
             default_arousal = 3
             multiplier_from_her_foot_skill = amount
             multiplier_from_upgrades = (upgrades.foot_arousal_multiplier / 1000)
-            his_actual_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier_from_her_foot_skill + multiplier_from_upgrades)))
+            his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier_from_her_foot_skill + multiplier_from_upgrades)))
+            return his_actual_arousal_gain, default_arousal
+        
+        def rubPussyOnChestArousalGain(self, amount):
+            default_arousal = 10
+            multiplier_from_her_vaginal_skill = amount
+            multiplier_from_upgrades = (upgrades.vaginal_arousal_multiplier / 1000)
+            his_actual_arousal_gain = floor(default_arousal + (default_arousal * (multiplier_from_her_vaginal_skill + multiplier_from_upgrades)))
             return his_actual_arousal_gain, default_arousal
         #####################################
         #                                   #
@@ -259,7 +270,7 @@ init python:
 
         def increaseWakefulness(self, amount):
             self.wakefulness += amount
-            if wakefulness >= self.wakefulness_cap:
+            if self.wakefulness >= self.wakefulness_cap:
                 if self.wakefulness > self.wakefulness_cap:
                     self.wakefulness = self.wakefulness_cap
                 return True
@@ -279,38 +290,66 @@ init python:
         
         def increaseFaceResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
-            self.face_resistance += amount
-            persistentIncreaseFaceResistance(amount)
+            # amount passed is the arousal increase gained
+            resistance_increase = ceil(amount / 10)
+            if resistance_increase > 666:
+                resistance_increase = 666
+            self.increaseFaceExp(resistance_increase)
+            persistentIncreaseFaceResistance(resistance_increase)
         
         def increaseHandResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
-            self.hand_resistance += amount
-            persistentIncreaseHandResistance(amount)
+            # amount passed is the arousal increase gained
+            resistance_increase = ceil(amount / 10)
+            if resistance_increase > 666:
+                resistance_increase = 666
+            self.increaseHandExp(resistance_increase)
+            persistentIncreaseHandResistance(resistance_increase)
         
         def increaseChestResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
-            self.chest_resistance += amount
-            persistentIncreaseChestResistance(amount)
+            # amount passed is the arousal increase gained
+            resistance_increase = ceil(amount / 10)
+            if resistance_increase > 666:
+                resistance_increase = 666
+            self.increaseChestExp(resistance_increase)
+            persistentIncreaseChestResistance(resistance_increase)
         
         def increaseThighResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
-            self.thigh_resistance += amount
-            persistentIncreaseThighsResistance(amount)
+            # amount passed is the arousal increase gained
+            resistance_increase = ceil(amount / 10)
+            if resistance_increase > 666:
+                resistance_increase = 666
+            self.increaseThighExp(resistance_increase)
+            persistentIncreaseThighsResistance(resistance_increase)
 
         def increaseCockResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
-            self.cock_resistance += amount
-            persistentIncreaseCockResistance(amount)
+            # amount passed is the arousal increase gained
+            resistance_increase = ceil(amount / 10)
+            if resistance_increase > 666:
+                resistance_increase = 666
+            self.increaseCockExp(resistance_increase)
+            persistentIncreaseCockResistance(resistance_increase)
 
         def increaseTipResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
-            self.tip_resistance += amount
-            persistentIncreaseTipResistance(amount)
+            # amount passed is the arousal increase gained
+            resistance_increase = ceil(amount / 10)
+            if resistance_increase > 666:
+                resistance_increase = 666
+            self.increaseTipExp(resistance_increase)
+            persistentIncreaseTipResistance(resistance_increase)
         
         def increaseAssResistance(self, amount):
             # increase by 10 percent of arousal gained capped at 666
-            self.ass_resistance += amount
-            persistentIncreaseAssResistance(amount)
+            # amount passed is the arousal increase gained
+            resistance_increase = ceil(amount / 10)
+            if resistance_increase > 666:
+                resistance_increase = 666
+            self.increaseAssExp(resistance_increase)
+            persistentIncreaseAssResistance(resistance_increase)
         
         # no longer used, instead count is + 1 for every thousand in total amount
         # def increaseEjaculationCount(amount):

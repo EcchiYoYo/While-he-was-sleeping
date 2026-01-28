@@ -16,6 +16,7 @@ label rub_breast_introduction_scene:
     #
     #
     python:
+        # intro prefix is used as this function is only called during the introduction
         did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = introRubBreastCombinedVariableGenerator()
         intro_2_completed = True
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
@@ -23,11 +24,10 @@ label rub_breast_introduction_scene:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will reset arousal, currently multi orgasms are disabled
             pc.increaseOrgasm()
         "You orgasmed from your breast massage"
         #
-        # need to set arousal back to zero plus whatever is over 150
-        # need to increase player orgasm counters
         #
     if did_level_up:
         show screen hand_level_up_screen(number_of_levels = [did_level_up])
@@ -38,6 +38,7 @@ label rub_breast_introduction_scene:
 label rub_left_breast_label:
     python:
         resetEventRelatedVariables()
+    # intro completion flag is set in defaults and/or if player selects skip introduction at game start
     if not intro_2_completed:
         jump rub_breast_introduction_scene
     "Caress your left breast."
@@ -52,6 +53,7 @@ label rub_left_breast_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will reset arousal, currently multi orgasms are disabled
             pc.increaseOrgasm()
         "You orgasmed from your breast massage"
     if did_level_up:
@@ -75,6 +77,7 @@ label rub_right_breast_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will reset arousal, currently multi orgasms are disabled
             pc.increaseOrgasm()
         "You orgasmed from your breast massage"
     if did_level_up:
@@ -98,6 +101,7 @@ label rub_both_breasts_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will reset arousal, currently multi orgasms are disabled
             pc.increaseOrgasm()
         "You orgasmed from your breast massage"
     if did_level_up:
@@ -121,6 +125,7 @@ label pinch_left_nipple_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will reset arousal, currently multi orgasms are disabled
             pc.increaseOrgasm()
         "You orgasmed from pinching and rolling your nipple"
     if did_level_up:
@@ -144,6 +149,7 @@ label pinch_right_nipple_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will reset arousal, currently multi orgasms are disabled
             pc.increaseOrgasm()
         "You orgasmed from pinching and rolling your nipple"
     if did_level_up:
@@ -167,6 +173,7 @@ label pinch_both_nipple_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will reset arousal, currently multi orgasms are disabled
             pc.increaseOrgasm()
         "You orgasmed from pinching and rolling your nipples"
     if did_level_up:

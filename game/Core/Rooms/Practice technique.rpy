@@ -77,6 +77,7 @@ screen train_feet_button():
         ypos 0.9
         xanchor 1.0
         yanchor 1.0
+        focus_mask True
         if upgrades.train_feet_unlocked == True and pc.stamina >= 3:
             idle "images/buttons/her feet button.png"
             hover "images/buttons/her feet button hover.png"
@@ -100,6 +101,7 @@ screen train_vaginal_button():
         ypos 0.9
         xanchor 1.0
         yanchor 1.0
+        focus_mask True
         if pc.player_type == "default" or pc.player_type == "futa": # maybe add the trans pack here for male presenting female
             if upgrades.train_vaginal_unlocked == True and pc.stamina >= 6:
                 idle "images/buttons/her pussy button.png"
@@ -128,6 +130,7 @@ screen train_anal_button():
         ypos 0.9
         xanchor 1.0
         yanchor 1.0
+        focus_mask True
         if upgrades.train_anal_unlocked == True and pc.stamina >= 6:
             idle "images/buttons/rub her ass button.png"
             hover "images/buttons/rub her ass button hover.png"
@@ -152,6 +155,8 @@ screen train_just_the_tip_button():
         ypos 0.9
         xanchor 1.0
         yanchor 1.0
+        focus_mask True
+        # no stamina check as player cannot yet have a cock, balls or tip
         if pc.player_type == "futa" or pc.player_type == "gay":
             if upgrades.train_just_the_tip_unlocked == True:
                 idle "images/buttons/his just the tip button.png"
@@ -178,18 +183,20 @@ screen train_cock_button():
         ypos 0.9
         xanchor 1.0
         yanchor 1.0
+        focus_mask True
+        # no stamina check as player cannot yet have a cock, balls or tip
         if pc.player_type == "futa" or pc.player_type == "gay":
             if upgrades.train_cock_unlocked == True:
                 idle "images/buttons/his cock button.png"
                 hover "images/buttons/his cock button hover.png"
-                hovered Show("global_tooltip", input_text = "Train your cock using the techniques taught to you by [gabrielle.name]", x_pos = 0.75, y_pos = 0.895)
+                hovered Show("global_tooltip", input_text = "Train your cock using the techniques taught to you by [gabrielle.name]", x_pos = 0.85, y_pos = 0.895)
                 action [Hide("global_tooltip"), Jump("train_cock_label")]
             else:
                 idle "images/buttons/his cock button locked.png"
-                hovered Show("global_tooltip", input_text = "You must unlock this technique in [gabrielle.name]`s shop", x_pos = 0.75, y_pos = 0.895)
+                hovered Show("global_tooltip", input_text = "You must unlock this technique in [gabrielle.name]`s shop", x_pos = 0.85, y_pos = 0.895)
                 action NullAction()
         else:
             idle "images/buttons/nothing button locked.png"
-            hovered Show("global_tooltip", input_text = "You don`t have the required body part for this technique", x_pos = 0.75, y_pos = 0.895)
+            hovered Show("global_tooltip", input_text = "You don`t have the required body part for this technique", x_pos = 0.85, y_pos = 0.895)
             action NullAction()
         unhovered Hide("global_tooltip")

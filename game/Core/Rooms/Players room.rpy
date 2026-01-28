@@ -119,8 +119,9 @@ screen technique_shop_button():
                     hovered Show("global_tooltip", input_text = "You should be assaulting your uncle or practising your technique right now", x_pos = 0.50, y_pos = 0.88)
                 else:
                     hovered Show("global_tooltip", input_text = "You should be assaulting the stranger or practising your technique right now", x_pos = 0.50, y_pos = 0.88)
+            action NullAction()
         unhovered Hide("global_tooltip")
-        action NullAction()
+        
 
 # button used to open practice menu from players room
 screen practice_technique_button():
@@ -139,8 +140,9 @@ screen practice_technique_button():
         else:
             idle "images/buttons/training button locked.png"
             hovered Show("global_tooltip", input_text = "Cannot practice in the morning, try going to work", x_pos = 0.60, y_pos = 0.88)
+            action NullAction()
         unhovered Hide("global_tooltip")
-        action NullAction()
+        
 
 # button used to move to victims room from players room
 screen predator_button():     

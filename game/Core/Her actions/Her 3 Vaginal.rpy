@@ -17,6 +17,7 @@ label rub_pubis_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed from rubbing your pubis"
     if did_level_up:
@@ -39,6 +40,7 @@ label rub_inner_thigh_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed while rubbing your inner thigh"
     if did_level_up:
@@ -66,6 +68,7 @@ label rub_outer_pussy_lips_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed while rubbing your outer pussy lips"
     if did_level_up:
@@ -93,6 +96,7 @@ label massage_clit_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed while flicking your bean"
     if did_level_up:
@@ -109,18 +113,19 @@ label finger_pussy_label:
             #
             # code for calculations if player has sperm on her fingers
             #
-    #
-    # check for virginity (if not virgin more fingers, maybe if virgin some reference to not pushing to deep in fear of breaking hymen)
-    #
     "You finger yourself"
+    if pc.vaginal_virgin:
+        "You gently finger yourself ensuring you do not push too deep for fear of tearing your hymen"
+    else:
+        "You vigorously finger yourself rapidly ramming your fingers as deep as you can"
     python:
-        # check code to ensure dual multiplier is being accounted for. as well as dual skill increase
         did_hand_level_up, did_persistent_hand_level_up, did_vaginal_level_up, did_persistent_vaginal_level_up, coin_gain, her_arousal_gain, did_orgasm = fingerPussyCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed while fingering yourself"
     if did_hand_level_up:

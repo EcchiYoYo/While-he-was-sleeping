@@ -5,6 +5,7 @@ init python:
     import random
     import heapq
     from math import floor
+    import csv
 #################################################################
 #                                                               #
 # Primary stats and functions for Player                        #
@@ -83,6 +84,9 @@ init python:
             self.cycle_number = cycle_number
             # used to show correct failure scene
             self.cycle_end_reason = "none"
+            # toggles for tracking clothing state
+            self.panties_shifted = False
+            self.top_open = False
 
         def increaseMoney(self, amount):
             self.money += amount
@@ -267,7 +271,7 @@ init python:
             level_up = 0
             self.current_anal_exp += amount
             anal_exp_for_level = self.anal_exp_for_level
-            while self.current_anal_exp >= vaginal_exp_for_level and anal_exp_for_level > 0: # keep cycling to increase level
+            while self.current_anal_exp >= anal_exp_for_level and anal_exp_for_level > 0: # keep cycling to increase level
                 self.increaseAnalLevel(1)
                 level_up += 1
                 anal_exp_for_level = self.currentAnalExpGet()
@@ -337,14 +341,14 @@ init python:
         def increaseArousal(self, amount):
             self.arousal += amount
             if self.vaginal_state == "dry" and self.arousal >= 40:
-                self.vaginal_state == "girl cum"
+                self.vaginal_state = "girl cum"
             if self.arousal >= 150: # check for orgasm
                 return True
             else:
                 return False
         
         def increaseOrgasm(self):
-            self.orgasm += 1
+            self.number_of_orgasms += 1
             self.arousal = 0
         
         def increaseStamina(self, amount):

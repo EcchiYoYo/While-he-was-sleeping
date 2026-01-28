@@ -82,7 +82,7 @@ label train_feet_label:
     if did_orgasm:
         python:
             pc.increaseOrgasm()
-        "You somehow orgasmed from the thought or using your feet"
+        "You somehow orgasmed from the thought of using your feet"
     if did_level_up:
         show screen foot_level_up_screen(number_of_levels = [did_level_up])
     if did_persistent_level_up:
@@ -117,7 +117,7 @@ label train_vaginal_label:
     if did_orgasm:
         python:
             pc.increaseOrgasm()
-        "Your orgasmed while training your pussy"
+        "You orgasmed while training your pussy"
     if did_level_up:
         show screen vaginal_level_up_screen(number_of_levels = [did_level_up])
     if did_persistent_level_up:
@@ -150,7 +150,7 @@ label train_anal_label:
     if did_orgasm:
         python:
             pc.increaseOrgasm()
-        "Your orgasmed while training your arse"
+        "You orgasmed while training your arse"
     if did_level_up:
         show screen anal_level_up_screen(number_of_levels = [did_level_up])
     if did_persistent_level_up:
@@ -163,7 +163,6 @@ label train_anal_label:
 
 label train_just_the_tip_label:
     python:
-        noneFunction()
         resetEventRelatedVariables()
         #
         # some function to check current just the tip level
@@ -182,7 +181,6 @@ label train_just_the_tip_label:
 
 label train_cock_label:
     python:
-        noneFunction()
         resetEventRelatedVariables()
         #
         # some function to check current cock experience

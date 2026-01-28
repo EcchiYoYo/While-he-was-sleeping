@@ -7,6 +7,7 @@ label rub_chest_introduction_scene:
     #
     #
     python:
+        # use increaseFaceResistance(arousal_amount)
         intro_3_completed = True
         did_orgasm, arousal_gain = rubChestArousalIncrease()
         base_coin_gain = man.rubChestArousalGain()

@@ -23,19 +23,17 @@ label her_mouth_kiss_label():
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     
     if did_orgasm and did_he_orgasm:
-        #
-        # reset arousal here while checking for multiple orgasms (not likely but could happen)
-        #
+        python:
+            pc.increaseOrgasm()
+            man.increaseOrgasm()
         "You both orgasmed while gently kissing him"
     elif did_he_orgasm:
-        #
-        # reset his arousal, and check for multiple orgasms
-        #
+        python:
+            man.increaseOrgasm()
         "He orgasmed from your gentle kiss"
     elif did_orgasm:
-        #
-        # reset her arousal and check for multiple orgasms
-        #
+        python:
+            pc.increaseOrgasm()
         "You orgasmed while gently kissing him"
     jump his_room
 
@@ -50,10 +48,7 @@ label her_mouth_deep_kiss_label():
     #
     #
     python:
-        
         did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_arousal_gain, his_arousal_gain = deepKissCombinedVariableGenerator()
-        #
-        # add stat change functions
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     show screen victim_arousal_increase_screen(amount_gained = [his_arousal_gain])
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
@@ -67,20 +62,18 @@ label her_mouth_deep_kiss_label():
     if did_he_persistent_level_up:
         show screen persistent_his_mouth_level_up_screen(number_of_levels = [did_he_persistent_level_up])
     if did_orgasm and did_he_orgasm:
+        python:
+            pc.increaseOrgasm()
+            man.increaseOrgasm()
         "You both orgasmed from your passionate kiss"
-        #
-        # reset arousal for both
-        #
     elif did_orgasm:
+        python:
+            pc.increaseOrgasm()
         "You orgasmed while deeply kissing him"
-        #
-        # reset his arousal        #
-    
     elif did_he_orgasm:
+        python:
+            man.increaseOrgasm()
         "He orgasmed while you deeply kissed him"
-        #
-        # reset her arousal
-        #
     jump his_room
 
 label her_mouth_suck_your_fingers_label():
@@ -145,12 +138,12 @@ label her_mouth_clean_girl_cum_from_face_label():
 label her_mouth_clean_cum_from_face_label():
     python:
         resetEventRelatedVariables()
-    if man.player_face_cum_amount > 0:
-        if man.victim_face_cum_amount > 0:
+    if sperm_location_amounts.player_face_cum_amount > 0:
+        if sperm_location_amounts.victim_face_cum_amount > 0:
             "You slurp the mixture of your cum mixed with his cum from his face, hiding the evidence it was ever there."
         else:
             "You slurp your cum from his face."
-    elif man.victim_face_cum_amount > 0:
+    elif sperm_location_amounts.victim_face_cum_amount > 0:
         "You slurp his cum from his face, hiding the evidence you wiped it there."
     else:
         "Something went wrong and the game does not know who`s cum is on his face please report this."
@@ -189,12 +182,12 @@ label her_mouth_clean_girl_cum_from_chest_label():
 label her_mouth_clean_cum_from_chest_label():
     python:
         resetEventRelatedVariables()
-    if man.player_chest_cum_amount > 0:
-        if man.victim_chest_cum_amount > 0:
+    if sperm_location_amounts.player_chest_cum_amount > 0:
+        if sperm_location_amounts.victim_chest_cum_amount > 0:
             "You suck the slimy mix of his and your cum from his chest, hiding it was ever there."
         else:
             "You suck your slimy load from his chest, hiding the evidence that you ever came here."
-    elif man.victim_chest_cum_amount > 0:
+    elif sperm_location_amounts.victim_chest_cum_amount > 0:
         "You suck his slimy load from his chest, hiding the evidence his jizz was ever there."
     else:
         "Something went wrong and the game does not know who`s cum is on his chest please report this."
@@ -233,12 +226,12 @@ label her_mouth_clean_girl_cum_stomach_label():
 label her_mouth_clean_cum_stomach_label():
     python:
         resetEventRelatedVariables()
-    if man.player_stomach_cum_amount > 0:
-        if man.victim_stomach_cum_amount > 0:
+    if sperm_location_amounts.player_stomach_cum_amount > 0:
+        if sperm_location_amounts.victim_stomach_cum_amount > 0:
             "You suck the combined load splattered across his stomach from both of you, savouring the flavour of the slimy mess, hiding the evidence it was ever there."
         else:
             "You suck the load you splattered across his stomach, savouring flavour as it slides down your throat, hiding the evidence it was ever there."
-    elif man.victim_stomach_cum_amount > 0:
+    elif sperm_location_amounts.victim_stomach_cum_amount > 0:
         "You suck his cum from his stomach, hiding the evidence his load was ever there."
     else:
         "Something went wrong and the game does not know who`s cum is on his stomach please report this."
@@ -278,12 +271,12 @@ label her_mouth_clean_girl_cum_fingers_label():
 label her_mouth_clean_cum_fingers_label():
     python:
         resetEventRelatedVariables()
-    if man.player_finger_cum_amount > 0:
-        if man.victim_finger_cum_amount > 0:
+    if sperm_location_amounts.player_finger_cum_amount > 0:
+        if sperm_location_amounts.victim_finger_cum_amount > 0:
             "You suck his fingers clean, hiding the mix of cum coating his fingers like you were never there."
         else:
             "You suck his fingers clean hiding the evidence your load was ever there."
-    elif man.victim_finger_cum_amount > 0:
+    elif sperm_location_amounts.victim_finger_cum_amount > 0:
         "You suck his fingers clean hiding that his cum was ever there."
     else:
         "Something went wrong and the game does not know who`s cum is on his fingers please report this."
@@ -323,12 +316,12 @@ label her_mouth_clean_girl_cum_thighs_label():
 label her_mouth_clean_cum_thighs_label():
     python:
         resetEventRelatedVariables()
-    if man.player_thigh_cum_amount > 0:
-        if man.victim_thigh_cum_amount > 0:
+    if sperm_location_amounts.player_thigh_cum_amount > 0:
+        if sperm_location_amounts.victim_thigh_cum_amount > 0:
             "You lap up the mixture of his cum and yours that coats his thighs, hiding the evidence it was ever there."
         else:
             "You lap up your slimy load from his thighs, hiding the evidence it was ever there."
-    elif man.victim_thigh_cum_amount > 0:
+    elif sperm_location_amounts.victim_thigh_cum_amount > 0:
         "You lap up his slimy load from his thighs, hiding the evidence it was ever there."
     else:
         "Something went wrong and the game does not know who`s cum is on his thighs please report this."

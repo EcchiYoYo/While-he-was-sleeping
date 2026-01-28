@@ -15,6 +15,7 @@ label rub_bum_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed from rubbing your bum cheeks"
     if did_level_up:
@@ -39,6 +40,7 @@ label finger_arse_label:
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
     if did_orgasm:
         python:
+            # this will also reset arousal to 0
             pc.increaseOrgasm()
         "You orgasmed while fingering your arse hole"
     if did_hand_level_up:
