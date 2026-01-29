@@ -122,7 +122,7 @@ label her_mouth_clean_girl_cum_from_face_label():
     "You slurp the girl cum from his face hiding the evidence that you leaked all over his face."
     python:
         man.face_state = "saliva"
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         #
     # did level up
@@ -151,7 +151,7 @@ label her_mouth_clean_cum_from_face_label():
         man.face_state = "saliva"
         sperm_location_amounts.player_face_cum_amount = 0
         sperm_location_amounts.victim_face_cum_amount = 0
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         # add function for stat changes
     if did_level_up:
@@ -168,7 +168,7 @@ label her_mouth_clean_girl_cum_from_chest_label():
     "You lap up the girl cum coating his chest, hiding the evidence you ever ground your pussy along his chest."
     python:
         man.chest_state = "saliva"
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         # add function for stat changes
     if did_level_up:
@@ -195,7 +195,7 @@ label her_mouth_clean_cum_from_chest_label():
         man.chest_state = "saliva"
         sperm_location_amounts.player_chest_cum_amount = 0
         sperm_location_amounts.victim_chest_cum_amount = 0
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         # add stat change function here
     if did_level_up:
@@ -212,7 +212,7 @@ label her_mouth_clean_girl_cum_stomach_label():
     "You lick the girl cum from his stomach, hiding the evidence your juices were ever there."
     python:
         man.stomach_state = "saliva"
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         # add stat change function
     if did_level_up:
@@ -239,7 +239,7 @@ label her_mouth_clean_cum_stomach_label():
         man.stomach_state = "saliva"
         sperm_location_amounts.victim_stomach_cum_amount = 0
         sperm_location_amounts.player_stomach_cum_amount = 0
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         # add stat changes here
         #
@@ -257,7 +257,7 @@ label her_mouth_clean_girl_cum_fingers_label():
     "You suck his fingers cleaning away your girl cum, like you were never here."
     python:
         man.finger_state = "saliva"
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         # add stat change functions
     if did_level_up:
@@ -284,7 +284,7 @@ label her_mouth_clean_cum_fingers_label():
         man.finger_state = "saliva"
         sperm_location_amounts.victim_finger_cum_amount = 0
         sperm_location_amounts.player_finger_cum_amount = 0
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         #
         # add stat change functions
@@ -302,7 +302,7 @@ label her_mouth_clean_girl_cum_thighs_label():
     "You lap the girl cum coating his thighs, hiding the evidence it was ever there."
     python:
         man.thigh_state = "saliva"
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         # 
     if did_level_up:
@@ -329,7 +329,7 @@ label her_mouth_clean_cum_thighs_label():
         man.thigh_state = "saliva"
         sperm_location_amounts.player_thigh_cum_amount = 0
         sperm_location_amounts.victim_thigh_cum_amount = 0
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         #
         # add stat change functions
@@ -347,7 +347,7 @@ label her_mouth_clean_cum_ass_label():
     "You give him a rimjob ensuring you suck every last drop of your cum from his arse, hiding the evidence you ever came here."
     python:
         man.ass_state = "saliva"
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHim()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain = suckFluidsFromHimCombinedVariableGenerator()
         #
         # add stat change functions
     if did_level_up:

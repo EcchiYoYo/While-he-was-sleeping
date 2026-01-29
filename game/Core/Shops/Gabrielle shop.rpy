@@ -1,6 +1,5 @@
 label gabrielle_shop_screen_label():
     # add in Gabrielle shop background (different angle of Players room)
-    # fuck renpy
     python:
         # Map relationship types to display names
         relationship_names = {
@@ -110,7 +109,7 @@ screen gabrielle_shop_screen():
         else:
             idle "images/buttons/foot techniques button locked.png"
             if upgrades.view_victim_wakefulness_bar == 0:
-                hovered Show("global_tooltip", input_text = "You must unlock wakefulness bar first", x_pos = 0.19, y_pos = 0.3)
+                hovered Show("global_tooltip", input_text = "You must unlock the wakefulness bar first", x_pos = 0.19, y_pos = 0.3)
             elif upgrades.train_feet_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these techniques", x_pos = 0.25, y_pos = 0.3)
             else:
@@ -137,7 +136,7 @@ screen gabrielle_shop_screen():
         else:
             idle "images/buttons/vaginal techniques button locked.png"
             if upgrades.view_victim_wakefulness_bar == 0:
-                hovered Show("global_tooltip", input_text = "You must unlock wakefulness bar first", x_pos = 0.31, y_pos = 0.3)
+                hovered Show("global_tooltip", input_text = "You must unlock the wakefulness bar first", x_pos = 0.31, y_pos = 0.3)
             elif upgrades.train_vaginal_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these techniques", x_pos = 0.31, y_pos = 0.3)
             else:
@@ -160,7 +159,7 @@ screen gabrielle_shop_screen():
         else:
             idle "images/buttons/anal techniques button locked.png"
             if upgrades.view_victim_wakefulness_bar == 0:
-                hovered Show("global_tooltip", input_text = "You must unlock wakefulness bar first", x_pos = 0.16, y_pos = 0.40)
+                hovered Show("global_tooltip", input_text = "You must unlock the wakefulness bar first", x_pos = 0.16, y_pos = 0.40)
             elif upgrades.train_anal_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these technique`s", x_pos = 0.16, y_pos = 0.40)
             else:
@@ -187,7 +186,7 @@ screen gabrielle_shop_screen():
         else:
             idle "images/buttons/just the tip technique button locked.png"
             if upgrades.view_victim_wakefulness_bar == 0:
-                hovered Show("global_tooltip", input_text = "You must unlock wakefulness bar first", x_pos = 0.22, y_pos = 0.40)
+                hovered Show("global_tooltip", input_text = "You must unlock the wakefulness bar first", x_pos = 0.22, y_pos = 0.40)
             elif upgrades.train_just_the_tip_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these techniques", x_pos = 0.22, y_pos = 0.40)
             else:
@@ -214,7 +213,7 @@ screen gabrielle_shop_screen():
         else:
             idle "images/buttons/cock techniques button locked.png"
             if upgrades.view_victim_wakefulness_bar == 0:
-                hovered Show("global_tooltip", input_text = "You must unlock wakefulness bar first", x_pos = 0.28, y_pos = 0.40)
+                hovered Show("global_tooltip", input_text = "You must unlock the wakefulness bar first", x_pos = 0.28, y_pos = 0.40)
             elif upgrades.train_cock_unlocked == True:
                 hovered Show("global_tooltip", input_text = "You`ve already purchased these techniques", x_pos = 0.28, y_pos = 0.40)
             else:

@@ -6,9 +6,9 @@ init python:
         default_arousal_increase, default_multiplier = pc.rubPubisArousalGain()
         upgrades_arousal_multiplier = (upgrades.hand_arousal_multiplier / 1000)
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
-        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total* default_arousal_increase))
+        actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-    # increases players arousal and reduces stamina
+    # increases player arousal and reduces stamina
     def rubPubisArousalIncrease():
         arousal_gain = rubPubisArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
@@ -22,7 +22,7 @@ init python:
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-    # increases players arousal and reduces stamina
+    # increases player arousal and reduces stamina
     def rubInnerThighArousalIncrease():
         arousal_gain = rubInnerThighArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
@@ -36,7 +36,7 @@ init python:
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-    # increases players arousal and reduces stamina
+    # increases player arousal and reduces stamina
     def rubOuterPussyLipsArousalIncrease():
         arousal_gain = rubOuterPussyLipsArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
@@ -50,10 +50,11 @@ init python:
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-    # increase players arousal and reduces stamina
+    # increase player arousal and reduces stamina
     def massageClitArousalIncrease():
         arousal_gain = massageClitArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
+        # block 4 is night time assault where all other time blocks would be daytime training scenes, training scenes require less stamina
         if game_time.block == 4:
             pc.reduceStamina(7)
         else:
@@ -67,15 +68,18 @@ init python:
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-    # increase players arousal and reduces stamina
+    # increase player arousal and reduces stamina
     def fingerPussyArousalIncrease():
         arousal_gain = fingerPussyArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
+        # block 4 is night time assault where all other time blocks would be daytime training scenes, training scenes require less stamina
         if game_time.block == 4:
             pc.reduceStamina(10)
         else:
             pc.reduceStamina(6)
         return did_orgasm, arousal_gain
+    # intercourse and outercourse are handled by his cock actions rather than player vaginal actions, as such combined generators will call these functions but
+    # be located in 5 his cock actions
     # vaginal outercourse
     def vaginalOutercourseArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.vaginalOutercourseArousalGain()
@@ -83,7 +87,7 @@ init python:
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-    # increase players arousal and reduces stamina
+    # increase player arousal and reduces stamina
     def vaginalOutercourseArousalIncrease():
         arousal_gain = vaginalOutercourseArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
@@ -96,7 +100,7 @@ init python:
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-    # increase players arousal and reduces stamina
+    # increase player arousal and reduces stamina
     def vaginalIntercourseArousalIncrease():
         arousal_gain = vaginalIntercourseArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
@@ -144,6 +148,7 @@ init python:
         return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain, did_orgasm
     
     def fingerPussyCombinedVariableGenerator():
+        # uses did hand level up and did vaginal level up due to dual experience gain from this action
         her_global_arousal_gain = fingerPussyArousalGainGlobal()
         did_hand_level_up = pc.increaseHandExp(her_global_arousal_gain)
         did_persistent_hand_level_up = increasePersistentHandExp(her_global_arousal_gain)

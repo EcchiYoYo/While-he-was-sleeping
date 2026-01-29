@@ -38,11 +38,7 @@ init python:
     def suckDryFingersArousalIncrease():
         arousal_gain = suckDryFingersArousalGainGlobal()
         # sucking fingers cannot increase arousal above 40
-        if arousal_gain + pc.arousal > 40:
-            if pc.arousal < 40:
-                arousal_gain = 40 - pc.arousal
-            else:
-                arousal_gain = 0
+        arousal_gain = max(0, min(40 - pc.arousal, arousal_gain))
         did_orgasm = pc.increaseArousal(arousal_gain)
         return did_orgasm, arousal_gain
     # player sucks girl cum/victim cum from fingers, raises player arousal tiny, reduces wakefulness small, removes girl cum from player hands, adds saliva to player hands, neutral stamina
@@ -56,11 +52,7 @@ init python:
     def suckCumFingersArousalIncrease():
         arousal_gain = suckCumFingersArousalGainGlobal()
         # sucking fingers cannot increase arousal above 40
-        if arousal_gain + pc.arousal > 40:
-            if pc.arousal < 40:
-                arousal_gain = 40 - pc.arousal
-            else:
-                arousal_gain = 0
+        arousal_gain = max(0, min(40 - pc.arousal, arousal_gain))
         did_orgasm = pc.increaseArousal(arousal_gain)
         return did_orgasm, arousal_gain
     # player cleans cum from victim, raises player arousal small, neutral wakefulness, removes cum from body part adds saliva to body part, raises suspicion if all cum not cleaned at end of night, neutral stamina
@@ -74,14 +66,11 @@ init python:
     def suckFluidsFromHimArousalIncrease():
         arousal_gain = suckFluidsFromHimArousalGainGlobal()
         # sucking cum cannot increase arousal above 75
-        if arousal_gain + pc.arousal > 75:
-            if pc.arousal < 75:
-                arousal_gain = 75 - pc.arousal
-            else:
-                arousal_gain = 0
+        arousal_gain = max(0, min(75 - pc.arousal, arousal_gain))
         did_orgasm = pc.increaseArousal(arousal_gain)
         return did_orgasm, arousal_gain
     # suck dildo, used for training
+    # variable generation handled by mouthTrainingVariableGenerator()
     def suckDildoArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.suckDildoArousalGain()
         upgrades_arousal_multiplier = (upgrades.mouth_arousal_multiplier / 1000)
@@ -94,6 +83,7 @@ init python:
         pc.reduceStamina(2)
         return did_orgasm, arousal_gain
     # suck training dummy, used for training
+    # variable generation handled by mouthTrainingVariableGenerator()
     def suckDummyArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.suckDummyArousalGain()
         upgrades_arousal_multiplier = (upgrades.mouth_arousal_multiplier / 1000)
@@ -143,11 +133,7 @@ init python:
         base_coin_gain, not_used = pc.suckHerFingersArousalGain()
         coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
         # finger sucking cannot increase arousal above 40 (this must be last within the function to make sure coin gain is still calculated from potential arousal increase)
-        if her_global_arousal_gain + pc.arousal > 40:
-            if pc.arousal < 40:
-                her_global_arousal_gain = 40 - pc.arousal
-            else:
-                her_global_arousal_gain = 0
+        her_global_arousal_gain = max(0, min(40 - pc.arousal, her_global_arousal_gain))
         return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain
     
     def suckCumFingersCombinedVariableGenerator():
@@ -156,26 +142,19 @@ init python:
         did_persistent_level_up = increasePersistentMouthExp(her_global_arousal_gain)
         did_orgasm, not_used = suckCumFingersArousalIncrease()
         base_coin_gain, not_used = pc.suckCumFingersArousalGain()
-        coin_gain = upgrades.increaseUpgradesCoins(base_coin_gain)
+        coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
         # finger sucking cannot increase arousal above 40 (this must be last within the function to make sure coin gain is still calculated from potential arousal increase)
-        if her_global_arousal_gain + pc.arousal > 40:
-            if pc.arousal < 40:
-                her_global_arousal_gain = 40 - pc.arousal
-            else:
-                her_global_arousal_gain = 0
+        her_global_arousal_gain = max(0, min(40 - pc.arousal, her_global_arousal_gain))
         return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain
     
-    def suckFluidsFromHim():
+    def suckFluidsFromHimCombinedVariableGenerator():
         her_global_arousal_gain = suckFluidsFromHimArousalGainGlobal()
         did_level_up = pc.increaseMouthExp(her_global_arousal_gain)
         did_persistent_level_up = increasePersistentMouthExp(her_global_arousal_gain)
         did_orgasm, not_used = suckFluidsFromHimArousalIncrease()
         base_coin_gain, not_used = pc.suckFluidsFromHimArousalGain()
-        coin_gain = upgrades.increaseUpgradesCoins(base_coin_gain)
-        # sucking fluids form him cannot increase arousal above 75 (this must be last within the function to make sure coin gain is still calculated from potential arousal increase)
-        if her_global_arousal_gain + pc.arousal > 75:
-            if pc.arousal < 75:
-                her_global_arousal_gain = 75 - pc.arousal
-            else:
-                her_global_arousal_gain = 0
+        coin_gain = upgrades.increaseUpgradeCoins(base_coin_gain)
+        # sucking fluids from him cannot increase arousal above 75 (this must be last within the function to make sure coin gain is still calculated from potential arousal increase)
+        her_global_arousal_gain = max(0, min(75 - pc.arousal, her_global_arousal_gain))
+        # less return values than other variable generators, this function is used when player hides evidence of night assault and does not affect victim stats
         return did_level_up, did_persistent_level_up, coin_gain, her_global_arousal_gain

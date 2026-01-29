@@ -1,58 +1,59 @@
-# caress chest
+# rub chest with foot
 # he sucks her toes
 # rub his balls
 # give him a footjob
 init python:
     import math
+    # player rubs victims chest with her foot, small arousal increase, small stamina reduction
     def rubChestWithFootArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.rubChestWithFootArousalGain()
         upgrades_arousal_multiplier = (upgrades.foot_arousal_multiplier / 1000)
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-
+    # increase players arousal and reduce stamina
     def rubChestWithFootArousalIncrease():
         arousal_gain = rubChestWithFootArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
         pc.reduceStamina(3)
         return did_orgasm, arousal_gain
-    
+    # player gets victim to suck her toes, small arousal increase, small stamina reduction
     def heSucksHerToesArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.heSucksHerToesArousalGain()
         upgrades_arousal_multiplier = (upgrades.foot_arousal_multiplier / 1000)
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-
+    # increase players arousal and reduce stamina
     def heSucksHerToesArousalIncrease():
         arousal_gain = heSucksHerToesArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
         pc.reduceStamina(3)
         return did_orgasm, arousal_gain
-    
+    # player caresses victims balls with her foot, tiny arousal increase, tiny stamina cost
     def rubHisBallsHerFootArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.rubHisBallsHerFootArousalGain()
         upgrades_arousal_multiplier = (upgrades.foot_arousal_multiplier / 1000)
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-
+    # increase players arousal and reduce stamina
     def rubHisBallsHerFootArousalIncrease():
         arousal_gain = rubHisBallsHerFootArousalGainGlobal()
         did_orgasm = pc.increaseArousal(arousal_gain)
         pc.reduceStamina(1)
         return did_orgasm, arousal_gain
-    
+    # player gives victim a footjob, small arousal increase, medium stamina cost
     def footjobHerArousalGainGlobal():
         default_arousal_increase, default_multiplier = pc.footjobArousalGain()
         upgrades_arousal_multiplier = (upgrades.foot_arousal_multiplier / 1000)
         multiplier_total = default_multiplier + upgrades_arousal_multiplier
         actual_arousal_gain = floor(default_arousal_increase + (multiplier_total * default_arousal_increase))
         return actual_arousal_gain
-    
+    # increase players arousal and reduce stamina
     def footjobHerArousalIncrease():
-        arousal_gain = footjobArousalGainGlobal()
-        did_orgasm = pc.footjobArousalGain(arousal_gain)
+        arousal_gain = footjobHerArousalGainGlobal()
+        did_orgasm = pc.increaseArousal(arousal_gain)
         pc.reduceStamina(5)
         return did_orgasm, arousal_gain
     #############################################################
@@ -93,7 +94,7 @@ init python:
         base_coin_gain, used_for_his_arousal_gain_multiplier = pc.rubHisBallsHerFootArousalGain()
         his_arousal_increase, his_default_arousal_increase = man.rubHisBallsHerFootArousalGain((pc.foot_level / 1000))
         did_he_level_up = man.increaseCockExp(his_arousal_increase)
-        did_he_persistent_level_up = increasePersistentHisCockExp()
+        did_he_persistent_level_up = increasePersistentHisCockExp(his_arousal_increase)
         did_he_orgasm = man.increaseArousal(his_arousal_increase)
         coin_gain = upgrades.increaseUpgradeCoins((base_coin_gain + his_default_arousal_increase))
         return did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_global_arousal_gain, his_arousal_increase
@@ -106,7 +107,7 @@ init python:
         base_coin_gain, used_for_his_arousal_gain_multiplier = pc.footjobArousalGain()
         his_arousal_increase, his_default_arousal_increase = man.footjobHisArousalGain((pc.foot_level / 1000))
         did_he_level_up = man.increaseCockExp(his_arousal_increase)
-        did_he_persistent_level_up = increasePersistentHisCockExp()
+        did_he_persistent_level_up = increasePersistentHisCockExp(his_arousal_increase)
         did_he_orgasm = man.increaseArousal(his_arousal_increase)
         coin_gain = upgrades.increaseUpgradeCoins((base_coin_gain + his_default_arousal_increase))
         return did_level_up, did_persistent_level_up, did_orgasm, did_he_level_up, did_he_orgasm, did_he_persistent_level_up, coin_gain, her_global_arousal_gain, his_arousal_increase

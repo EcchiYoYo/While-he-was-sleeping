@@ -167,7 +167,7 @@ label pinch_both_nipple_label:
     #
     #
     python:
-        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = pinchBothNippleCombinedVariableGenerator()
+        did_level_up, did_persistent_level_up, coin_gain, her_arousal_gain, did_orgasm = pinchBothNipplesCombinedVariableGenerator()
     show screen coins_gained_popup_screen(amount_gained = [coin_gain])
     show screen player_arousal_increase_screen(amount_gained = [her_arousal_gain])
     $ renpy.block_rollback() # this must be here to prevent rolling back and gaining additional persistent exp
