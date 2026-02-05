@@ -1,7 +1,7 @@
 # Skill increase
 # persistent skill increase
 # Arousal increase
-# ?? coins gained
+# coins gained
 #
 init python:
     # hand training functions
@@ -17,6 +17,7 @@ init python:
     def handTrainingVariableGenerator(location):
         her_arousal_gain = 0
         base_coin_gain = 0
+        # this needs to be an int to track for more than one orgasm from an action
         did_orgasm = 0
         stamina_cost = 0
         if location == "Breast":
@@ -67,12 +68,14 @@ init python:
         her_arousal_gain = 0
         base_coin_gain = 0
         did_orgasm = 0
+        # this needs to be an int to track for more than one orgasm from an action
         stamina_cost = 0
         if location == "Fingers":
             her_arousal_gain = suckDryFingersArousalGainGlobal()
             base_coin_gain, not_used = pc.suckHerFingersArousalGain()
             did_orgasm, not_used = suckDryFingersArousalIncrease()
             # this needs to be here as other functions called within this file reduce stamina in arousal increase function calls
+            # this action does not increase arousal and so stamina cost must be accounted for here
             stamina_cost = 2
             pc.reduceStamina(stamina_cost)
         elif location == "Dildo":
@@ -108,9 +111,10 @@ init python:
         her_arousal_gain = 0
         base_coin_gain = 0
         did_orgasm = 0
+        # this needs to be an int to track for more than one orgasm from an action
         stamina_cost = 0
         training_multiplier = 1.5
-        if location == "Fingers":
+        if location == "Fingers" or location == "Training dummy":
             her_arousal_gain = rubChestWithFootArousalGainGlobal()
             base_coin_gain, not_used = pc.rubChestWithFootArousalGain()
             did_orgasm, not_used = rubChestWithFootArousalIncrease()
@@ -120,11 +124,6 @@ init python:
             base_coin_gain, not_used = pc.footjobArousalGain()
             did_orgasm, not_used = footjobHerArousalIncrease()
             stamina_cost = 5
-        elif location == "Training dummy":
-            her_arousal_gain = rubChestWithFootArousalGainGlobal()
-            base_coin_gain, not_used = pc.rubChestWithFootArousalGain()
-            did_orgasm, not_used = rubChestWithFootArousalIncrease()
-            stamina_cost = 3
         else:
             her_arousal_gain = 0
             base_coin_gain = 0
@@ -152,7 +151,9 @@ init python:
         her_arousal_gain = 0
         base_coin_gain = 0
         did_orgasm = 0
+        # this needs to be an int to track for more than one orgasm from an action
         stamina_cost = 0
+        training_multiplier = 1.0
         if location == "Fingers":
             her_arousal_gain = fingerPussyArousalGainGlobal()
             base_coin_gain, not_used = pc.fingerPussyArousalGain()
@@ -204,6 +205,7 @@ init python:
         her_arousal_gain = 0
         base_coin_gain = 0
         did_orgasm = 0
+        # this needs to be an int to track for more than one orgasm from an action
         stamina_cost = 0
         training_multiplier = 1
         if location == "Fingers":
@@ -268,7 +270,8 @@ init python:
         # dildo
         practice_footjob_training_action = footjobHerArousalGainGlobal()
         # dummy
-        practice_dummy_ball_rub_training_action = rubHisBallsHerFootArousalGainGlobal()
+        # this may be added in at a later date
+        # practice_dummy_ball_rub_training_action = rubHisBallsHerFootArousalGainGlobal()
         foot_training_arousal = [massage_feet_training_action, practice_footjob_training_action, practice_dummy_ball_rub_training_action]
         return min(foot_training_arousal), max(foot_training_arousal)
     def trainVaginalMinMaxCheck():
