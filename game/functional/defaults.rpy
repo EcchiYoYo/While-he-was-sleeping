@@ -38,7 +38,7 @@ default pc = Player(persistent.max_stamina, persistent.current_hand_exp, persist
     persistent.player_name, persistent.victim_name)
 default pc_talk = Character("????", image="player", who_color="#dc51e9")
 default pc_male_talk = Character("????", image="player_male", who_color="#dc51e9")
-# order of victim parameters
+## order of victim parameters
 # face resistance experience earned through all playthroughs
 # hand resistance exp set as above
 # chest resistance exp set as above
